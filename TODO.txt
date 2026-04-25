@@ -1,4 +1,4 @@
-- build a ViT or resnet classifier to dynamically load the correct policy.
+- [x] build a ViT or resnet classifier to dynamically load the correct policy.
 - write a skill that is targetted for working with the lerobot dataset API, Functionality, and class structure.
 - figure out how to run the xvla-folding policy in the simulation.
 - could also try changing a the PhysX gripper adjustment suggestion (based on research) to see if there a comparative improvement in the results.
@@ -7,3 +7,13 @@
 - try using a pre-trained vision backbone (need to mess around with GroupNorm vs Batch norm)
 - copy over the new <scripts/utils/eval_utils.py> and <scripts/utils/evaluation.py> to the cloud.
 - [x] update the split eval script to run with any garment type not just Top_short (hard coded) so that you can simply pass the garment type as an argument, like this: ./split_and_run_parallel.sh pant_long.
+- Review the set_lehoem.sh, run_train_optimized.sh in new VM and make sure it is good to go. ; check if it matches the scripts we use.
+- test setup_local_env.sh in the local system for dataset video viewing.
+- sync_workspace.sh can be used for updateing the clone files changes made in the local system to the cloud; NEED to test it
+- Understand why use 
+```
+weights = models.ResNet18_Weights.IMAGENET1K_V1
+model = models.resnet18(weights=weights)
+```
+in the train_garment_classifier.py script : (why not use DINOv2 or CLIP if we are going to anyways use it). Will this eenn make a different OR IS IT BETTER TO USE this as this in already inbuilt into lerobot.
+-- ARE WE only using a few augmentions in the above mention script or are we using the full set of augmentions mentioned in the config file. - IF NOT, why only a few

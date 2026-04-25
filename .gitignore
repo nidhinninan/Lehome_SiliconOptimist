@@ -2,3 +2,14 @@
 .env
 .env.local
 .env.*.local
+updated_files/
+updated_file_*.zip
+.agent
+.gemini
+.cursor
+.agentignore
+.antigravityignore
+.cursorignore
+.geminiignore
+.agentrules
+.geminiignore

@@ -1,0 +1,13 @@
+{
+  "dataset_root": "/path/to/any_merged_lerobot_dataset_for_metadata",
+  "task_description": "fold the garment on the table",
+  "classifier_checkpoint": "/path/to/classifier_best.pt",
+  "min_confidence": 0.0,
+  "lazy_load": true,
+  "expert_checkpoints": {
+    "top_long": "/path/to/dp_top_long/checkpoints/last/pretrained_model",
+    "top_short": "/path/to/dp_top_short/checkpoints/last/pretrained_model",
+    "pant_long": "/path/to/dp_pant_long/checkpoints/last/pretrained_model",
+    "pant_short": "/path/to/dp_pant_short/checkpoints/last/pretrained_model"
+  }
+}

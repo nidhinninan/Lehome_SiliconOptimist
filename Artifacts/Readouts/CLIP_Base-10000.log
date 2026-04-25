@@ -1,0 +1,171 @@
+INFO 2026-04-12 16:33:09 ot_train.py:195 {'batch_size': 8,
+ 'checkpoint_path': None,
+ 'dataset': {'episodes': None,
+             'image_transforms': {'enable': False,
+                                  'max_num_transforms': 3,
+                                  'random_order': False,
+                                  'tfs': {'affine': {'kwargs': {'degrees': [-5.0,
+                                                                            5.0],
+                                                                'translate': [0.05,
+                                                                              0.05]},
+                                                     'type': 'RandomAffine',
+                                                     'weight': 1.0},
+                                          'brightness': {'kwargs': {'brightness': [0.8,
+                                                                                   1.2]},
+                                                         'type': 'ColorJitter',
+                                                         'weight': 1.0},
+                                          'contrast': {'kwargs': {'contrast': [0.8,
+                                                                               1.2]},
+                                                       'type': 'ColorJitter',
+                                                       'weight': 1.0},
+                                          'hue': {'kwargs': {'hue': [-0.05,
+                                                                     0.05]},
+                                                  'type': 'ColorJitter',
+                                                  'weight': 1.0},
+                                          'saturation': {'kwargs': {'saturation': [0.5,
+                                                                                   1.5]},
+                                                         'type': 'ColorJitter',
+                                                         'weight': 1.0},
+                                          'sharpness': {'kwargs': {'sharpness': [0.5,
+                                                                                 1.5]},
+                                                        'type': 'SharpnessJitter',
+                                                        'weight': 1.0}}},
+             'repo_id': 'repo_dp',
+             'revision': None,
+             'root': '/data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged',
+             'streaming': False,
+             'use_imagenet_stats': True,
+             'video_backend': 'torchcodec'},
+ 'env': None,
+ 'eval': {'batch_size': 50, 'n_episodes': 50, 'use_async_envs': False},
+ 'eval_freq': 10000,
+ 'job_name': 'clip_diffusion',
+ 'log_freq': 500,
+ 'num_workers': 4,
+ 'optimizer': {'betas': [0.95, 0.999],
+               'eps': 1e-08,
+               'grad_clip_norm': 10.0,
+               'lr': 0.0001,
+               'type': 'adam',
+               'weight_decay': 1e-06},
+ 'output_dir': 'outputs/sweep_10k/CLIP_Base',
+ 'peft': None,
+ 'policy': {'beta_end': 0.02,
+            'beta_schedule': 'squaredcos_cap_v2',
+            'beta_start': 0.0001,
+            'clip_sample': True,
+            'clip_sample_range': 1.0,
+            'crop_is_random': False,
+            'crop_shape': None,
+            'device': 'cuda',
+            'diffusion_step_embed_dim': 128,
+            'do_mask_loss_for_padding': False,
+            'down_dims': [512, 1024, 2048],
+            'drop_n_last_frames': 7,
+            'horizon': 16,
+            'input_features': {'observation.images.left_rgb': {'shape': [3,
+                                                                         480,
+                                                                         640],
+                                                               'type': <FeatureType.VISUAL: 'VISUAL'>},
+                               'observation.images.right_rgb': {'shape': [3,
+                                                                          480,
+                                                                          640],
+                                                                'type': <FeatureType.VISUAL: 'VISUAL'>},
+                               'observation.images.top_rgb': {'shape': [3,
+                                                                        480,
+                                                                        640],
+                                                              'type': <FeatureType.VISUAL: 'VISUAL'>},
+                               'observation.state': {'shape': [12],
+                                                     'type': <FeatureType.STATE: 'STATE'>}},
+            'kernel_size': 5,
+            'license': None,
+            'n_action_steps': 8,
+            'n_groups': 8,
+            'n_obs_steps': 2,
+            'noise_scheduler_type': 'DDPM',
+            'normalization_mapping': {'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>,
+                                      'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>},
+            'num_inference_steps': None,
+            'num_train_timesteps': 100,
+            'optimizer_betas': [0.95, 0.999],
+            'optimizer_eps': 1e-08,
+            'optimizer_lr': 0.0001,
+            'optimizer_weight_decay': 1e-06,
+            'output_features': {'action': {'shape': [12],
+                                           'type': <FeatureType.ACTION: 'ACTION'>}},
+            'prediction_type': 'epsilon',
+            'pretrained_backbone_weights': None,
+            'pretrained_path': None,
+            'private': None,
+            'push_to_hub': False,
+            'repo_id': None,
+            'scheduler_name': 'cosine',
+            'scheduler_warmup_steps': 500,
+            'spatial_softmax_num_keypoints': 32,
+            'tags': None,
+            'type': 'clip_diffusion',
+            'use_amp': False,
+            'use_cls_token': True,
+            'use_film_scale_modulation': True,
+            'use_group_norm': True,
+            'use_peft': False,
+            'use_separate_rgb_encoder_per_camera': False,
+            'vision_backbone': 'openai/clip-vit-base-patch16'},
+ 'rabc_epsilon': 1e-06,
+ 'rabc_head_mode': 'sparse',
+ 'rabc_kappa': 0.01,
+ 'rabc_progress_path': None,
+ 'rename_map': {},
+ 'resume': False,
+ 'save_checkpoint': True,
+ 'save_freq': 10000,
+ 'scheduler': {'name': 'cosine', 'num_warmup_steps': 500, 'type': 'diffuser'},
+ 'seed': 1000,
+ 'steps': 10000,
+ 'tolerance_s': 0.0001,
+ 'use_policy_training_preset': True,
+ 'use_rabc': False,
+ 'wandb': {'disable_artifact': False,
+           'enable': False,
+           'entity': None,
+           'mode': None,
+           'notes': None,
+           'project': 'lerobot',
+           'run_id': None}}
+INFO 2026-04-12 16:33:09 ot_train.py:203 Logs will be saved locally.
+INFO 2026-04-12 16:33:09 ot_train.py:215 Creating dataset
+INFO 2026-04-12 16:33:09 ot_train.py:233 Creating policy
+INFO 2026-04-12 16:33:22 ot_train.py:288 Creating optimizer and scheduler
+INFO 2026-04-12 16:33:22 ot_train.py:323 Output dir: outputs/sweep_10k/CLIP_Base
+INFO 2026-04-12 16:33:22 ot_train.py:330 cfg.steps=10000 (10K)
+INFO 2026-04-12 16:33:22 ot_train.py:331 dataset.num_frames=83068 (83K)
+INFO 2026-04-12 16:33:22 ot_train.py:332 dataset.num_episodes=250
+INFO 2026-04-12 16:33:22 ot_train.py:335 Effective batch size: 8 x 1 = 8
+INFO 2026-04-12 16:33:22 ot_train.py:336 num_learnable_params=380571788 (381M)
+INFO 2026-04-12 16:33:22 ot_train.py:337 num_total_params=466371212 (466M)
+INFO 2026-04-12 16:33:22 ot_train.py:393 Start offline training on a fixed dataset, with effective batch size: 8
+✅ Registered DINOv2 Plugin
+✅ Registered CLIP Plugin
+INFO 2026-04-12 16:36:28 ot_train.py:423 step:500 smpl:4K ep:12 epch:0.05 loss:0.482 grdn:3.146 lr:5.0e-05 updt_s:0.334 data_s:0.038
+INFO 2026-04-12 16:39:22 ot_train.py:423 step:1K smpl:8K ep:24 epch:0.10 loss:0.121 grdn:1.228 lr:1.0e-04 updt_s:0.324 data_s:0.024
+INFO 2026-04-12 16:42:16 ot_train.py:423 step:2K smpl:12K ep:36 epch:0.14 loss:0.090 grdn:0.889 lr:9.8e-05 updt_s:0.323 data_s:0.023
+INFO 2026-04-12 16:45:10 ot_train.py:423 step:2K smpl:16K ep:48 epch:0.19 loss:0.074 grdn:0.724 lr:9.6e-05 updt_s:0.323 data_s:0.024
+INFO 2026-04-12 16:48:04 ot_train.py:423 step:2K smpl:20K ep:60 epch:0.24 loss:0.073 grdn:0.666 lr:9.2e-05 updt_s:0.325 data_s:0.024
+INFO 2026-04-12 16:50:58 ot_train.py:423 step:3K smpl:24K ep:72 epch:0.29 loss:0.066 grdn:0.591 lr:8.7e-05 updt_s:0.323 data_s:0.023
+INFO 2026-04-12 16:53:51 ot_train.py:423 step:4K smpl:28K ep:84 epch:0.34 loss:0.064 grdn:0.557 lr:8.1e-05 updt_s:0.323 data_s:0.024
+INFO 2026-04-12 16:56:42 ot_train.py:423 step:4K smpl:32K ep:96 epch:0.39 loss:0.059 grdn:0.516 lr:7.4e-05 updt_s:0.318 data_s:0.023
+INFO 2026-04-12 16:59:29 ot_train.py:423 step:4K smpl:36K ep:108 epch:0.43 loss:0.055 grdn:0.491 lr:6.6e-05 updt_s:0.310 data_s:0.023
+INFO 2026-04-12 17:02:15 ot_train.py:423 step:5K smpl:40K ep:120 epch:0.48 loss:0.055 grdn:0.480 lr:5.8e-05 updt_s:0.309 data_s:0.023
+INFO 2026-04-12 17:05:01 ot_train.py:423 step:6K smpl:44K ep:132 epch:0.53 loss:0.051 grdn:0.448 lr:5.0e-05 updt_s:0.310 data_s:0.022
+INFO 2026-04-12 17:07:47 ot_train.py:423 step:6K smpl:48K ep:144 epch:0.58 loss:0.049 grdn:0.435 lr:4.2e-05 updt_s:0.310 data_s:0.022
+INFO 2026-04-12 17:10:42 ot_train.py:423 step:6K smpl:52K ep:156 epch:0.63 loss:0.046 grdn:0.413 lr:3.4e-05 updt_s:0.325 data_s:0.023
+INFO 2026-04-12 17:14:02 ot_train.py:423 step:7K smpl:56K ep:169 epch:0.67 loss:0.044 grdn:0.402 lr:2.6e-05 updt_s:0.366 data_s:0.033
+INFO 2026-04-12 17:17:11 ot_train.py:423 step:8K smpl:60K ep:181 epch:0.72 loss:0.043 grdn:0.392 lr:1.9e-05 updt_s:0.345 data_s:0.031
+INFO 2026-04-12 17:20:04 ot_train.py:423 step:8K smpl:64K ep:193 epch:0.77 loss:0.040 grdn:0.378 lr:1.3e-05 updt_s:0.322 data_s:0.024
+INFO 2026-04-12 17:22:57 ot_train.py:423 step:8K smpl:68K ep:205 epch:0.82 loss:0.041 grdn:0.371 lr:8.2e-06 updt_s:0.322 data_s:0.024
+INFO 2026-04-12 17:25:51 ot_train.py:423 step:9K smpl:72K ep:217 epch:0.87 loss:0.039 grdn:0.365 lr:4.3e-06 updt_s:0.322 data_s:0.024
+INFO 2026-04-12 17:28:44 ot_train.py:423 step:10K smpl:76K ep:229 epch:0.91 loss:0.037 grdn:0.351 lr:1.6e-06 updt_s:0.321 data_s:0.023
+INFO 2026-04-12 17:31:38 ot_train.py:423 step:10K smpl:80K ep:241 epch:0.96 loss:0.038 grdn:0.354 lr:2.3e-07 updt_s:0.323 data_s:0.024
+INFO 2026-04-12 17:31:38 ot_train.py:443 Checkpoint policy after step 10000
+INFO 2026-04-12 17:31:57 ot_train.py:514 End of training
