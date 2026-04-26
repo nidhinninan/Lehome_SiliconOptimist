@@ -5,7 +5,10 @@ chmod +x ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
 ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
 ###
 # probably don't need this any more (had the use principia instead of $USER in the .sh script to correctly give permissions) 
+<<<<<<< Updated upstream
 mkdir lehome_workspace
+=======
+>>>>>>> Stashed changes
 sudo chown -R principia:principia ~/data/lehome_workspace
 ______
 # clone files manually
