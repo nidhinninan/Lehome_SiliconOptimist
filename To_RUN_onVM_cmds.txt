@@ -5,6 +5,7 @@ chmod +x ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
 ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
 ###
 # probably don't need this any more (had the use principia instead of $USER in the .sh script to correctly give permissions) 
+mkdir lehome_workspace
 sudo chown -R principia:principia ~/data/lehome_workspace
 ______
 # clone files manually
@@ -25,4 +26,23 @@ rsync -av \
   ~/data/Lehome_SiliconOptimist/lehome_workspace/ \
   ~/data/lehome_workspace/
   
+```
+```python
+touch .env
+TERM=xterm nano ~/data/lehome_workspace/.env
+```
+```python
+#go into lehome-challenge and run uv sync
+cd lehome-challenge
+uv sync #(run this in the ##lehome-challlenge)
+
+#change configs
+TERM=xterm nano ~/data/lehome_workspace/configs/sweep_dino_map_registers.yaml
+## chnage to root: /root/data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged
+TERM=xterm nano ~/data/lehome_workspace/configs/sweep_dino_baseline.yaml
+## chnage to root: /root/data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged
+
+#change the dataset root in the yaml files
+cd ../
+./run_2run_dino_sweep.sh
 ```

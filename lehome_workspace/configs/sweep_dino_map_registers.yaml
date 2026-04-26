@@ -1,6 +1,6 @@
 dataset:
   repo_id: repo_dp
-  root: Datasets/example/top_long_merged
+  root: /root/data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged
   image_transforms:
     # Linked to --dataset.image_transforms.enable in run_2run_dino_sweep.sh
     enable: false
@@ -38,7 +38,7 @@ policy:
       type: ACTION
       shape: [12]
 
-output_dir: outputs/sweep_10k/DINOv2_MAP_Registers
+output_dir: /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers
 job_name: DINOv2_MAP_Registers
 batch_size: 8
 steps: 10000

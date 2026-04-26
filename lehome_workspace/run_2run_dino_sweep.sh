@@ -14,7 +14,8 @@
 
 set -euo pipefail
 
-WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR=$(pwd)
+# WORKSPACE_DIR=$(pwd)
 
 # Optional: load VM .env (WANDB_API_UCMO -> WANDB_API_KEY)
 if [ -f "$WORKSPACE_DIR/.env" ]; then
@@ -77,7 +78,7 @@ run_sweep_run() {
     echo "════════════════════════════════════════════════════════════"
 
     local CHECK_REL="outputs/sweep_10k/$NAME/checkpoints/last"
-    local CHECK_ABS="/data/outputs/sweep_10k/$NAME/checkpoints/last"
+    local CHECK_ABS="/root/data/lehome_workspace/outputs/sweep_10k/$NAME/checkpoints/last"
 
     if [ -d "$CHECK_REL" ] || [ -d "$CHECK_ABS" ]; then
         echo "   SKIPPING: checkpoint exists at ${CHECK_REL} or ${CHECK_ABS}"
@@ -87,7 +88,7 @@ run_sweep_run() {
     local LOG_FILE="$WORKSPACE_DIR/lehome-challenge/logs/readout/$NAME-$EVAL_FREQ.log"
     mkdir -p "$(dirname "$LOG_FILE")"
 
-    local WORKERS=4
+    local WORKERS=12
     if [ "$SHM_REMOUNTED" = false ]; then
         WORKERS=0
         echo "   (Falling back to --num_workers=0 due to shm limits)"
