@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from lerobot.configs.policies import PreTrainedConfig
 from lerobot.policies.diffusion.configuration_diffusion import DiffusionConfig
 
@@ -22,6 +22,12 @@ class DinoDiffusionConfig(DiffusionConfig):
     pretrained_backbone_weights: str | None = None  # Unused — HF weights loaded directly
     use_cls_token: bool = True
 
+    # Spatial readout: "baseline" = CLS or mean-pool (use_cls_token); "map" = MAP head on patches.
+    spatial_pooling: str = "baseline"
+    map_num_queries: int = 8
+    use_registers: bool = False
+    num_register_tokens: int = 4
+
     # Disable the crop pipeline — DINOv2 handles its own resize internally
     crop_shape: tuple[int, int] | None = None
     crop_is_random: bool = False
@@ -30,6 +36,20 @@ class DinoDiffusionConfig(DiffusionConfig):
         # Skip DiffusionConfig.__post_init__ (which asserts vision_backbone.startswith("resnet"))
         # and call PreTrainedConfig.__post_init__ directly for base-class validation only.
         PreTrainedConfig.__post_init__(self)
+
+        if self.spatial_pooling not in ("baseline", "map"):
+            raise ValueError("`spatial_pooling` must be 'baseline' or 'map'.")
+        if self.spatial_pooling == "map":
+            if self.map_num_queries < 1:
+                raise ValueError("`map_num_queries` must be >= 1 when spatial_pooling='map'.")
+            if not self.use_registers:
+                raise ValueError("spatial_pooling='map' requires use_registers=True.")
+            if "registers" not in self.vision_backbone.lower():
+                raise ValueError(
+                    "spatial_pooling='map' expects a `facebook/dinov2-with-registers-*` checkpoint."
+                )
+        if self.use_registers and "registers" not in self.vision_backbone.lower():
+            raise ValueError("use_registers=True requires vision_backbone id containing 'registers'.")
 
         # Replicate the other non-ResNet checks from DiffusionConfig.__post_init__:
         supported_prediction_types = ["epsilon", "sample"]

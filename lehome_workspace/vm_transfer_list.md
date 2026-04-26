@@ -1,6 +1,6 @@
 # LeHome VM Transfer List
 
-**Last Updated**: 2026-04-12 10:41:00
+**Last Updated**: 2026-04-26 12:00:00
 
 The following files must be copied to your VM machine to match the current local research state.
 
@@ -27,6 +27,10 @@ These files reside outside the `lehome-challenge` repository.
 - `setup_lehome.sh` (New: 2026-04-12 12:51:00)
 - `run_train_optimized.sh` (New: 2026-04-12 12:51:00)
 - `run_10k_sweep.sh` (Updated: 2026-04-12 15:40:00)
+- `run_2run_dino_sweep.sh` (New: 2026-04-26 12:00:00)
+- `configs/sweep_dino_baseline.yaml` (New: 2026-04-26 12:00:00)
+- `configs/sweep_dino_map_registers.yaml` (New: 2026-04-26 12:00:00)
+- `.env` (VM): optional; set `WANDB_API_UCMO` then script exports `WANDB_API_KEY` (Updated: 2026-04-26 12:00:00)
 - `lerobot_train_with_plugins.py` (Updated: 2026-04-12 13:42:00)
 - `configs/sweep_dino.yaml` (Updated: 2026-04-12 10:40:00)
 - `configs/sweep_resnet18.yaml` (Updated: 2026-04-12 10:40:00)
@@ -35,8 +39,8 @@ These files reside outside the `lehome-challenge` repository.
 ### DINOv2 BYOP Package (`lehome_workspace/lerobot_policy_dino/`)
 - `pyproject.toml` (Updated: 2026-04-12 13:42:00)
 - `src/lerobot_policy_dino/__init__.py` (Updated: 2026-04-11 15:19:36)
-- `src/lerobot_policy_dino/modeling_dino_diffusion.py` (Updated: 2026-04-12 14:02:00)
-- `src/lerobot_policy_dino/configuration_dino_diffusion.py` (Updated: 2026-04-11 20:22:00)
+- `src/lerobot_policy_dino/modeling_dino_diffusion.py` (Updated: 2026-04-26 12:00:00)
+- `src/lerobot_policy_dino/configuration_dino_diffusion.py` (Updated: 2026-04-26 12:00:00)
 - `src/lerobot_policy_dino/processor_dino_diffusion.py` (Updated: 2026-04-11 15:19:36)
 
 ### CLIP BYOP Package (`lehome_workspace/lerobot_policy_clip/`)

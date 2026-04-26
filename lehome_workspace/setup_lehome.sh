@@ -51,7 +51,9 @@ echo "   ✅ uv installed at $UV_BIN_DIR/uv"
 
 # Phase 4: Repository Cloning
 echo "🔗 [4/6] Cloning repositories..."
-mkdir -p "$WORKSPACE_DIR"
+sudo mkdir -p "$WORKSPACE_DIR"
+sudo chown -R $USER:$USER "$WORKSPACE_DIR"
+
 cd "$WORKSPACE_DIR"
 
 if [ ! -d "lehome-challenge" ]; then

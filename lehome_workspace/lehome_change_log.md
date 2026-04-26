@@ -9,6 +9,37 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-26 12:00:00 — DINOv2 MAP + registers variant + 2-run sweep + W&B
+**Files modified / added**:
+- `lehome_workspace/lerobot_policy_dino/src/lerobot_policy_dino/configuration_dino_diffusion.py`
+- `lehome_workspace/lerobot_policy_dino/src/lerobot_policy_dino/modeling_dino_diffusion.py`
+- `lehome_workspace/configs/sweep_dino_baseline.yaml` (new)
+- `lehome_workspace/configs/sweep_dino_map_registers.yaml` (new)
+- `lehome_workspace/run_2run_dino_sweep.sh` (new)
+
+**Description**:
+- Added `spatial_pooling` (`baseline` | `map`), `map_num_queries`, `use_registers`, `num_register_tokens` to `DinoDiffusionConfig` with validation: `map` requires registers checkpoint + `use_registers=True`.
+- Implemented `MAPHead` (K queries cross-attend to patch tokens; output `reshape` to `(B, K*D)`). `DinoDiffusionModel` sets `head_output_dim` and `single_step_dim` accordingly; backbone stays frozen; MAP head is trainable.
+- `_encode_images`: baseline preserves original CLS vs mean-pool; `map` drops CLS + register tokens then applies MAP (backbone under `no_grad`, head outside).
+- Removed dead `self.reset()` after `return` in `get_optim_params`.
+- New sweep YAMLs: baseline `facebook/dinov2-small` + MAP run `facebook/dinov2-with-registers-small`; both use `wandb.enable: true`, `wandb.project: lehome_challenge`, top-level `job_name` for distinct W&B runs (`DINOv2_Baseline`, `DINOv2_MAP_Registers`).
+- New `run_2run_dino_sweep.sh`: installs only `lerobot_policy_dino`, loads optional `$WORKSPACE_DIR/.env` and sets `WANDB_API_KEY=$WANDB_API_UCMO`, runs MAP+registers then baseline (same CLI flags as `run_10k_sweep.sh`).
+
+**Key diff (config validation excerpt)**:
+```python
+if self.spatial_pooling == "map":
+    if not self.use_registers:
+        raise ValueError("spatial_pooling='map' requires use_registers=True.")
+    if "registers" not in self.vision_backbone.lower():
+        raise ValueError("spatial_pooling='map' expects a dinov2-with-registers-* checkpoint.")
+```
+
+**Key diff (MAP forward)**:
+```python
+pooled = self.norm(attn_out + q)
+return pooled.reshape(bsz, -1)
+```
+
 ### 2026-04-12 10:40:00 — Documentation: Linked Dependency Comments
 **Files Modified**:
 - `lehome_workspace/configs/sweep_dino.yaml`

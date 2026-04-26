@@ -40,6 +40,40 @@ from .configuration_dino_diffusion import DinoDiffusionConfig
 _DINO_INPUT_SIZE = 224
 
 
+class MAPHead(nn.Module):
+    """Multi-headed attention pooling (MAP): K learned queries cross-attend to patch tokens.
+
+    Output is flattened (B, K * D) so distinct query readouts are preserved for the U-Net.
+    """
+
+    def __init__(
+        self,
+        hidden_dim: int,
+        num_queries: int,
+        num_heads: int = 8,
+        dropout: float = 0.1,
+    ) -> None:
+        super().__init__()
+        if hidden_dim % num_heads != 0:
+            raise ValueError(f"hidden_dim ({hidden_dim}) must be divisible by num_heads ({num_heads}).")
+        self.queries = nn.Parameter(torch.randn(num_queries, hidden_dim))
+        self.cross_attn = nn.MultiheadAttention(
+            embed_dim=hidden_dim,
+            num_heads=num_heads,
+            dropout=dropout,
+            batch_first=True,
+        )
+        self.norm = nn.LayerNorm(hidden_dim)
+
+    def forward(self, patch_tokens: Tensor) -> Tensor:
+        """patch_tokens: (B, num_patches, D) -> (B, K * D)."""
+        bsz = patch_tokens.shape[0]
+        q = self.queries.unsqueeze(0).expand(bsz, -1, -1)
+        attn_out, _ = self.cross_attn(q, patch_tokens, patch_tokens)
+        pooled = self.norm(attn_out + q)
+        return pooled.reshape(bsz, -1)
+
+
 class DinoDiffusionModel(nn.Module):
     """DiffusionModel replacement that uses a frozen DINOv2-Small encoder."""
 
@@ -54,10 +88,24 @@ class DinoDiffusionModel(nn.Module):
 
         # DINOv2-small hidden_size = 384
         self.feature_dim = self.backbone.config.hidden_size
+        self.spatial_pooling = config.spatial_pooling
+        self.map_num_queries = config.map_num_queries
+        self.use_registers = config.use_registers
+        self.num_register_tokens = config.num_register_tokens
+
+        if self.spatial_pooling == "map":
+            self.spatial_head = MAPHead(
+                hidden_dim=self.feature_dim,
+                num_queries=self.map_num_queries,
+            )
+            self.head_output_dim = self.map_num_queries * self.feature_dim
+        else:
+            self.spatial_head = None
+            self.head_output_dim = self.feature_dim
 
         # ── Global-conditioning dimension ─────────────────────────────────────
         num_images = len(config.image_features)
-        single_step_dim = config.robot_state_feature.shape[0] + self.feature_dim * num_images
+        single_step_dim = config.robot_state_feature.shape[0] + self.head_output_dim * num_images
         if config.env_state_feature:
             single_step_dim += config.env_state_feature.shape[0]
 
@@ -101,12 +149,23 @@ class DinoDiffusionModel(nn.Module):
                 mode="bilinear",
                 antialias=True,
             )
+        if self.spatial_pooling == "baseline":
+            with torch.no_grad():
+                outputs = self.backbone(img)
+                hidden = outputs.last_hidden_state
+                if self.config.use_cls_token:
+                    return hidden[:, 0, :]
+                return hidden.mean(dim=1)
+
+        # MAP path: backbone frozen (no_grad); MAP head is trainable.
         with torch.no_grad():
             outputs = self.backbone(img)
-            if self.config.use_cls_token:
-                return outputs.last_hidden_state[:, 0, :]  # (B*N, feature_dim) — CLS token
-            else:
-                return outputs.last_hidden_state.mean(dim=1)  # Global avg pool over patches
+            hidden = outputs.last_hidden_state
+        start_idx = 1 + (self.num_register_tokens if self.use_registers else 0)
+        patch_tokens = hidden[:, start_idx:, :]
+        if self.spatial_head is None:
+            raise RuntimeError("spatial_pooling='map' but spatial_head is missing.")
+        return self.spatial_head(patch_tokens)
 
     def _prepare_global_conditioning(self, batch: dict[str, Tensor]) -> Tensor:
         """Build the flat global conditioning vector for the U-Net.
@@ -220,4 +279,3 @@ class DinoDiffusionPolicy(DiffusionPolicy):
     def get_optim_params(self) -> list:
         """Filter out frozen vision backbone parameters to prevent optimizer crashes."""
         return [p for p in self.parameters() if p.requires_grad]
-        self.reset()
