@@ -6,9 +6,9 @@
 set -e # Exit on error
 
 # --- Configuration ---
-WORKSPACE_DIR="/data/lehome_workspace"
+WORKSPACE_DIR="~/data/lehome_workspace"
 REPO_DIR="$WORKSPACE_DIR/lehome-challenge"
-UV_BIN_DIR="/data/.local/bin"
+UV_BIN_DIR="~/data/.local/bin"
 
 echo "🚀 Starting LeHome Challenge Setup..."
 
