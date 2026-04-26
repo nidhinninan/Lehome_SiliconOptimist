@@ -38,7 +38,8 @@ export PATH="$UV_BIN_DIR:$PATH"
 
 # Phase 2: System Dependencies
 echo "📦 [2/6] Installing system dependencies (requires sudo)..."
-sudo apt update && sudo apt install -y \
+# sudo apt update && \
+sudo apt install -y \
     libglu1-mesa libgl1 libegl1 libxrandr2 \
     libxinerama1 libxcursor1 libxi6 libxext6 libx11-6 \
     zip psmisc  # psmisc includes 'fuser'
