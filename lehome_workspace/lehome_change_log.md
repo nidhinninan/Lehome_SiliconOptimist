@@ -9,6 +9,98 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-27 16:20:00 — New: `run_2run_dino_sweep_trial.sh` (rclone → Drive + `.complete` skip marker)
+
+**Files added**:
+- `lehome_workspace/run_2run_dino_sweep_trial.sh`
+
+**Description**:
+- Duplicate of the two-run DINO sweep driver with **trial** features: optional **Google Drive offload** via `rclone move`, and a **`output_dir/.complete` marker** so reruns skip after checkpoints were moved off-VM (not only when `checkpoints/last` exists).
+- **`WORKSPACE_DIR`** is derived from the script path (`BASH_SOURCE`), matching `run_10k_sweep.sh` robustness (works regardless of `cwd`).
+- **Drive layout** (when `ENABLE_RCLONE_CHECKPOINT_SYNC=1`):  
+  `{RCLONE_REMOTE}:LeHome/models/{wandb.project}/{job_name}/{config_stem}__{RUN_TAG}/checkpoints/...`  
+  where `RUN_TAG="${job_name}__${config_stem}__$(date +%Y%m%d_%H%M%S)__$(hostname -s)"`, and `job_name` / `wandb.project` / `output_dir` are parsed from each YAML with small `grep`/`sed` helpers.
+- **During training**: background loop every `RCLONE_SLEEP_SEC` (default 600s) runs  
+  `rclone move … --filter '+ step_*/**' --filter '- **' --min-age "${RCLONE_MIN_AGE:-15m}" --delete-empty-src-dirs`  
+  so **`checkpoints/last/` is not moved** until training finishes.
+- **After training**: stop background job, **final** `rclone move` (no step filter) moves **`last/`** and any remainder; on success, **`touch "$OUTPUT_DIR/.complete"`**. If rclone is disabled, still writes `.complete` after a successful training run so the sweep does not restart blindly.
+- **Skip order**: if `"$OUTPUT_DIR/.complete"` exists → skip; else if `outputs/.../checkpoints/last` or `/root/data/lehome_workspace/.../last` exists → skip (same as original).
+- **Training CLI**: keeps `--dataset.video_backend=pyav` (VM-safe vs missing FFmpeg libs for torchcodec).
+- **Env knobs**: `ENABLE_RCLONE_CHECKPOINT_SYNC` (default 0), `RCLONE_REMOTE` (default `gdrive`), `RCLONE_MIN_AGE`, `RCLONE_SLEEP_SEC`.
+
+**Authoritative source**: full script body is in [`lehome_workspace/run_2run_dino_sweep_trial.sh`](./run_2run_dino_sweep_trial.sh) (~230 lines). Key fragments:
+
+```bash
+WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+RCLONE_BASE="LeHome/models/${WANDB_PROJECT}/${JOB_NAME}/${CONFIG_STEM}__${RUN_TAG}"
+RCLONE_DST="${RCLONE_REMOTE_NAME}:${RCLONE_BASE}/"
+rclone move "$LOOP_SRC" "${RCLONE_DST}checkpoints" \
+  --filter '+ step_*/**' --filter '- **' --min-age "$RCLONE_MIN_AGE" --delete-empty-src-dirs
+# after training: rclone move "$CHECK_SRC" "${RCLONE_DST}checkpoints" --delete-empty-src-dirs
+# touch "$OUTPUT_DIR/.complete"
+```
+
+**Operational note**: To re-run a finished trial for the same YAML/output path, remove `"$output_dir/.complete"` (and any partial local checkpoints) on the VM.
+
+### 2026-04-26 20:05 — Fix: torchcodec FFmpeg missing → switch to pyav video backend
+
+**Problem**: `run_2run_dino_sweep.sh` crashed in the DataLoader with:
+```
+RuntimeError: Could not load libtorchcodec. FFmpeg shared libraries not found
+(libavutil.so.59/58/57 and libavdevice.so.58 all missing).
+```
+The VM's LeRobot install uses `torchcodec` as the default video backend, which requires system FFmpeg shared libraries that were not installed.
+
+**Fix 1** — `lehome_workspace/run_2run_dino_sweep.sh`:
+Added `--dataset.video_backend=pyav` to the training command. `pyav` decodes video frames via the Python `av` package (already installed as a LeRobot dependency) without needing system FFmpeg `.so` files.
+
+**Diff**:
+```diff
+ "$VENV_PYTHON" "$WORKSPACE_DIR/lerobot_train_with_plugins.py" \
+     --config_path="$CONFIG" \
+     --steps="$STEPS" \
+     --eval_freq="$EVAL_FREQ" \
+     --dataset.image_transforms.enable=false \
++    --dataset.video_backend=pyav \
+     --num_workers="$WORKERS" \
+```
+
+**Fix 2** — `lehome_workspace/setup_lehome.sh`:
+Added `ffmpeg` to the `apt install` block so future fresh VM setups will have the system FFmpeg libraries available (allowing `torchcodec` to work as well).
+
+**Diff**:
+```diff
+ sudo apt install -y \
+     libglu1-mesa libgl1 libegl1 libxrandr2 \
+     libxinerama1 libxcursor1 libxi6 libxext6 libx11-6 \
+-    zip psmisc  # psmisc includes 'fuser'
++    zip psmisc \
++    ffmpeg  # required by torchcodec video backend
+```
+
+### 2026-04-26 18:44:41 — Fix: `setup_lehome.sh` paths use `$HOME` (not literal `~`)
+**Files modified**:
+- `lehome_workspace/setup_lehome.sh`
+
+**Description**:
+- `WORKSPACE_DIR`, `REPO_DIR`, and `UV_BIN_DIR` now use `${HOME}/data/...` so `cd`, `mkdir`, and `uv` install see real absolute paths (tilde inside `"..."` assignments stays literal and broke `cd "$REPO_DIR"` on the VM).
+- `.bashrc` snippets now append `export HF_HOME="$HOME/data/huggingface_cache"`, `export UV_CACHE_DIR="$HOME/data/uv_cache"`, and `export PATH="$HOME/data/.local/bin:$PATH"` so new shells expand home correctly.
+- Session exports use `${HOME}/data/...` and `PATH="${UV_BIN_DIR}:${PATH}"`.
+
+**Diff (configuration block)**:
+```bash
+# before
+WORKSPACE_DIR="~/data/lehome_workspace"
+REPO_DIR="$WORKSPACE_DIR/lehome-challenge"
+UV_BIN_DIR="~/data/.local/bin"
+# after
+WORKSPACE_DIR="${HOME}/data/lehome_workspace"
+REPO_DIR="${WORKSPACE_DIR}/lehome-challenge"
+UV_BIN_DIR="${HOME}/data/.local/bin"
+```
+
+**VM note**: If `.bashrc` already contains the old `~/data/...` lines, remove those duplicates after sync so only the `$HOME`-based exports remain.
+
 ### 2026-04-26 12:00:00 — DINOv2 MAP + registers variant + 2-run sweep + W&B
 **Files modified / added**:
 - `lehome_workspace/lerobot_policy_dino/src/lerobot_policy_dino/configuration_dino_diffusion.py`

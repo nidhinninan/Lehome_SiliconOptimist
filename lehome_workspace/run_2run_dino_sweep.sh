@@ -99,6 +99,7 @@ run_sweep_run() {
         --steps="$STEPS" \
         --eval_freq="$EVAL_FREQ" \
         --dataset.image_transforms.enable=false \
+        #--dataset.video_backend=pyav \ # Installed FFmpeg
         --num_workers="$WORKERS" \
         2>&1 | tee "$LOG_FILE"
 

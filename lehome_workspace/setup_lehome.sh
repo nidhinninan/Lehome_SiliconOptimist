@@ -6,9 +6,10 @@
 set -e # Exit on error
 
 # --- Configuration ---
-WORKSPACE_DIR="~/data/lehome_workspace"
-REPO_DIR="$WORKSPACE_DIR/lehome-challenge"
-UV_BIN_DIR="~/data/.local/bin"
+# Use $HOME, not ~ inside quotes — tilde is literal in assignments and breaks cd/mkdir.
+WORKSPACE_DIR="${HOME}/data/lehome_workspace"
+REPO_DIR="${WORKSPACE_DIR}/lehome-challenge"
+UV_BIN_DIR="${HOME}/data/.local/bin"
 
 echo "🚀 Starting LeHome Challenge Setup..."
 
@@ -26,15 +27,15 @@ update_bashrc() {
     fi
 }
 
-update_bashrc 'export HF_HOME="~/data/huggingface_cache"'
-update_bashrc 'export UV_CACHE_DIR="~/data/uv_cache"'
+update_bashrc 'export HF_HOME="$HOME/data/huggingface_cache"'
+update_bashrc 'export UV_CACHE_DIR="$HOME/data/uv_cache"'
 update_bashrc 'export __GLX_VENDOR_LIBRARY_NAME=nvidia'
-update_bashrc "export PATH=\"$UV_BIN_DIR:\$PATH\""
+update_bashrc 'export PATH="$HOME/data/.local/bin:$PATH"'
 
 # Export for current session
-export HF_HOME="~/data/huggingface_cache"
-export UV_CACHE_DIR="~/data/uv_cache"
-export PATH="$UV_BIN_DIR:$PATH"
+export HF_HOME="${HOME}/data/huggingface_cache"
+export UV_CACHE_DIR="${HOME}/data/uv_cache"
+export PATH="${UV_BIN_DIR}:${PATH}"
 
 # Phase 2: System Dependencies
 echo "📦 [2/6] Installing system dependencies (requires sudo)..."
@@ -42,7 +43,8 @@ echo "📦 [2/6] Installing system dependencies (requires sudo)..."
 sudo apt install -y \
     libglu1-mesa libgl1 libegl1 libxrandr2 \
     libxinerama1 libxcursor1 libxi6 libxext6 libx11-6 \
-    zip psmisc  # psmisc includes 'fuser'
+    zip psmisc \
+    ffmpeg  # required by torchcodec video backend
 echo "   ✅ System dependencies installed."
 
 # Phase 3: uv Installation

@@ -1,0 +1,243 @@
+(lehome) root@ubuntu:~/data/lehome_workspace# history
+    1  echo $OPEN_BUTTON_TOKEN
+    2  exit
+    3  mkdir data/
+    4  ls
+    5  cd data/
+    6  git clone https://nidhinninan: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@github.com/nidhinninan/Lehome_SiliconOptimist.git
+    7  chmod +x /data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+    8  git clone https://nidhinninan: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@github.com/nidhinninan/Lehome_SiliconOptimist.git
+    9  chmod +x /data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   10  chmod +x ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   11  ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   12  git clone https://nidhinninan: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@github.com/nidhinninan/Lehome_SiliconOptimist.git
+   13  sudo rm -rf ~/data/Lehome_SiliconOptimist
+   14  git clone https://nidhinninan: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@github.com/nidhinninan/Lehome_SiliconOptimist.git
+   15  chmod +x ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   16  ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   17  ps aux -p 7398
+   18  ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   19  git fetch origin
+   20  cd Lehome_SiliconOptimist/
+   21  git fetch origin
+   22  cd ../
+   23  ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   24  cd Lehome_SiliconOptimist/
+   25  cd lehome_workspace/
+   26  nano setup_lehome.sh
+   27  ~/data/Lehome_SiliconOptimist/lehome_workspac
+   28  cat ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   29  cd../
+   30  cd ../
+   31  git fetch origin
+   32  cat ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   33  nano ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   34  TERM=xterm nano ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   35  cd ../
+   36  ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   37  source ~/.bashrc
+   38  sudo chown -R $USER:$USER ~/data/lehome_workspace
+   39  ls
+   40  mkdir lehome_workspace
+   41  sudo chown -R $USER:$USER ~/data/lehome_workspace
+   42  cd ~/data/lehome_workspace
+   43  git clone https://github.com/lehome-official/lehome-challenge.git
+   44  sudo apt install -y rsync
+   45  cd ../
+   46  cd Lehome_SiliconOptimist/
+   47  ls
+   48  cd lehome_workspace/
+   49  ls
+   50  cd ../
+   51  ls
+   52  cd data
+   53  ls
+   54  cd Lehome_SiliconOptimist/
+   55  ls
+   56  cd lehome_workspace/
+   57  ls
+   58  cd lehome_ch
+   59  cd lehome_challenge
+   60  cd lehome-challenge
+   61  ls
+   62  cd ../../../
+   63  rm -rf lehome_workspace/
+   64  ls
+   65  mv   ~/data/Lehome_SiliconOptimist/lehome_workspace/   ~/data/lehome_workspace/
+   66  ls
+   67  cd lehome_workspace/
+   68  ls
+   69  cd lehome-challenge/
+   70  ls
+   71  cd../../
+   72  cd ../../
+   73  TERM=xterm nano ~/data/Lehome_SiliconOptimist/lehome_workspace/setup_lehome.sh
+   74  TERM=xterm nano ~/data/lehome_workspace/run_2run_dino_sweep.sh
+   75  cd lehome_workspace/
+   76  touch .env
+   77  ls
+   78  TERM=xterm nano ~/data/lehome_workspace/.env
+   79  ./run_2run_dino_sweep.sh
+   80  cd lehome-challenge/
+   81  uv sync
+   82  cd ../
+   83  ./run_2run_dino_sweep.sh
+   84  cd lehome-challenge/
+   85  ./run_2run_dino_sweep.sh
+   86  ls
+   87  cd ../
+   88  TERM=xterm nano ~/data/lehome_workspace/configs/sweep_dino_map_registers.yaml
+   89  TERM=xterm nano ~/data/lehome_workspace/configs/sweep_dino_baseline.yaml
+   90  TERM=xterm nano ~/data/lehome_workspace/configs/sweep_dino_map_registers.yaml
+   91  TERM=xterm nano ~/data/lehome_workspace/configs/sweep_dino_baseline.yaml
+   92  ls
+   93  TERM=xterm nano ~/data/lehome_workspace/run_2run_dino_sweep.sh
+   94  ./run_2run_dino_sweep.sh
+   95  rm -rf outputs/sweep_10k/DINOv2_MAP_Registers
+   96  ls
+   97  ./run_2run_dino_sweep.sh
+   98  cd lehome-challenge/Datasets/
+   99  ls
+  100  cd ../../../
+  101  ls
+  102  cd Lehome_SiliconOptimist/
+  103  ls
+  104  cd ../lehome-challenge
+  105  cd ../
+  106  cd lehome_workspace/lehome-challenge/
+  107  ls
+  108  cd Datasets/
+  109  ls
+  110  find /root/data -path "*/top_long_merged/meta/info.json"
+  111  find ~/data -path "*/top_long_merged/meta/info.json"
+  112  find ~/ -path "*/top_long_merged/meta/info.json"
+  113  find /root/data -name "info.json"
+  114  cd ../../../
+  115  find /root/data -name "info.json"
+  116  ls -l ~/data/Lehome_SiliconOptimist/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged/meta/info.json
+  117  ls -l ~/data/Lehome_SiliconOptimist/lehome_workspace/lehome-challenge/Datasets/
+  118  uv cache clean
+  119  sudo du -sh /data/* | sort -rh | head -n 1
+  120  cd lehome_workspace/
+  121  sudo du -sh /data/lehome_workspace/ | sort -rh | head -n 1
+  122  sudo du -sh /data/lehome_workspace/lehome-challenge/ | sort -rh | head -n 1
+  123  sudo du -sh /data/lehome_workspace/lehome-challenge/ | sort -rh | head -n 10
+  124  sudo du -sh /data/lehome_workspace/lehome-challenge/
+  125  cd ../
+  126  ls
+  127  rm -rf Lehome_SiliconOptimist/
+  128  rm -rf lehome_workspace/
+  129  ls
+  130  sudo du
+  131  free -h
+  132  ls
+  133  mkdir lehome_workspace
+  134  cd lehome_workspace/
+  135  df -h /data
+  136  du -sh /data/lehome_workspace/lehome-challenge/Datasets
+  137  du -sh /data/lehome_workspace/lehome-challenge/outputs
+  138  du -sh /data/huggingface_cache
+  139  du -sh /data/uv_cache
+  140  df -h /data
+  141  ls
+  142  du -sh /data/lehome_workspace/lehome-challenge/Datasets
+  143  rm -rf /data/lehome_workspace/lehome-challenge/Datasets
+  144  du -sh /data/lehome_workspace/lehome-challenge/Datasets
+  145  rm -rf /data/huggingface_cache
+  146  rm -rf /data
+  147  df -h
+  148  touch .env
+  149  TERM=xterm nano ~/data/lehome_workspace/.env
+  150  cd ../
+  151  pip install -U "huggingface_hub[cli,hf-transfer]"
+  152  set -a
+  153  source ~/data/lehome_workspace/.env
+  154  set +a  # Turn allexport back off
+  155  echo $HF_TOKEN_IDE
+  156  git clone -b vastai_instance --single-branch https://nidhinninan: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@github.com/nidhinninan/Lehome_SiliconOptimist.git
+  157  TERM=xterm nano ~/data/Lehome_SiliconOptimist/lehome_workspace/configs/sweep_dino_map_registers.yaml
+  158  ls
+  159  cd lehome_workspace/
+  160  ls
+  161  cd ../
+  162  mv   ~/data/Lehome_SiliconOptimist/lehome_workspace/   ~/data/
+  163  rsync -av   --exclude ".git/"   --exclude "lehome-challenge/.venv/"   --exclude "lehome-challenge/Assets/"   --exclude "lehome-challenge/Datasets/"   --exclude "lehome-challenge/third_party/"   ~/data/Lehome_SiliconOptimist/lehome_workspace/   ~/data/lehome_workspace/
+  164  cd Lehome_SiliconOptimist/
+  165  ls
+  166  cd lehome_workspace/
+  167  ls
+  168  cd ../../
+  169  cd lehome_workspace/
+  170  ls
+  171  chmod +x ~/data/lehome_workspace/setup_lehome.sh
+  172  ~/data/lehome_workspace/setup_lehome.sh
+  173  ls
+  174  cd ../
+  175  ls
+  176  cd lehome_workspace/
+  177  ls
+  178  TERM=xterm nano ~/data/lehome_workspace/setup_lehome.sh
+  179  ~/data/lehome_workspace/setup_lehome.sh
+  180  cp ~/.bashrc ~/.bashrc.bak.$(date +%Y%m%d%H%M%S)
+  181  grep -nE 'HF_HOME|UV_CACHE_DIR|__GLX_VENDOR_LIBRARY_NAME|\.local/bin' ~/.bashrc
+  182  nano ~/.bashrc
+  183  TERM=xterm nano ~/.bashrc
+  184  source ~/.bashrc
+  185  ls
+  186  ./run_2run_dino_sweep.sh
+  187  TERM=xterm nano ~/.bashrc
+  188  TERM=xterm nano ~/data/lehome_workspace/setup_lehome.sh
+  189  TERM=xterm nano ~/data/lehome_workspace/run_2run_dino_sweep.sh
+  190  ./run_2run_dino_sweep.sh
+  191  rm -rf /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers
+  192  ./run_2run_dino_sweep.sh
+  193  nvidia-smi
+  194  sudo fuser -k /dev/nvidia*
+  195  nvidia-smi
+  196  ./run_2run_dino_sweep.sh
+  197  rm -rf /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers
+  198  ./run_2run_dino_sweep.sh
+  199  rm -rf /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers
+  200  sudo apt install -y ffmpeg
+  201  ldconfig -p | grep -E "libavutil|libavdevice|libavcodec|libavformat"
+  202  cd /root/data/lehome_workspace/lehome-challenge
+  203  source .venv/bin/activate
+  204  python -c "import torchcodec; from torchcodec.decoders import VideoDecoder; print('torchcodec OK')"
+  205  nvidia-smi
+  206  ./run_2run_dino_sweep.sh --dataset.video_backend=torchcodec
+  207  ls
+  208  cd ../
+  209  ./run_2run_dino_sweep.sh --dataset.video_backend=torchcodec
+  210  rm -rf /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers
+  211  TERM=xterm nano ~/data/lehome_workspace/run_2run_dino_sweep.sh
+  212  ./run_2run_dino_sweep.sh --dataset.video_backend=torchcodec
+  213  rm -rf /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers
+  214  nvidia-smi
+  215  ./run_2run_dino_sweep.sh
+  216  df -h
+  217  df -h /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers
+  218  du -sh /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers
+  219  ls
+  220  cd outputs/
+  221  ls
+  222  cd sweep_10k/
+  223  ls
+  224  cd DINOv2_MAP_Registers/
+  225  ls
+  226  cd checkpoints/
+  227  ls
+  228  cd ../../../../
+  229  sudo apt-get install -y rclone
+  230  rclone config
+  231  rclone version
+  232  curl https://rclone.org/install.sh | sudo bash
+  233  rclone config
+  234  MODEL_DIR="/root/data/lehome_workspace/outputs/sweep_10k/DINOv2_MAP_Registers/checkpoints"
+  235  rclone copy "$MODEL_DIR" "gdrive:LeHome/models/DINOv2_MAP_Registers_v1" --progress
+  236  rm -rf /root/data/lehome_workspace/outputs/sweep_10k
+  237  cd outputs/
+  238  ls
+  239  cd ../
+  240  exit
+  241  quit
+  242  history
