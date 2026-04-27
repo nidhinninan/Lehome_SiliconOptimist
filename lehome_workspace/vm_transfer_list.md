@@ -1,6 +1,6 @@
 # LeHome VM Transfer List
 
-**Last Updated**: 2026-04-27 16:20:00
+**Last Updated**: 2026-04-27 16:13:41 UTC
 
 The following files must be copied to your VM machine to match the current local research state.
 
@@ -27,8 +27,8 @@ These files reside outside the `lehome-challenge` repository.
 - `setup_lehome.sh` (Updated: 2026-04-26 20:05:00 — added `ffmpeg` to apt install for torchcodec support)
 - `run_train_optimized.sh` (New: 2026-04-12 12:51:00)
 - `run_10k_sweep.sh` (Updated: 2026-04-12 15:40:00)
-- `run_2run_dino_sweep.sh` (Updated: 2026-04-26 20:05:00 — added `--dataset.video_backend=pyav` to fix missing libavutil.so)
-- `run_2run_dino_sweep_trial.sh` (New: 2026-04-27 16:20:00 — optional rclone to `gdrive:LeHome/models/...`; `.complete` skip marker; `WORKSPACE_DIR` from script path)
+- `run_2run_dino_sweep.sh` (Updated: 2026-04-27 16:13:41 UTC — primary launcher: optional rclone → `gdrive:LeHome/models/...`, `output_dir/.complete` skip marker, `WORKSPACE_DIR` from `BASH_SOURCE`; same pyav CLI as before)
+- `run_2run_dino_sweep_no-gdrive.sh` (Updated: 2026-04-27 16:13:41 UTC — legacy two-run sweep without Drive offload; `WORKSPACE_DIR=$(pwd)`; includes `--dataset.video_backend=pyav` from 2026-04-26 fix)
 - `configs/sweep_dino_baseline.yaml` (New: 2026-04-26 12:00:00)
 - `configs/sweep_dino_map_registers.yaml` (New: 2026-04-26 12:00:00)
 - `.env` (VM): optional; set `WANDB_API_UCMO` then script exports `WANDB_API_KEY` (Updated: 2026-04-26 12:00:00)

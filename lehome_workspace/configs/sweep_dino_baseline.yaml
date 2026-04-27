@@ -2,7 +2,7 @@ dataset:
   repo_id: repo_dp
   root: /root/data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged
   image_transforms:
-    # Linked to --dataset.image_transforms.enable in run_2run_dino_sweep.sh
+    # Linked to --dataset.image_transforms.enable in run_2run_dino_sweep.sh / run_2run_dino_sweep_no-gdrive.sh
     enable: false
 
 policy:

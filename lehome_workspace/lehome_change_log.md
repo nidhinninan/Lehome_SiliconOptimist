@@ -9,10 +9,24 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
-### 2026-04-27 16:20:00 — New: `run_2run_dino_sweep_trial.sh` (rclone → Drive + `.complete` skip marker)
+### 2026-04-27 16:13:41 UTC — Rename sweep scripts: trial → default name; original → `no-gdrive`
+
+**Renames (git mv)**:
+- `lehome_workspace/run_2run_dino_sweep_trial.sh` → `lehome_workspace/run_2run_dino_sweep.sh` (rclone-capable driver is now the canonical filename).
+- `lehome_workspace/run_2run_dino_sweep.sh` → `lehome_workspace/run_2run_dino_sweep_no-gdrive.sh` (previous default two-run sweep without Drive offload).
+
+**Edits**:
+- `run_2run_dino_sweep.sh`: header/usage comments use new basename; echo labels drop “(trial)”; docstring cross-ref points to `run_2run_dino_sweep_no-gdrive.sh` for the simpler variant.
+- `run_2run_dino_sweep_no-gdrive.sh`: header states no-gdrive role and points to `run_2run_dino_sweep.sh` for optional sync.
+- `configs/sweep_dino_baseline.yaml`, `configs/sweep_dino_map_registers.yaml`: YAML comment mentions both launcher names for `--dataset.image_transforms.enable`.
+- `To_RUN_onVM_cmds.txt`: Drive section uses `./run_2run_dino_sweep.sh`; notes `./run_2run_dino_sweep_no-gdrive.sh` for no-offload.
+
+**Historical note**: Log entries before this rename that cite **`run_2run_dino_sweep.sh`** for the 2026-04-26 pyav-only fix refer to the file that is now **`run_2run_dino_sweep_no-gdrive.sh`**.
+
+### 2026-04-27 16:20:00 — New: `run_2run_dino_sweep_trial.sh` (rclone → Drive + `.complete` skip marker) *(filename later merged into `run_2run_dino_sweep.sh`; see 2026-04-27 16:13 UTC entry)*
 
 **Files added**:
-- `lehome_workspace/run_2run_dino_sweep_trial.sh`
+- `lehome_workspace/run_2run_dino_sweep_trial.sh` *(renamed to `run_2run_dino_sweep.sh` — see newer log entry)*
 
 **Description**:
 - Duplicate of the two-run DINO sweep driver with **trial** features: optional **Google Drive offload** via `rclone move`, and a **`output_dir/.complete` marker** so reruns skip after checkpoints were moved off-VM (not only when `checkpoints/last` exists).
@@ -28,7 +42,7 @@ This document and the `updated_files` folder track all manual and agentic modifi
 - **Training CLI**: keeps `--dataset.video_backend=pyav` (VM-safe vs missing FFmpeg libs for torchcodec).
 - **Env knobs**: `ENABLE_RCLONE_CHECKPOINT_SYNC` (default 0), `RCLONE_REMOTE` (default `gdrive`), `RCLONE_MIN_AGE`, `RCLONE_SLEEP_SEC`.
 
-**Authoritative source**: full script body is in [`lehome_workspace/run_2run_dino_sweep_trial.sh`](./run_2run_dino_sweep_trial.sh) (~230 lines). Key fragments:
+**Authoritative source**: same implementation now lives in [`lehome_workspace/run_2run_dino_sweep.sh`](./run_2run_dino_sweep.sh) (~230 lines). Key fragments:
 
 ```bash
 WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

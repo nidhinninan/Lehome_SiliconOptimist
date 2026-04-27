@@ -55,6 +55,7 @@ TERM=xterm nano ~/data/lehome_workspace/configs/sweep_dino_baseline.yaml
 #change the dataset root in the yaml files
 cd ../
 ./run_2run_dino_sweep.sh
+# No Drive offload (legacy cwd-based workspace): ./run_2run_dino_sweep_no-gdrive.sh
 ```
 ```python
 # === GPU memory cleanup (run after a crashed/killed training run) ===
@@ -75,5 +76,5 @@ sleep 2 && nvidia-smi --query-gpu=memory.used,memory.free --format=csv
 
 # run with checkpoints saved to google drive
 cd /root/data/lehome_workspace   # or your synced path
-chmod +x run_2run_dino_sweep_trial.sh   # already +x in repo
-ENABLE_RCLONE_CHECKPOINT_SYNC=1 ./run_2run_dino_sweep_trial.sh
+chmod +x run_2run_dino_sweep.sh   # already +x in repo
+ENABLE_RCLONE_CHECKPOINT_SYNC=1 ./run_2run_dino_sweep.sh
