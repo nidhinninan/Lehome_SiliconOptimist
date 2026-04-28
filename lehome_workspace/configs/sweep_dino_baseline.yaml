@@ -10,7 +10,7 @@ policy:
   vision_backbone: facebook/dinov2-small
   spatial_pooling: baseline
   use_registers: false
-  num_register_tokens: 4
+  num_register_tokens: 0
   map_num_queries: 8
   device: cuda
   push_to_hub: false

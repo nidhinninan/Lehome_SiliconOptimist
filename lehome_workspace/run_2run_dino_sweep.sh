@@ -25,6 +25,9 @@
 #   ENABLE_RCLONE_CHECKPOINT_SYNC=1 ./run_2run_dino_sweep.sh
 #
 # CLI matches LeRobot v0.4.3 / lerobot_train_with_plugins.py (see run_10k_sweep.sh).
+#
+# MAP+registers throughput: cap BLAS/OpenMP threads so DataLoader workers do not oversubscribe the CPU.
+# Override per run if needed: OMP_NUM_THREADS=4 ./run_2run_dino_sweep.sh
 
 set -euo pipefail
 
@@ -184,12 +187,16 @@ run_sweep_run() {
         echo "   rclone: disabled (set ENABLE_RCLONE_CHECKPOINT_SYNC=1 to upload to Drive)"
     fi
 
+    # MAP+registers / dataloader hygiene: avoid each worker spawning many BLAS threads (default 12 workers).
+    export OMP_NUM_THREADS="${OMP_NUM_THREADS:-1}"
+    export MKL_NUM_THREADS="${MKL_NUM_THREADS:-1}"
+    export OPENBLAS_NUM_THREADS="${OPENBLAS_NUM_THREADS:-1}"
+
     "$VENV_PYTHON" "$WORKSPACE_DIR/lerobot_train_with_plugins.py" \
         --config_path="$CONFIG" \
         --steps="$STEPS" \
         --eval_freq="$EVAL_FREQ" \
         --dataset.image_transforms.enable=false \
-        #--dataset.video_backend=pyav \
         --num_workers="$WORKERS" \
         2>&1 | tee "$LOG_FILE"
 

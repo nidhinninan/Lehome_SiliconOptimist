@@ -9,6 +9,99 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-28 12:30:00 UTC — Balanced training-time eval for DINOv2+MAP 150k run
+
+**Why**: User wants to monitor ongoing learning progress via eval metrics (loss curves, success rate, etc.) in W&B/console while avoiding the OOM that occurred at the first `eval_freq=10000` boundary. 
+- Increased `eval_freq` to 20000 (fewer but still informative checkpoints)
+- Reduced to very light eval (`n_episodes=4`, `batch_size=2`) to minimize GPU spike on heavy model (DINOv2 registers + MAP head)
+- Added explicit `eval:` section to YAML for self-documenting config
+- Updated script defaults and comments
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh` (updated defaults + comments)
+- `lehome_workspace/configs/sweep_dino_map_registers.yaml` (added eval section)
+
+**Recommended launch**:
+```bash
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+  RESUME=true ./run_train_dino_dp_top_short_150k.sh
+```
+
+### 2026-04-28 02:45:00 UTC — Update: phase-1 150k launcher (light eval + keep `last/` local while rclone offloads step checkpoints)
+
+**Why**: Make the first phase of the planned 2-stage run (70k no-aug → resume with aug later) cheaper to monitor and safer to resume by keeping `checkpoints/last` locally while still offloading `step_*` checkpoints to Google Drive.
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh` (updated)
+
+**Key behavior changes (diff summary)**:
+```diff
+ # Defaults now match recommended “production” cadence
+-SAVE_FREQ=20000
+-EVAL_FREQ=20000
++SAVE_FREQ=50000
++EVAL_FREQ=10000
+ JOB_NAME default now includes _phase1
+
+ # Light training-time eval overrides (LeRobot v0.4.3 EvalConfig)
++--eval.n_episodes=10
++--eval.batch_size=10
++--eval.use_async_envs=false
+
+ # Optional rclone support (ENABLE_RCLONE_CHECKPOINT_SYNC=1)
++During training: rclone move only step_*/** (keeps checkpoints/last local)
++After training: rclone copy checkpoints/last to Drive; move any remaining step_*/**
++Best-effort prune of local step_* dirs; leaves checkpoints/last for phase-2 resume
+```
+
+**Notes / gotchas**:
+- Phase-2 augmentation switch (`dataset.image_transforms.enable=true`) cannot be applied via CLI when resuming because LeRobot resume loads config from `checkpoints/last/pretrained_model/train_config.json`. You must edit that JSON before resuming (or start a fresh run with the desired config).
+
+### 2026-04-27 23:45:00 UTC — DINO MAP+registers 150k launcher (dp_top_short, CLI overrides on sweep YAML)
+
+**Why**: Single long-run script for `dp_top_short` using existing `configs/sweep_dino_map_registers.yaml` without editing it; CLI overrides `steps`, `dataset.root`, `output_dir`, `save_freq`/`eval_freq`/`log_freq`/`job_name`; same BYOP/shm/W&B/thread-cap pattern as `run_2run_dino_sweep.sh`.
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh` (new)
+
+**Behavior summary**:
+- `WORKSPACE_DIR` from `BASH_SOURCE`; `cd lehome-challenge`; `uv`/`pip install -e lerobot_policy_dino`; optional `.env` + `WANDB_API_UCMO` → `WANDB_API_KEY`.
+- SHM check → `WORKERS=12` or `0`; exports `OMP_NUM_THREADS`/`MKL_NUM_THREADS`/`OPENBLAS_NUM_THREADS` default `1`.
+- Fresh: `lerobot_train_with_plugins.py --config_path=$WORKSPACE_DIR/configs/sweep_dino_map_registers.yaml` + `--steps=150000` (default), `--save_freq=20000`, `--eval_freq=20000`, `--log_freq=1000`, `--job_name=DINOv2_MAP_Registers_dp_top_short_150k`, `--dataset.root=Datasets/example/top_short_merged`, `--output_dir=outputs/train/dp_top_short_dino_map_registers_150k`, `--dataset.image_transforms.enable=false`, `--num_workers=$WORKERS`. Env overrides: `RESUME`, `STEPS`, `SAVE_FREQ`, `EVAL_FREQ`, `LOG_FREQ`, `JOB_NAME`, `DATASET`, `OUTPUT`, `SKIP_IF_LAST_EXISTS`, `EXTRA_TRAIN_ARGS`.
+- Resume: `--config_path=$OUTPUT/checkpoints/last/pretrained_model/train_config.json --resume=true` (minimal CLI). Optional skip: `SKIP_IF_LAST_EXISTS=1` when not resuming if `checkpoints/last` exists (also checks `/root/data/...` and `/data/...` absolute variants).
+- **VM**: run on GPU VM; local workspace does not execute `lerobot_train`.
+
+### 2026-04-27 22:57:13 UTC — MAP+registers training profile: AMP, torchcodec, num_workers in YAML; thread caps in sweep scripts
+
+**Why**: Adopt the concrete MAP+registers VM profile (`use_amp`, `dataset.video_backend=torchcodec`, `num_workers=12`, `OMP_NUM_THREADS`/`MKL_NUM_THREADS`/`OPENBLAS_NUM_THREADS` defaults, transforms off).
+
+**Files**:
+- `lehome_workspace/configs/sweep_dino_map_registers.yaml`
+- `lehome_workspace/run_2run_dino_sweep.sh`
+- `lehome_workspace/run_2run_dino_sweep_no-gdrive.sh`
+
+**`configs/sweep_dino_map_registers.yaml` (diff summary)**:
+```diff
+ dataset:
+   repo_id: repo_dp
+   root: /root/data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged
++  video_backend: torchcodec
++  # comment: FFmpeg + torchcodec required; CLI override --dataset.video_backend=pyav if needed
+   image_transforms:
+     enable: false
+ policy:
+   ...
+-  use_amp: false
++  use_amp: true
+ ...
+ batch_size: 8
++num_workers: 12
+```
+
+**Sweep scripts**: Before `lerobot_train_with_plugins.py`, export `OMP_NUM_THREADS`, `MKL_NUM_THREADS`, `OPENBLAS_NUM_THREADS` with `${VAR:-1}` so the VM can override. Header comment documents MAP+registers throughput rationale.
+
+**Note**: `sweep_dino_baseline.yaml` unchanged. Second sweep job still uses `--dataset.image_transforms.enable=false` from CLI; MAP YAML keeps `image_transforms.enable: false`.
+
 ### 2026-04-27 16:13:41 UTC — Rename sweep scripts: trial → default name; original → `no-gdrive`
 
 **Renames (git mv)**:
