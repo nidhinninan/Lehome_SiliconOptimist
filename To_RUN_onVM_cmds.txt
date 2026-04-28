@@ -5,8 +5,6 @@
 cd 
 mkdir data
 
-chmod +x ~/data/lehome_workspace/setup_lehome.sh
-~/data/lehome_workspace/setup_lehome.sh
 ###
 # probably don't need this any more (had the use principia instead of $USER in the .sh script to correctly give permissions) 
 mkdir lehome_workspace
@@ -38,7 +36,7 @@ mv \
   ~/data/Lehome_SiliconOptimist/lehome_workspace/ \
   ~/data/
 
-
+cd lehome_workspace/
 touch .env
 TERM=xterm nano ~/data/lehome_workspace/.env
 
@@ -49,13 +47,17 @@ echo $HF_TOKEN_IDE
 ```
 ```python
 #go into lehome-challenge and run uv sync
-cd lehome-challenge
+cd Lehome-challenge
 uv sync #(run this in the ##lehome-challlenge)
 
 **setup rclone**
 rclone config
 # use this to upadte rclone and direct install may nit be the latest
 curl https://rclone.org/install.sh | sudo bash
+
+#setup lehome workspace with files.
+chmod +x ~/data/lehome_workspace/setup_lehome.sh
+~/data/lehome_workspace/setup_lehome.sh
 
 #change configs
 TERM=xterm nano ~/data/lehome_workspace/configs/sweep_dino_map_registers.yaml
@@ -114,4 +116,33 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
 ENABLE_RCLONE_CHECKPOINT_SYNC:1 EVAL_FREQ=1000 STEPS=3000 \
 ./run_train_dino_dp_top_short_150k.sh
 
-PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True ENABLE_RCLONE_CHECKPOINT_SYNC=1 EVAL_FREQ=20000 STEPS=150000 SAVE_FREQ=30000 run_train_dino_dp_top_short_150k.sh
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True ENABLE_RCLONE_CHECKPOINT_SYNC=1 EVAL_FREQ=20000 STEPS=150000 SAVE_FREQ=30000 ./run_train_dino_dp_top_short_150k.sh
+
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True ENABLE_RCLONE_CHECKPOINT_SYNC=1 EVAL_FREQ=20000 STEPS=150000 SAVE_FREQ=30000 ./run_train_dino_dp_top_short_150k.sh
+
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True ENABLE_RCLONE_CHECKPOINT_SYNC=1 EVAL_FREQ=20000 STEPS=150000 SAVE_FREQ=30000 ./run_train_dino_dp_pant_short_150k.sh
+
+# check size of folder
+du -h --max-depth=1 ~/data/lehome_workspace/outputs
+
+# copy from drive to to vast.ai instance
+```python
+rm -rf /root/data/lehome_workspace/lehome-challenge/outputs/train/dp_top_short_dino_map_registers_150k/checkpoints/last
+
+rclone copy "gdrive:LeHome/models/lehome_challenge/DINOv2_MAP_Registers_dp_top_short_150k_phase1/DINOv2_MAP_Registers_dp_top_short_150k_phase1__20260428_062139__ubuntu/checkpoints/060000" "/root/data/lehome_workspace/lehome-challenge/outputs/train/dp_top_short_dino_map_registers_150k/checkpoints/last" --progress
+```
+
+# resume a training run
+
+TERM=xterm nano ~/data/lehome_workspace/run_train_dino_dp_top_short_150k.sh
+
+**change the "phase 1" references in the document (LOG and OUTPUT)**
+-- make sure they are the right cloth type name as well
+
+```python
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+  ENABLE_RCLONE_CHECKPOINT_SYNC=1 \
+  EXTRA_TRAIN_ARGS="--dataset.image_transforms.enable=true" \
+  RESUME=true ./run_train_dino_dp_top_short_150k.sh
+```
+

@@ -9,6 +9,67 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-28 11:43:30 UTC — Minimal fix: rclone filter matches LeRobot numeric checkpoint dirs (`030000/`) not just `step_*/`
+
+(Reverted unrelated additions from 11:35:45 UTC entry below: `is_truthy()` helper, `RCLONE_COPY_LAST_DURING_TRAINING`, per-pass log markers — none were needed to fix the reported bug.)
+
+### 2026-04-28 11:41:29 UTC — Fix: rclone filter matches LeRobot numeric checkpoint dirs (`030000/`) not just `step_*/`
+
+**Why**: On VM, LeRobot saved checkpoints as numeric directories (`030000`, `060000`, …). The launcher’s rclone loop filtered only `step_*/**`, so nothing was moved mid-training (and the final sync also skipped them).
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh`
+
+**Diff summary**:
+```diff
+ rclone move "$SRC_DIR" "${RCLONE_DST}checkpoints" \
+   --filter '+ step_*/**' \
++  --filter '+ [0-9]*/**' \
+   --filter '- **' \
+   ...
+
+ rclone move "$OUTPUT/checkpoints" "${RCLONE_DST}checkpoints" \
+   --filter '+ step_*/**' \
++  --filter '+ [0-9]*/**' \
+   --filter '- **' \
+   ...
+
+-find ... -name 'step_*' ...
++find ... \( -name 'step_*' -o -name '[0-9]*' \) ...
+```
+
+### 2026-04-28 11:35:45 UTC — Fix: make mid-training rclone sync verifiable + enable with truthy flags
+
+**Why**: User suspected checkpoints were not being uploaded mid-training. The launcher *did* spawn a background rclone loop, but it only enabled when `ENABLE_RCLONE_CHECKPOINT_SYNC=1` (not `true/yes`), only moved `step_*` after `--min-age`, and had no obvious per-pass marker in logs.
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh`
+
+**Diff summary**:
+```diff
+-if [ "${ENABLE_RCLONE_CHECKPOINT_SYNC:-0}" = 1 ]; then
++is_truthy() { case "${1:-}" in 1|true|yes|on|... ) return 0 ;; *) return 1 ;; esac; }
++RCLONE_COPY_LAST_DURING_TRAINING="${RCLONE_COPY_LAST_DURING_TRAINING:-0}"
++if is_truthy "${ENABLE_RCLONE_CHECKPOINT_SYNC:-0}"; then
+   ...
+   while true; do
+     rclone move ... --filter '+ step_*/**' ... --min-age "$RCLONE_MIN_AGE" ...
++    # optional safety: non-destructive copy of checkpoints/last during training
++    rclone copy "$SRC_DIR/last" "${RCLONE_DST}checkpoints/last" --update ...
+   done
+```
+
+**How to verify on VM**:
+```bash
+ENABLE_RCLONE_CHECKPOINT_SYNC=true \
+RCLONE_COPY_LAST_DURING_TRAINING=true \
+RCLONE_SLEEP_SEC=300 \
+RCLONE_MIN_AGE=5m \
+./run_train_dino_dp_top_short_150k.sh
+```
+Then watch the rclone log:
+`lehome-challenge/logs/readout/dino_map_dp_top_short_150k_phase1_rclone_*.log`
+
 ### 2026-04-28 12:30:00 UTC — Balanced training-time eval for DINOv2+MAP 150k run
 
 **Why**: User wants to monitor ongoing learning progress via eval metrics (loss curves, success rate, etc.) in W&B/console while avoiding the OOM that occurred at the first `eval_freq=10000` boundary. 
