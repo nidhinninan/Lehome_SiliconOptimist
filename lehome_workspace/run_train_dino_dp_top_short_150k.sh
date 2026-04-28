@@ -164,14 +164,16 @@ if [ "${ENABLE_RCLONE_CHECKPOINT_SYNC:-0}" = 1 ]; then
     fi
     echo "rclone: enabled"
     echo "  dst=${RCLONE_DST}checkpoints"
-    echo "  during training: move step_* only (keep last/ local)"
+    echo "  during training: move step_*/ and numeric checkpoint dirs only (keep last/ local)"
     echo "  min-age=${RCLONE_MIN_AGE} sleep=${RCLONE_SLEEP_SEC}s log=${RCLONE_LOG}"
     (
         while true; do
             SRC_DIR="$OUTPUT/checkpoints"
             if [ -d "$SRC_DIR" ]; then
+                # LeRobot checkpoint dirs may be named "step_*/" or numeric like "030000/".
                 rclone move "$SRC_DIR" "${RCLONE_DST}checkpoints" \
                     --filter '+ step_*/**' \
+                    --filter '+ [0-9]*/**' \
                     --filter '- **' \
                     --min-age "$RCLONE_MIN_AGE" \
                     --delete-empty-src-dirs \
@@ -201,9 +203,10 @@ cleanup_rclone() {
                     --log-file "$RCLONE_LOG" --log-level INFO \
                     || true
             fi
-            # 2) Move any remaining step_* to Drive
+            # 2) Move any remaining step_* and numeric checkpoints to Drive
             rclone move "$OUTPUT/checkpoints" "${RCLONE_DST}checkpoints" \
                 --filter '+ step_*/**' \
+                --filter '+ [0-9]*/**' \
                 --filter '- **' \
                 --delete-empty-src-dirs \
                 --log-file "$RCLONE_LOG" --log-level INFO \
@@ -212,7 +215,7 @@ cleanup_rclone() {
 
         # Keep only last/ locally (best-effort pruning)
         if [ -d "$OUTPUT/checkpoints" ]; then
-            find "$OUTPUT/checkpoints" -maxdepth 1 -type d -name 'step_*' -exec rm -rf {} + 2>/dev/null || true
+            find "$OUTPUT/checkpoints" -maxdepth 1 -type d \( -name 'step_*' -o -name '[0-9]*' \) -exec rm -rf {} + 2>/dev/null || true
         fi
     fi
 }

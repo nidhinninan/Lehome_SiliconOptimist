@@ -241,3 +241,18 @@
   240  exit
   241  quit
   242  history
+
+  ## ------------------------------------
+
+    1  rm -rf /root/data/lehome_workspace/lehome-challenge/outputs/train/dp_top_long_dino_map_registers_150k/checkpoints/last
+    2  cd /root/data/lehome_workspace/lehome-challenge/outputs/train/dp_top_long_dino_map_registers_150k
+    3  cd checkpoints/
+    4  ls
+    5  cd ../../../../
+    6  cd ../
+    7  rclone copy "gdrive:LeHome/models/lehome_challenge/DINOv2_MAP_Registers_dp_top_long_150k_phase1/DINOv2_MAP_Registers_dp_top_long_150k_phase1__20260428_090949__ubuntu/checkpoints/060000" "/root/data/lehome_workspace/lehome-challenge/outputs/train/dp_top_long_dino_map_registers_150k/checkpoints/last" --progress
+    8  TERM=xterm nano ~/data/lehome_workspace/run_train_dino_dp_top_long_150k.sh
+    9  PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True   ENABLE_RCLONE_CHECKPOINT_SYNC=1   EXTRA_TRAIN_ARGS="--dataset.image_transforms.enable=true"   RESUME=true ./run_train_dino_dp_top_long_150k.sh
+   10  tmux ls
+   11  tmux
+   12  history
