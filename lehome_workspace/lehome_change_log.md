@@ -9,6 +9,35 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-28 23:05:00 UTC — Split: merged launcher = A100 tiers; dp_top_short = 4070 Ti on Principia
+
+**Why**: Correct earlier mix-up — `run_train_dino_merged_a100.sh` must keep **A100** batch/worker presets regardless of Principia `/data` paths (only cache/PATH exports are Principia-specific). **RTX 4070 Ti 16GB** tuning belongs on **`run_train_dino_dp_top_short_150k.sh`** when `TOP_SHORT_GPU_PROFILE=4070ti` (default on Principia `/data` paths). Parallel eval default checkpoint remains the **A100** merged artifact unless `POLICY_PATH` is set.
+
+**Files**:
+- `lehome_workspace/run_train_dino_merged_a100.sh`
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh`
+- `lehome_workspace/parallel_eval_merged_strong.sh`
+
+**Summary**:
+- **Shared (paths)**: When `LEHOME_VM_PROFILE=principia` or `WORKSPACE_DIR` is under `/data/lehome_workspace`, export `UV_CACHE_DIR`, `HF_HOME`, optional `/data/.local/bin` `PATH`.
+- **`run_train_dino_merged_a100.sh`**: Removed `principia_*` tiers and path-based default-tier override. **`A100_TIER:-normal`** only: conservative/normal/aggressive/smoke_* — same on Principia as on an A100 box; docs clarify Principia path block does not change GPU presets.
+- **`run_train_dino_dp_top_short_150k.sh`**: **`TOP_SHORT_GPU_PROFILE`** default `4070ti`; when `4070ti` and Principia `/data` workspace: default `JOB_NAME`/`OUTPUT` suffix `_4070ti`, append `--batch_size=12 --num_workers=10` if `--batch_size=` not already in `EXTRA_TRAIN_ARGS`, `WORKERS=10` when shm OK. Set **`TOP_SHORT_GPU_PROFILE=a100`** to use legacy names/batches on the same paths.
+- **`parallel_eval_merged_strong.sh`**: Single default **`POLICY_PATH`** → `..._a100_400k_norm/...`; Principia still gets `HF_HOME`/PATH and optional `CHALLENGE_DIR`.
+
+### 2026-04-28 20:00:00 UTC — A100 merged DINO training launcher + strong parallel eval script (plan implementation)
+
+**Why**: Execute the A100 DINO MAP+registers tuning plan without altering the existing `run_train_dino_dp_top_short_150k.sh` 4070-oriented launcher.
+
+**Files**:
+- `lehome_workspace/run_train_dino_merged_a100.sh` (new)
+- `lehome_workspace/parallel_eval_merged_strong.sh` (new)
+
+**Summary**:
+- **`run_train_dino_merged_a100.sh`**: Same training entry as `run_train_dino_dp_top_short_150k.sh` (`lerobot_train_with_plugins.py`, `configs/sweep_dino_map_registers.yaml`, BYOP install, rclone optional, thread caps). Defaults `DATASET=Datasets/example/dataset_challenge_merged`. **`A100_TIER`** selects plan presets when `RESUME!=true` and vars are unset: `conservative|normal|aggressive|smoke_cons|smoke_norm|smoke_aggr` (steps/save/eval/output/`EXTRA_TRAIN_ARGS` for batch/workers/map queries). **`SHM_TARGET`** (default `16G`) used when remounting small `/dev/shm`; fallback to `2G` if needed. **`SHM_MIN_KB=$((16*1024*1024))`**: remount attempted when `df -Pk` free 1K-blocks is below ~16 GiB.
+- **`parallel_eval_merged_strong.sh`**: Four background `python -m scripts.eval` jobs (`--policy_type lerobot`, `--device cpu`, `--headless`, default **`NUM_EPISODES=20`**), per-garment **`dataset_root`** (`top_long_merged`, …). Override checkpoint with **`POLICY_PATH`** (relative to `lehome-challenge` after `cd`).
+
+**VM**: `chmod +x` both scripts; run launcher from `lehome_workspace`; run eval with `CHALLENGE_DIR` pointing at the VM’s `lehome-challenge` clone (script default: `$WORKSPACE_DIR/lehome-challenge`).
+
 ### 2026-04-28 11:43:30 UTC — Minimal fix: rclone filter matches LeRobot numeric checkpoint dirs (`030000/`) not just `step_*/`
 
 (Reverted unrelated additions from 11:35:45 UTC entry below: `is_truthy()` helper, `RCLONE_COPY_LAST_DURING_TRAINING`, per-pass log markers — none were needed to fix the reported bug.)
