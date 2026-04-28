@@ -1,6 +1,6 @@
 # LeHome VM Transfer List
 
-**Last Updated**: 2026-04-28 23:05:00 UTC
+**Last Updated**: 2026-04-29 12:00:00 UTC
 
 The following files must be copied to your VM machine to match the current local research state.
 
@@ -26,7 +26,7 @@ These files reside outside the `lehome-challenge` repository.
 
 - `run_train_dino_merged_a100.sh` (Updated: 2026-04-28 23:05:00 UTC — Principia: `/data` caches + PATH only; **A100** tiers unchanged (`A100_TIER:-normal`); no `principia_*` presets; checkpoint skip + optional `INCLUDE_LEGACY_VM_LAST_PATHS`)
 - `parallel_eval_merged_strong.sh` (Updated: 2026-04-28 23:05:00 UTC — Principia: `HF_HOME`, PATH, optional `CHALLENGE_DIR`; default **`POLICY_PATH`** = A100 merged `..._a100_400k_norm/...`)
-- `setup_lehome.sh` (Updated: 2026-04-26 20:05:00 — added `ffmpeg` to apt install for torchcodec support)
+- `setup_lehome.sh` (Updated: 2026-04-29 12:00:00 UTC — Principia: `WORKSPACE_DIR=/data/lehome_workspace`, `HF_HOME`/`UV_CACHE_DIR`/`PATH` under `/data`, `uv` in `/data/.local/bin`, `chown principia:principia` on workspace + caches + uv bin dir)
 - `run_train_optimized.sh` (New: 2026-04-12 12:51:00)
 - `run_train_dino_dp_top_short_150k.sh` (Updated: 2026-04-28 23:05:00 UTC — **`TOP_SHORT_GPU_PROFILE`** `4070ti|a100`: on Principia `/data` paths + `4070ti`, default batch 12 / workers 10 / output `_4070ti`; set `a100` for non–4070-sized runs; caches + skip-last + rclone unchanged)
 - `configs/sweep_dino_map_registers.yaml` (Updated: 2026-04-28 12:30:00 UTC — added explicit `eval:` section with safe defaults)

@@ -5,18 +5,17 @@
 
 set -e # Exit on error
 
-# --- Configuration ---
-# Use $HOME, not ~ inside quotes — tilde is literal in assignments and breaks cd/mkdir.
-WORKSPACE_DIR="${HOME}/data/lehome_workspace"
+# --- Configuration (Principia VM: large deps on /data; see Artifacts/Instance_adaptation/principia_vm_troubleshooting.md) ---
+WORKSPACE_DIR="/data/lehome_workspace"
 REPO_DIR="${WORKSPACE_DIR}/lehome-challenge"
-UV_BIN_DIR="${HOME}/data/.local/bin"
+UV_BIN_DIR="/data/.local/bin"
 
 echo "🚀 Starting LeHome Challenge Setup..."
 
 # Phase 1: Storage and Environment Setup
 echo "📂 [1/6] Setting up storage and environment variables..."
-sudo mkdir -p "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache
-sudo chown -R $USER:$USER "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache
+sudo mkdir -p "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache "$UV_BIN_DIR"
+sudo chown -R principia:principia "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache "$UV_BIN_DIR"
 
 # Update .bashrc idempotently
 update_bashrc() {
@@ -27,14 +26,14 @@ update_bashrc() {
     fi
 }
 
-update_bashrc 'export HF_HOME="$HOME/data/huggingface_cache"'
-update_bashrc 'export UV_CACHE_DIR="$HOME/data/uv_cache"'
+update_bashrc 'export HF_HOME="/data/huggingface_cache"'
+update_bashrc 'export UV_CACHE_DIR="/data/uv_cache"'
 update_bashrc 'export __GLX_VENDOR_LIBRARY_NAME=nvidia'
-update_bashrc 'export PATH="$HOME/data/.local/bin:$PATH"'
+update_bashrc 'export PATH="/data/.local/bin:$PATH"'
 
 # Export for current session
-export HF_HOME="${HOME}/data/huggingface_cache"
-export UV_CACHE_DIR="${HOME}/data/uv_cache"
+export HF_HOME="/data/huggingface_cache"
+export UV_CACHE_DIR="/data/uv_cache"
 export PATH="${UV_BIN_DIR}:${PATH}"
 
 # Phase 2: System Dependencies
@@ -55,7 +54,7 @@ echo "   ✅ uv installed at $UV_BIN_DIR/uv"
 # Phase 4: Repository Cloning
 echo "🔗 [4/6] Cloning repositories..."
 sudo mkdir -p "$WORKSPACE_DIR"
-sudo chown -R $USER:$USER "$WORKSPACE_DIR"
+sudo chown -R principia:principia "$WORKSPACE_DIR"
 
 cd "$WORKSPACE_DIR"
 

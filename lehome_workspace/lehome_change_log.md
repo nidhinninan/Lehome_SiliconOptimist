@@ -9,6 +9,17 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-29 12:00:00 UTC — setup_lehome.sh: Principia `/data` paths
+
+**Why**: Align `setup_lehome.sh` with Principia layout from `principia_vm_troubleshooting.md` / `technical_grounding_architectural_synthesis.md` — workspace and caches on `/data`, not `$HOME/data`.
+
+**File**: `lehome_workspace/setup_lehome.sh`
+
+**Diff summary**:
+- `WORKSPACE_DIR=/data/lehome_workspace`, `UV_BIN_DIR=/data/.local/bin`.
+- `HF_HOME=/data/huggingface_cache`, `UV_CACHE_DIR=/data/uv_cache`; `.bashrc` and current-session exports use those absolute paths.
+- `sudo mkdir` includes `$UV_BIN_DIR`; `chown -R principia:principia` on workspace, cache dirs, and uv bin parent.
+
 ### 2026-04-28 23:05:00 UTC — Split: merged launcher = A100 tiers; dp_top_short = 4070 Ti on Principia
 
 **Why**: Correct earlier mix-up — `run_train_dino_merged_a100.sh` must keep **A100** batch/worker presets regardless of Principia `/data` paths (only cache/PATH exports are Principia-specific). **RTX 4070 Ti 16GB** tuning belongs on **`run_train_dino_dp_top_short_150k.sh`** when `TOP_SHORT_GPU_PROFILE=4070ti` (default on Principia `/data` paths). Parallel eval default checkpoint remains the **A100** merged artifact unless `POLICY_PATH` is set.
