@@ -121,7 +121,7 @@ fi
 : "${EVAL_FREQ:=20000}"
 : "${LOG_FREQ:=1000}"
 : "${JOB_NAME:=DINOv2_MAP8_Registers_merged_A100}"
-: "${DATASET:=Datasets/example/dataset_challenge_merged}"
+: "${DATASET:=Datasets/example/four_types_merged}"
 : "${OUTPUT:=outputs/train/dp_merged_dino_map8_registers_a100}"
 SKIP_IF_LAST_EXISTS="${SKIP_IF_LAST_EXISTS:-0}"
 : "${EVAL_N_EPISODES:=8}"
@@ -175,7 +175,7 @@ fi
 
 WORKERS=12
 if [ "$SHM_REMOUNTED" = false ]; then
-    WORKERS=0
+    WORKERS=4
     echo "  Falling back to --num_workers=0 (shm limits)."
 fi
 
