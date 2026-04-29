@@ -1,0 +1,27 @@
+INFO 2026-04-29 08:01:01 db_utils.py:102 Logs will be synced with wandb.
+INFO 2026-04-29 08:01:01 db_utils.py:103 Track this run --> https://wandb.ai/nidhinninan_ucmo_schoolid/lehome_challenge/runs/p0sun3yr
+INFO 2026-04-29 08:01:01 ot_train.py:215 Creating dataset
+INFO 2026-04-29 08:01:02 ot_train.py:233 Creating policy
+You are using a model of type dinov2_with_registers to instantiate a model of type dinov2. This is not supported for all configurations of models and can yield errors.
+Loading weights from local directory
+INFO 2026-04-29 08:01:09 ot_train.py:288 Creating optimizer and scheduler
+Traceback (most recent call last):
+  File "/data/lehome_workspace/lerobot_train_with_plugins.py", line 41, in <module>
+    main()
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/lerobot/scripts/lerobot_train.py", line 532, in main
+    train()
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/lerobot/configs/parser.py", line 233, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/lerobot/scripts/lerobot_train.py", line 317, in train
+    step, optimizer, lr_scheduler = load_training_state(cfg.checkpoint_path, optimizer, lr_scheduler)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/lerobot/utils/train_utils.py", line 163, in load_training_state
+    load_rng_state(training_state_dir)
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/lerobot/utils/random_utils.py", line 137, in load_rng_state
+    flat_rng_state_dict = load_file(save_dir / RNG_STATE)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/safetensors/torch.py", line 336, in load_file
+    with safe_open(filename, framework="pt", device=device) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: No such file or directory: outputs/train/dp_merged_dino_map8_registers_a100_400k_norm/checkpoints/last/training_state/rng_state.safetensors

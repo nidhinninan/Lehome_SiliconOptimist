@@ -88,7 +88,7 @@ EVAL_USE_ASYNC_ENVS="${EVAL_USE_ASYNC_ENVS:-false}"
 # Extra args appended verbatim (e.g. --dataset.video_backend=pyav)
 EXTRA_TRAIN_ARGS="${EXTRA_TRAIN_ARGS:-}"
 if [[ "$TOP_SHORT_4070TI" == true ]] && [[ "${EXTRA_TRAIN_ARGS:-}" != *"--batch_size="* ]]; then
-    EXTRA_TRAIN_ARGS="${EXTRA_TRAIN_ARGS:+${EXTRA_TRAIN_ARGS} }--batch_size=12 --num_workers=10"
+    EXTRA_TRAIN_ARGS="${EXTRA_TRAIN_ARGS:+${EXTRA_TRAIN_ARGS} }--batch_size=12 --num_workers=12"
 fi
 # -------------------------
 
