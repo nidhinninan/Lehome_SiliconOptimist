@@ -60,7 +60,6 @@ python -m scripts.eval \
 
 > **Note:** Make sure you enable headless mode.
 
-
 ## More Details
 
 Now that you have installed the environment, you can:
@@ -68,3 +67,4 @@ Now that you have installed the environment, you can:
 - [Start Training](training.md)
 - [Evaluate Policies](policy_eval.md)
 - [Back to README](../README.md)
+

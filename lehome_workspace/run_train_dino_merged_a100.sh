@@ -254,7 +254,10 @@ if [ "${ENABLE_RCLONE_CHECKPOINT_SYNC:-0}" = 1 ]; then
         while true; do
             SRC_DIR="$OUTPUT/checkpoints"
             if [ -d "$SRC_DIR" ]; then
+                # Find what 'last' points to so we don't move it while resuming
+                LAST_TARGET=$(readlink "$SRC_DIR/last" 2>/dev/null || echo "none")
                 rclone move "$SRC_DIR" "${RCLONE_DST}checkpoints" \
+                    --filter "- ${LAST_TARGET}/**" \
                     --filter '+ step_*/**' \
                     --filter '+ [0-9]*/**' \
                     --filter '- **' \
@@ -283,7 +286,9 @@ cleanup_rclone() {
                     --log-file "$RCLONE_LOG" --log-level INFO \
                     || true
             fi
+            LAST_TARGET=$(readlink "$OUTPUT/checkpoints/last" 2>/dev/null || echo "none")
             rclone move "$OUTPUT/checkpoints" "${RCLONE_DST}checkpoints" \
+                --filter "- ${LAST_TARGET}/**" \
                 --filter '+ step_*/**' \
                 --filter '+ [0-9]*/**' \
                 --filter '- **' \
@@ -292,7 +297,8 @@ cleanup_rclone() {
                 || true
         fi
         if [ -d "$OUTPUT/checkpoints" ]; then
-            find "$OUTPUT/checkpoints" -maxdepth 1 -type d \( -name 'step_*' -o -name '[0-9]*' \) -exec rm -rf {} + 2>/dev/null || true
+            LAST_TARGET=$(readlink "$OUTPUT/checkpoints/last" 2>/dev/null || echo "none")
+            find "$OUTPUT/checkpoints" -maxdepth 1 -type d \( -name 'step_*' -o -name '[0-9]*' \) ! -name "$LAST_TARGET" -exec rm -rf {} + 2>/dev/null || true
         fi
     fi
 }

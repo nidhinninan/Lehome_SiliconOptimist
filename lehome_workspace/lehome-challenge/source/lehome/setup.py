@@ -6,16 +6,24 @@
 """Installation script for the 'lehome' python package."""
 
 import os
-import toml
+import sys
 
 from setuptools import setup
 
 # Obtain the extension data from the extension.toml file
 EXTENSION_PATH = os.path.dirname(os.path.realpath(__file__))
-# Read the extension.toml file
-EXTENSION_TOML_DATA = toml.load(
-    os.path.join(EXTENSION_PATH, "config", "extension.toml")
-)
+_EXTENSION_TOML = os.path.join(EXTENSION_PATH, "config", "extension.toml")
+# tomllib is stdlib on 3.11+; avoid importing third-party `toml` during PEP517
+# isolated builds (uv/pip) when build-system.requires omits it upstream.
+if sys.version_info >= (3, 11):
+    import tomllib
+
+    with open(_EXTENSION_TOML, "rb") as f:
+        EXTENSION_TOML_DATA = tomllib.load(f)
+else:
+    import toml
+
+    EXTENSION_TOML_DATA = toml.load(_EXTENSION_TOML)
 
 # Minimum dependencies required prior to installation
 INSTALL_REQUIRES = [

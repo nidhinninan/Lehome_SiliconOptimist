@@ -12,7 +12,7 @@ mkdir lehome_workspace
 sudo chown -R principia:principia /data/lehome_workspace
 ______
 # clone files manually
-cd ~/data/lehome_workspace
+cd /data/lehome_workspace
 git clone -b vastai_instance --single-branch https://nidhinninan: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@github.com/nidhinninan/Lehome_SiliconOptimist.git
 ______
 # need this to use the rsynce between the private clone (adapted) repo and the fresh repo downloaded form the hackathon official repo
@@ -74,7 +74,7 @@ rclone config
 
 #setup lehome workspace with files.
 chmod +x /data/lehome_workspace/setup_lehome.sh
-./data/lehome_workspace/setup_lehome.sh
+/data/lehome_workspace/setup_lehome.sh
 
 sudo mount -o remount,size=24G /dev/shm
 
