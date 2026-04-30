@@ -13,6 +13,8 @@ This document and the `updated_files` folder track all manual and agentic modifi
 
 **Why**: Provide a single bash entrypoint on the GPU VM to (1) optionally download a pinned W&B artifact into `pretrained_model/`, (2) `docker build` against `Dockerfile.submission`, (3) optionally `docker login` + push to HF Spaces registry (`registry.hf.space`). Aligns with `Artifacts/Custom_policy/docker_submission_plan.md` (no secrets in image; eval contract unchanged).
 
+**Updated**: Modified `Dockerfile.submission` to use non-root `user` (ID 1000) to comply with Hugging Face Spaces security standards.
+
 **Files**:
 - `lehome_workspace/lehome-challenge/dummy_docker_policy/build_docker_submission.sh` — executable; flags `--wb-project`, `--wb-artifact`, `--skip-download`, `--policy-dir`, `--image-tag`, `--push`, `--hf-image-ref` (preferred), `--hf-user/--hf-space` (fallback), `--env-file`; sources `.env` for `WANDB_API_KEY` / `HF_TOKEN` / `HUGGING_FACE_HUB_TOKEN`.
 - `lehome_workspace/lehome-challenge/dummy_docker_policy/server.py` — copied from upstream `lehome-official/lehome-challenge` `main` `dummy_docker_policy/server.py` (official HTTP contract; do not edit per challenge docs).
