@@ -39,18 +39,21 @@ Docker images include their own CUDA toolkit user-space libraries. The host only
 - Do **not** give organizers W&B credentials.
 - Do **download the checkpoint on the VM first**, then bake weights into the image via `COPY`.
 
-## Implementation choices (keep it simple)
+## Implementation choices (Custom DINOv2 BYOP)
 
-- **Single unified diffusion policy** and **router+4 specialists** are both compatible with the same Docker protocol. The router design is just internal logic inside `policy.py`.
-- Do not use depth if you didn’t train with it; ignore `observation.top_depth`.
+Because you are using a custom **DINOv2 MAP+Registers** policy, the Docker image and `policy.py` must be specifically tailored to your architecture:
 
-## Files to base from (official upstream)
+1. **BYOP Package Installation**: The Dockerfile must `COPY` the `lerobot_policy_dino/` directory into the image and run `pip install -e /app/lerobot_policy_dino`. Without this, LeRobot's `make_policy` will not recognize your `dino_diffusion` policy type.
+2. **Multi-Camera Inputs**: Your config (`sweep_dino_map_registers.yaml`) requires three cameras: `observation.images.top_rgb`, `observation.images.left_rgb`, and `observation.images.right_rgb`. `policy.py` must process all three.
+3. **Tensor Formatting**: The HTTP server receives `(H, W, C)` `uint8` numpy arrays. `policy.py` must convert these to PyTorch tensors, permute them to `(B, C, H, W)`, and normalize them to `[0, 1]` `float32` before passing them to the policy.
 
-Use the official `dummy_docker_policy/` as the template:
+## Files to base from (official upstream + custom)
+
+Use the official `dummy_docker_policy/` as the template, but heavily modify it:
 
 - `dummy_docker_policy/server.py` (do not change)
-- `dummy_docker_policy/policy.py` (you implement model loading + inference)
-- `dummy_docker_policy/Dockerfile` (extend for torch/lerobot + copy weights)
+- `dummy_docker_policy/policy.py` (you implement model loading + 3-camera inference)
+- `dummy_docker_policy/Dockerfile.submission` (extend for torch, lerobot, **copy/install `lerobot_policy_dino`**, + copy weights)
 
 ## W&B → local download (on VM)
 
@@ -68,25 +71,36 @@ Build a CUDA-enabled runtime image (safe default):
 
 ## Push to Hugging Face Docker registry (HF Spaces)
 
-Hugging Face’s Docker registry is tied to Spaces; the simplest workflow is:
+Hugging Face’s Docker registry is tied to Spaces. We use a **Direct Registry Push** workflow instead of "Build from Git" because our model weights are large (>1GB), and baking them into the image locally is faster and more reliable.
 
 1. Create a Space with **SDK = Docker** (UI step).
-2. Log in to the registry:
+2. Set the custom port in the Space `README.md` (YAML block) so HF knows we use 8080 instead of their default 7860:
+
+```yaml
+---
+title: My LeHome Submission
+sdk: docker
+app_port: 8080
+---
+```
+
+1. Log in to the registry:
 
 ```bash
 docker login registry.hf.space -u <hf_username>
 # password: HF access token with write permission to that Space
 ```
 
-3. Get the **exact image reference** from the Space UI.
+1. Get the **exact image reference** from the Space UI.
 
 In your Space page, use **“Run with Docker”** and copy the provided `docker pull ...` command.
 
 Important notes (HF behavior in practice):
+
 - The registry repo name is often `registry.hf.space/<org>-<space>` (hyphen-joined), and for **long space names** it may be truncated / have a suffix, so it’s not always derivable.
 - Tags are commonly `:latest` and `:<commit-sha>`; do not assume arbitrary tags like `:v1` always work.
 
-4. (Optional) Tag + push (only if you are pushing a locally-built image):
+1. (Optional) Tag + push (only if you are pushing a locally-built image):
 
 ```bash
 docker tag my-policy:latest <IMAGE_REF_FROM_SPACE_UI>
