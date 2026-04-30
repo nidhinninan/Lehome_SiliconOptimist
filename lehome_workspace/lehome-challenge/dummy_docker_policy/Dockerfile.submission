@@ -1,0 +1,40 @@
+# Use the official PyTorch image with CUDA support. 
+# This handles the heavy lifting on GPU if the organizers' evaluation runner provides one (`--gpus all`),
+# but gracefully falls back to CPU if they strictly evaluate on CPU.
+# We use a runtime image (smaller) rather than a devel image to save space.
+FROM pytorch/pytorch:2.2.1-cuda12.1-cudnn8-runtime
+
+# Set working directory
+WORKDIR /app
+
+# Prevent Python from writing pyc files and keep stdout unbuffered
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Install system dependencies (e.g., for OpenCV or other vision tasks)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install required Python packages. 
+# Notice: we copy requirements first to leverage Docker layer caching.
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# (Optional) If you have a custom LeRobot BYOP policy, you might need to copy and install it.
+# COPY lerobot_policy_dino /app/lerobot_policy_dino
+# RUN pip install --no-cache-dir -e /app/lerobot_policy_dino
+
+# Copy the server and policy scripts
+COPY server.py policy.py ./
+
+# Copy the pre-downloaded W&B checkpoint into the image
+# This assumes you ran `python download_wandb_model.py` before `docker build`
+COPY pretrained_model/ /app/pretrained_model/
+
+# Expose the HTTP port expected by the LeHome eval script
+EXPOSE 8080
+
+# Run the policy server
+CMD ["python", "policy.py"]

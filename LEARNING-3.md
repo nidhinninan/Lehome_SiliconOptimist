@@ -28,3 +28,18 @@ rd# DINOv2 Adpaption
 - MAP head is a high level count of ho many "features' the models is paying attention to. OFr
 
 - had oom errors : reduce the eval state and made it very light only want a vague understanding of training progress.
+
+## personal mistake / observation
+- **mistake**: assumed “slow training” meant GPU saturation; logs showed `data_s` > `updt_s` → loader/IO/decode bound, not compute-bound.
+- **target**: tune workers/pipeline/storage before chasing bigger batches or model tricks for wall time.
+- **mistake**: treating +4 workers (20→24) as a big win — realistic savings often single-digit % unless `data_s` drops clearly in logs.
+- **target**: confirm imbalance with `nvidia-smi --query-gpu=utilization.gpu -l 1` (sample → avg); low avg util + high `data_s` = feed the GPU first.
+- **mistake**: `checkpoints/last` as a real directory (not a symlink) → `FileExistsError` when LeRobot tries `symlink_to` for a new step; training dies *after* a save attempt.
+- **target**: `last` must be a symlink; if it became a directory, rename to `050000` (etc.) and `ln -sfn <step> last`.
+- **mistake**: resume smoke test without `--output_dir=...` in `EXTRA_TRAIN_ARGS` — LeRobot kept writing checkpoints to the path baked into `train_config.json`, not the `OUTPUT` you passed to the shell script.
+- **target**: to isolate smoke, set `--output_dir` to the smoke tree explicitly; verify log line `Output dir:` matches intent.
+- **mistake**: `ENABLE_RCLONE_CHECKPOINT_SYNC=1` + `rclone move` + `--min-age` — old-enough step dirs (incl. the one `last` points at) got moved off disk before train opened `train_config.json` → `FileNotFoundError`; looked like “rm smoke broke training” but was rclone.
+- **target**: disable rclone on resume until active checkpoint is local, or exclude the `last` target from move (script patch); double-check Drive path: `LeHome/models/<project>/<JOB_NAME>/<RUN_TAG>/checkpoints/` — `JOB_NAME` and `RUN_TAG` must match the run that uploaded, not a guessed folder.
+- **mistake**: grepping “core” / `find … name core*` under venv → thousands of `core.py` hits; not crash dumps.
+- **target**: Ubuntu uses Apport (`core_pattern` pipe); check `/var/crash`; narrow finds to `^core$` / `vgcore.*` outside site-packages.
+- **observation**: `pretrained_path: null` in resumed `train_config.json` can still be fine — weights load from the checkpoint tree + `training_state/`; trust presence of `training_step.json` and `last` resolution.

@@ -9,6 +9,29 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-30 18:00:00 UTC — `dummy_docker_policy/`: VM one-shot Docker build script + upstream `server.py` + requirements template
+
+**Why**: Provide a single bash entrypoint on the GPU VM to (1) optionally download a pinned W&B artifact into `pretrained_model/`, (2) `docker build` against `Dockerfile.submission`, (3) optionally `docker login` + push to HF Spaces registry (`registry.hf.space`). Aligns with `Artifacts/Custom_policy/docker_submission_plan.md` (no secrets in image; eval contract unchanged).
+
+**Files**:
+- `lehome_workspace/lehome-challenge/dummy_docker_policy/build_docker_submission.sh` — executable; flags `--wb-project`, `--wb-artifact`, `--skip-download`, `--policy-dir`, `--image-tag`, `--push`, `--hf-image-ref` (preferred), `--hf-user/--hf-space` (fallback), `--env-file`; sources `.env` for `WANDB_API_KEY` / `HF_TOKEN` / `HUGGING_FACE_HUB_TOKEN`.
+- `lehome_workspace/lehome-challenge/dummy_docker_policy/server.py` — copied from upstream `lehome-official/lehome-challenge` `main` `dummy_docker_policy/server.py` (official HTTP contract; do not edit per challenge docs).
+- `lehome_workspace/lehome-challenge/dummy_docker_policy/requirements.submission.template` — minimal non-torch deps + commented pins; copy to `requirements.txt` via `--init-requirements` or manually; extend with `lerobot` etc. to match training.
+
+**Also updated**: `download_wandb_model.py` now accepts fully-qualified W&B artifact refs like `entity/project/name:alias` directly via `--artifact` (in addition to the older `--project` + short-name style). This matches W&B documented formats and reduces one-shot failures.
+
+**Existing (unchanged this step)**: `Dockerfile.submission`, `policy.py`.
+
+### 2026-04-29 20:15:00 UTC — `source/lehome/setup.py`: fix editable install without PyPI `toml`
+
+**Why**: `uv pip install -e …/source/lehome` runs setuptools in an isolated build environment. Upstream `setup.py` did `import toml` at module scope; if `[build-system].requires` omits `toml` (or isolation does not install it), metadata preparation fails with `ModuleNotFoundError: No module named 'toml'` on Python 3.12.
+
+**File**: `lehome_workspace/lehome-challenge/source/lehome/setup.py`
+
+**Change**: On Python **3.11+**, read `config/extension.toml` with stdlib **`tomllib`** and binary `open(..., "rb")`. On **3.10**, keep **`toml.load`** (requires `toml` in build isolation — declare in `pyproject.toml` `[build-system].requires` for that case).
+
+**Diff** (conceptual): remove top-level `import toml`; add `sys.version_info` branch with `tomllib.load` vs `toml.load`.
+
 ### 2026-04-29 12:00:00 UTC — setup_lehome.sh: Principia `/data` paths
 
 **Why**: Align `setup_lehome.sh` with Principia layout from `principia_vm_troubleshooting.md` / `technical_grounding_architectural_synthesis.md` — workspace and caches on `/data`, not `$HOME/data`.
