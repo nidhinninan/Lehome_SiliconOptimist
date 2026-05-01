@@ -17,3 +17,6 @@ updated_file_*.zip
 # Python bytecode (do not mirror build artifacts)
 __pycache__/
 *.py[cod]
+
+# Large checkpoints synced outside git (e.g. rclone)
+lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model/

@@ -2,6 +2,12 @@
 # LeHome policy Docker image: W&B download (optional) + docker build (+ optional HF Spaces registry push).
 # Intended to run on the GPU VM (Docker, checkpoints, wandb).
 #
+# Blackwell (RTX 50-series, sm_120): Dockerfile.submission uses pytorch/pytorch:*-cuda12.8-*-runtime.
+# It then pins torch/torchvision/torchaudio to 2.7.1 cu128 wheels, which keeps lerobot==0.4.3
+# in its declared torch<2.8 compatibility range while preserving Blackwell CUDA support.
+# Rebuild and tag for registry, e.g.:
+#   ./build_docker_submission.sh --skip-download --image-tag nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell
+#
 # Usage examples:
 #   export WANDB_API_KEY=...   # or: wandb login ; or source a .env containing WANDB_API_KEY
 #   ./build_docker_submission.sh --wb-artifact "my-run-checkpoint:v3"
@@ -51,6 +57,7 @@ Examples:
   export WANDB_API_KEY=...   # or wandb login, or put keys in .env
   ./build_docker_submission.sh --wb-artifact "my-checkpoint:v0"
   ./build_docker_submission.sh --skip-download --image-tag lehome-policy:local
+  ./build_docker_submission.sh --skip-download --image-tag nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell
   ./build_docker_submission.sh --wb-artifact "model:v0" --push --hf-user USER --hf-space SPACE --hf-remote-tag v1
 
 Options:
@@ -156,6 +163,12 @@ if [[ "${INIT_REQUIREMENTS}" == "1" ]]; then
   else
     echo "requirements.txt already exists; not overwriting."
   fi
+fi
+
+if grep -Eq '^[[:space:]]*(torch|torchvision|torchaudio)([[:space:]<>=!~;]|$)' requirements.txt; then
+  echo "Do not pin torch/torchvision/torchaudio in requirements.txt for the Blackwell image." >&2
+  echo "Dockerfile.submission installs the lerobot-compatible cu128 wheel set after lerobot_policy_dino." >&2
+  exit 1
 fi
 
 for need in "${DOCKERFILE}" server.py policy.py download_wandb_model.py; do

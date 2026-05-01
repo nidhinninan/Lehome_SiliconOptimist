@@ -1,8 +1,15 @@
-# Use the official PyTorch image with CUDA support. 
-FROM pytorch/pytorch:2.2.1-cuda12.1-cudnn8-runtime
+# Official PyTorch with CUDA 12.8+ for NVIDIA Blackwell (sm_120), e.g. RTX 50-series.
+# Older bases (cuda12.1) only ship kernels through sm_90 and warn / fail on Blackwell.
+FROM pytorch/pytorch:2.11.0-cuda12.8-cudnn9-runtime
 
-# Create a non-root user (Hugging Face standard)
-RUN useradd -m -u 1000 user
+# Non-root app user. Official pytorch images often already reserve UID 1000; avoid useradd collision.
+RUN if id -u user >/dev/null 2>&1; then \
+        echo "Using existing user"; \
+    elif getent passwd 1000 >/dev/null; then \
+        useradd -m -u 1001 user; \
+    else \
+        useradd -m -u 1000 user; \
+    fi
 WORKDIR /app
 
 # Prevent Python from writing pyc files and keep stdout unbuffered
@@ -10,10 +17,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV HOME=/home/user
 ENV PATH=/home/user/.local/bin:$PATH
+# Ubuntu 24.04+ (PEP 668) marks system Python as externally managed; this image is disposable — allow pip.
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
-# Install system dependencies
+# Install system dependencies (libgl1 for OpenCV headless; mesa-glx name dropped on newer Ubuntu)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libgl1-mesa-glx \
+    build-essential \
+    libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
@@ -25,6 +35,17 @@ RUN pip install --no-cache-dir -r requirements.txt
 # build_docker_submission.sh stages ../../lerobot_policy_dino here when missing; or keep a copy in this folder for plain docker build.
 COPY --chown=user lerobot_policy_dino/ /app/lerobot_policy_dino/
 RUN pip install --no-cache-dir -e /app/lerobot_policy_dino
+# lerobot==0.4.3 requires torch>=2.2.1,<2.8.0 and torchvision>=0.21.0,<0.23.0.
+# Reinstall the matching 2.7.1 cu128 wheels so Blackwell (sm_120) stays supported without
+# drifting to newer torch releases outside lerobot's declared compatibility range.
+ARG TORCH_VERSION=2.7.1
+ARG TORCHVISION_VERSION=0.22.1
+ARG TORCHAUDIO_VERSION=2.7.1
+RUN pip install --no-cache-dir --upgrade \
+    "torch==${TORCH_VERSION}" \
+    "torchvision==${TORCHVISION_VERSION}" \
+    "torchaudio==${TORCHAUDIO_VERSION}" \
+    --index-url https://download.pytorch.org/whl/cu128
 
 # Pre-cache the DINOv2 backbone so inference works without internet access.
 RUN python3 -c "from transformers import Dinov2Model; Dinov2Model.from_pretrained('facebook/dinov2-with-registers-small')"
