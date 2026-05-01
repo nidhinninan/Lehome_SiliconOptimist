@@ -74,7 +74,40 @@ rclone config
 
 #setup lehome workspace with files.
 chmod +x /data/lehome_workspace/setup_lehome.sh
+uv pip install toml
 /data/lehome_workspace/setup_lehome.sh
+
+docker login
+
+python download_wandb_model.py --project lehome_challenge --artifact "nidhinninan_ucmo_schoolid/lehome_challenge/policy_dino_diffusion-seed_1000-dataset_repo_dp-125000:v0" --out pretrained_model
+
+# docker login
+docker login -u nninspaceexp
+
+## THEN USE THE PROMPT
+```
+I have downloaded my custom DINOv2 MAP+Registers checkpoint to pretrained_model/. I need you to update dummy_docker_policy/policy.py and dummy_docker_policy/Dockerfile.submission to work with my specific architecture.
+
+**Context**:
+
+1. My policy is a custom BYOP package located at lehome_workspace/lerobot_policy_dino. It registers the dino_diffusion policy type.
+2. The model expects three camera streams: observation.images.top_rgb, observation.images.left_rgb, and observation.images.right_rgb, plus observation.state.
+3. The images come in as (H, W, C) uint8 numpy arrays. They must be converted to PyTorch tensors, permuted to (B, C, H, W), and normalized to [0, 1] float32 before being passed to the policy.
+
+**Tasks**:
+
+1. Update Dockerfile.submission: Add a step to COPY the lerobot_policy_dino directory into the image and run pip install -e /app/lerobot_policy_dino so the custom policy is registered.
+2. Update policy.py:
+-- Import make_policy from lerobot.common.policies.factory.
+-- Ensure the infer() method loops through all three _rgb image keys and the state key, formats them correctly, and passes the entire obs_tensor dict to self.policy(obs_tensor).
+-- Extract the action chunk and return it as a list of numpy arrays.
+
+Please read lehome_workspace/configs/sweep_dino_map_registers.yaml and lehome_workspace/lerobot_policy_dino/src/lerobot_policy_dino/modeling_dino_diffusion.py if you need to verify the exact input shapes or dependencies.
+```
+
+
+
+
 
 sudo mount -o remount,size=24G /dev/shm
 

@@ -1,91 +1,101 @@
 """
-LeHome Challenge — Your Docker Policy.
-This integrates LeRobot checkpoint loading and provides the HTTP endpoint.
+
+LeHome Challenge — DINOv2 MAP+Registers Docker Policy.
+
+Loads a DinoDiffusionPolicy checkpoint (model.safetensors) and serves it
+over the BasePolicyServer HTTP protocol.
 """
 import torch
 import numpy as np
+import os
 import logging
 from typing import Dict, List
+from safetensors.torch import load_file
+
 from server import BasePolicyServer
 
-# Note: Adjust these if using the custom BYOP package
-# from lerobot.common.policies.factory import make_policy
+# Register the "dino_diffusion" policy type with the lerobot factory.
+import lerobot_policy_dino  # noqa: F401 - side-effect import
+from lerobot_policy_dino import DinoDiffusionPolicy, DinoDiffusionConfig
+from lerobot.configs.types import FeatureType, PolicyFeature
+
+_IMAGE_KEYS = [
+    "observation.images.top_rgb",
+    "observation.images.left_rgb",
+    "observation.images.right_rgb",
+]
+_STATE_KEY = "observation.state"
 
 class LeRobotDockerPolicy(BasePolicyServer):
     def __init__(self, pretrained_model_path: str = "pretrained_model"):
         """
-        Loads the saved PyTorch/LeRobot checkpoint. 
+        Loads the saved PyTorch/LeRobot checkpoint.
         """
         # 1. Decide device
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        logging.info(f"Loading model to device: {self.device}")
+        logging.info(f"Loading DinoDiffusion policy on {self.device}")
 
         # 2. Load your single generic model OR your 4 specialized models + DinoV2 router.
-        # For standard LeRobot checkpoint:
-        # self.policy = make_policy(pretrained_model_path, device=self.device)
-        # self.policy.eval()
+        config = DinoDiffusionConfig(
+            vision_backbone="facebook/dinov2-with-registers-small",
+            spatial_pooling="map",
+            map_num_queries=8,
+            use_registers=True,
+            num_register_tokens=4,
+            device=str(self.device),
+            input_features={
+                _STATE_KEY: PolicyFeature(type=FeatureType.STATE, shape=(12,)),
+                "observation.images.top_rgb": PolicyFeature(type=FeatureType.VISUAL, shape=(3, 480, 640)),
+                "observation.images.left_rgb": PolicyFeature(type=FeatureType.VISUAL, shape=(3, 480, 640)),
+                "observation.images.right_rgb": PolicyFeature(type=FeatureType.VISUAL, shape=(3, 480, 640)),
+            },
+            output_features={
+                "action": PolicyFeature(type=FeatureType.ACTION, shape=(12,)),
+            },
+        )
 
-        # Example pseudo-code for the Router approach:
-        # self.router_classifier = load_dino_linear_probe("path/to/probe.pt", device=self.device)
-        # self.policies = {
-        #     "top_long": make_policy("pretrained_model/top_long", device=self.device),
-        #     "pant_short": make_policy("pretrained_model/pant_short", device=self.device),
-        #     # ... etc
-        # }
-        
         self.pretrained_model_path = pretrained_model_path
+        self.policy = DinoDiffusionPolicy(config)
+
+        weights_path = os.path.join(pretrained_model_path, "model.safetensors")
+        state_dict = load_file(weights_path, device=str(self.device))
+        missing, unexpected = self.policy.load_state_dict(state_dict, strict=False)
+        if missing:
+            logging.warning(f"Missing keys when loading checkpoint: {missing}")
+        if unexpected:
+            logging.warning(f"Unexpected keys when loading checkpoint: {unexpected}")
+
+        self.policy.to(self.device)
+        self.policy.eval()
+        logging.info("Policy loaded successfully.")
 
     def reset(self):
-        """Called at the start of each episode."""
-        logging.info("Episode reset. Clearing any policy buffers if necessary.")
-        # If your policy is stateful (e.g. RNN/LSTM based or maintains action chunk state), reset it here.
-        # if hasattr(self.policy, 'reset'):
-        #     self.policy.reset()
+        """Called at the start of each episode — clears the obs/action queues."""
+        self.policy.reset()
 
     def infer(self, observation: Dict[str, np.ndarray]) -> List[np.ndarray]:
         """
-        Receives NumPy arrays, converts to Torch Tensors, runs inference, and returns actions.
+        Converts numpy observations to tensors, runs select_action(), and returns
+        a single action as a list of one numpy array.
         """
-        # Convert observation dict from numpy arrays to Torch Tensors and move to device
-        # Note: the Docker protocol sends specific keys like 'observation.images.top_rgb'
         obs_tensor = {}
-        for k, v in observation.items():
-            tensor_v = torch.from_numpy(v).to(self.device).unsqueeze(0) # Add batch dim
-            # Handle image channels if necessary (e.g., LeRobot typically expects (B, C, H, W) in [0, 1] range)
-            if 'images' in k and tensor_v.ndim == 4:
-                # Transpose from (B, H, W, C) to (B, C, H, W)
-                tensor_v = tensor_v.permute(0, 3, 1, 2)
-                # Normalize from [0, 255] uint8 to [0, 1] float32 if needed by your model
-                if tensor_v.dtype == torch.uint8:
-                    tensor_v = tensor_v.float() / 255.0
-            obs_tensor[k] = tensor_v
-
-        # --- ROUTER APPROACH EXAMPLE ---
-        # 1. Use top_rgb image to classify garment type
-        # predicted_class = self.router_classifier(obs_tensor["observation.images.top_rgb"])
-        # 2. Select the specialized policy
-        # active_policy = self.policies[predicted_class]
         
-        # --- SINGLE POLICY APPROACH ---
-        # active_policy = self.policy
+        # Images: (H, W, C) uint8 -> (1, C, H, W) float32 in [0, 1]
+        for key in _IMAGE_KEYS:
+            img = torch.from_numpy(observation[key]).permute(2, 0, 1).float() / 255.0
+            obs_tensor[key] = img.unsqueeze(0).to(self.device)
 
-        # --- INFERENCE ---
+        # State: (12,) float32 -> (1, 12)
+        state = torch.from_numpy(observation[_STATE_KEY]).float()
+        obs_tensor[_STATE_KEY] = state.unsqueeze(0).to(self.device)
+
         with torch.no_grad():
-            # Output of active_policy(obs_tensor) is usually a dict or tensor of shape (B, chunk_size, action_dim)
-            # action_pred = active_policy(obs_tensor)
-            
-            # Placeholder dummy action return (remove this in your actual code)
-            ACTION_DIM = 12
-            CHUNK_SIZE = 10
-            action_pred = torch.zeros((1, CHUNK_SIZE, ACTION_DIM), device=self.device)
-            # --------------------------------------------------------------------------
+            # select_action() manages the internal obs/action queues and returns
+            # one action tensor of shape (1, action_dim).
+            action = self.policy.select_action(obs_tensor)
 
-        # Remove batch dimension: shape (chunk_size, action_dim)
-        action_pred = action_pred.squeeze(0)
-        
-        # Convert back to list of NumPy arrays to satisfy the HTTP server protocol
-        action_list = [a.cpu().numpy() for a in action_pred]
-        return action_list
+        # action shape: (1, 12) -> return as list of one (12,) numpy array
+        return [action.squeeze(0).cpu().numpy()]
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
