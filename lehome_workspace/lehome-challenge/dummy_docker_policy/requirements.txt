@@ -1,8 +1,5 @@
 # Copy to requirements.txt (or run build_docker_submission.sh --init-requirements).
-# PyTorch + CUDA libs come from the Dockerfile base image — do not pin torch here unless you know you need it.
+# PyTorch + CUDA libs are pinned in Dockerfile.submission after lerobot installs.
+# Keep torch/torchvision/torchaudio out of this file so the Dockerfile can enforce cu128 wheels.
 numpy>=1.24,<2
 opencv-python-headless>=4.8.0,<5
-# Match your VM / training stack, e.g.:
-# lerobot==0.4.3
-# einops
-# safetensors

@@ -13,4 +13,4 @@ Workflow skills live under [`.cursor/skills/`](.cursor/skills/). A parallel tree
 - [`DeepWiki_servers.md`](DeepWiki_servers.md) — catalog of DeepWiki `Owner/Repo` identifiers.
 - [`lehome_workspace/lehome_change_log.md`](lehome_workspace/lehome_change_log.md) — log every create/modify under `lehome_workspace/` (see the workspace-tracking project rule).
 - [`.cursor/plans/`](.cursor/plans/) — active implementation plans generated in Cursor.
-- [`Artifacts/`](Artifacts/) — research notes, training readouts, and analysis.
+- [`Artifacts/`](Artifacts/) — research notes, training readouts, and analysis. **Inventory:** [`Artifacts/ARTIFACTS_INDEX.md`](Artifacts/ARTIFACTS_INDEX.md) (comprehensive list; update when adding artifacts).
