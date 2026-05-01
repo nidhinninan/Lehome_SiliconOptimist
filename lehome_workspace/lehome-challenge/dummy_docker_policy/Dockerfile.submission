@@ -22,8 +22,7 @@ COPY --chown=user requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Install the custom BYOP package (lerobot_policy_dino).
-# NOTE: Before running docker build, copy the package into this directory:
-# cp -r /path/to/lerobot_policy_dino dummy_docker_policy/lerobot_policy_dino
+# build_docker_submission.sh stages ../../lerobot_policy_dino here when missing; or keep a copy in this folder for plain docker build.
 COPY --chown=user lerobot_policy_dino/ /app/lerobot_policy_dino/
 RUN pip install --no-cache-dir -e /app/lerobot_policy_dino
 

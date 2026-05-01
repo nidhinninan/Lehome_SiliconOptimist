@@ -55,6 +55,8 @@ Examples:
 
 Options:
   --policy-dir DIR          Build context (default: this script's directory)
+                            Auto-creates requirements.txt from the template and stages lerobot_policy_dino from
+                            ../../lerobot_policy_dino when missing (Dockerfile COPY steps).
   --dockerfile FILE         Dockerfile name (default: Dockerfile.submission)
   --wb-project NAME         W&B project path passed to download_wandb_model.py (default: lehome_challenge).
                             Use entity/project form if your artifact lives under a team entity.
@@ -118,6 +120,31 @@ fi
 
 cd "${POLICY_DIR}"
 
+PRETRAINED_PATH="${POLICY_DIR}/${PRETRAINED_DIR_NAME}"
+
+# Plain docker build expects requirements.txt in the context; fill from template if missing.
+if [[ ! -f requirements.txt ]]; then
+  if [[ ! -f requirements.submission.template ]]; then
+    echo "Missing requirements.submission.template in ${POLICY_DIR}" >&2
+    exit 1
+  fi
+  cp requirements.submission.template requirements.txt
+  echo "Created requirements.txt from requirements.submission.template"
+fi
+
+# Stage BYOP package when not in the build context (workspace: lehome_workspace/lerobot_policy_dino).
+LERO_SOURCE="$(cd "${POLICY_DIR}/../.." && pwd)/lerobot_policy_dino"
+if [[ ! -d "${POLICY_DIR}/lerobot_policy_dino" ]] || [[ -z "$(ls -A "${POLICY_DIR}/lerobot_policy_dino" 2>/dev/null || true)" ]]; then
+  if [[ ! -d "${LERO_SOURCE}" ]]; then
+    echo "Missing lerobot_policy_dino under ${POLICY_DIR} and no source at ${LERO_SOURCE}" >&2
+    echo "Expected: lehome_workspace/lerobot_policy_dino relative to this challenge checkout." >&2
+    exit 1
+  fi
+  echo "Staging lerobot_policy_dino from ${LERO_SOURCE}..."
+  mkdir -p "${POLICY_DIR}/lerobot_policy_dino"
+  rsync -a "${LERO_SOURCE}/" "${POLICY_DIR}/lerobot_policy_dino/"
+fi
+
 if [[ "${INIT_REQUIREMENTS}" == "1" ]]; then
   if [[ ! -f requirements.txt ]]; then
     if [[ ! -f requirements.submission.template ]]; then
@@ -139,14 +166,6 @@ for need in "${DOCKERFILE}" server.py policy.py download_wandb_model.py; do
     exit 1
   fi
 done
-
-if [[ ! -f requirements.txt ]]; then
-  echo "Missing requirements.txt. Create one (pin lerobot etc. to match training), e.g.:" >&2
-  echo "  ${POLICY_DIR}/build_docker_submission.sh --init-requirements" >&2
-  exit 1
-fi
-
-PRETRAINED_PATH="${POLICY_DIR}/${PRETRAINED_DIR_NAME}"
 
 if [[ "${SKIP_DOWNLOAD}" != "1" ]]; then
   if [[ -z "${WB_ARTIFACT}" ]]; then
