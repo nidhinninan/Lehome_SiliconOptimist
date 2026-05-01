@@ -28,6 +28,9 @@
 docker/cluster/exports/
 docker/.container.cfg
 
+# Staged BYOP copy for Docker build context (source of truth: ../lerobot_policy_dino at workspace root)
+dummy_docker_policy/lerobot_policy_dino/
+
 # IDE
 **/.idea/
 **/.vscode/

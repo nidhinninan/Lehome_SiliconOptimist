@@ -1,0 +1,28 @@
+Cause
+Docker failed because the build context did not contain what Dockerfile.submission copies in:
+
+lerobot_policy_dino/ – not under dummy_docker_policy/ (that package lives at /data/lehome_workspace/lerobot_policy_dino).
+requirements.txt – only requirements.submission.template existed, so manual docker build had nothing to COPY as requirements.txt.
+The later “tag does not exist” on docker push was because docker build never produced an image, not because Docker Hub lacked a tag.
+
+What we did
+Added requirements.txt in dummy_docker_policy/ (same content as the template) so plain docker build works.
+
+Copied /data/lehome_workspace/lerobot_policy_dino → dummy_docker_policy/lerobot_policy_dino/ so your current tree matches the Dockerfile.
+
+Updated build_docker_submission.sh so future runs automatically:
+
+create requirements.txt from requirements.submission.template if it is missing
+stage lerobot_policy_dino from ../../lerobot_policy_dino (workspace layout) into the policy dir when it isn’t already there
+Gitignored dummy_docker_policy/lerobot_policy_dino/ in lehome-challenge/.gitignore so you don’t commit the staged copy by mistake.
+
+Recommended command on your VM (after W&B checkpoint is in pretrained_model/):
+
+cd /data/lehome_workspace/lehome-challenge/dummy_docker_policy
+./build_docker_submission.sh \
+  --skip-download \
+  --image-tag nninspaceexp/lehome_silicon-optimists:FullDP-v1
+docker push nninspaceexp/lehome_silicon-optimists:FullDP-v1
+Or repeat your manual flow: ensure pretrained_model/ is populated (download_wandb_model.py if needed), then docker build + docker push.
+
+Note: In this agent environment the build later failed with no space left on device while unpacking the CUDA base image. That is disk space on the host, unrelated to missing files. On your GPU VM run docker system prune / free disk if you see the same; the COPY "…/lerobot_policy_dino": not found issue is addressed by staging the package + having requirements.txt.

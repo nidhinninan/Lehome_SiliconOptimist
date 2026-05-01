@@ -9,6 +9,49 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-30 22:10:00 UTC — Docker submission: upstream merge + VM parity (requirements, BYOP staging, build script, gitignore)
+
+**Why**: Replicate VM fixes locally after GDrive sync dropped build context pieces; merge missing paths from official `lehome-official/lehome-challenge` without overwriting customized submission files.
+
+**Files / actions**:
+
+1. **Upstream merge (add-only)**  
+   - Shallow clone `https://github.com/lehome-official/lehome-challenge.git` (branch `main`) to a temp dir, then:
+   - `rsync -a --ignore-existing <clone>/dummy_docker_policy/ → lehome_workspace/lehome-challenge/dummy_docker_policy/`  
+   - **Effect**: Added files that did not exist locally (e.g. official `Dockerfile`, `README.md`). Existing local files (`Dockerfile.submission`, `policy.py`, `server.py`, `build_docker_submission.sh`, etc.) were **not** overwritten (`--ignore-existing`).
+
+2. **`lehome_workspace/lehome-challenge/dummy_docker_policy/requirements.txt`** (new)  
+   - Same dependency lines as `requirements.submission.template` so `COPY requirements.txt` in `Dockerfile.submission` succeeds for plain `docker build`.
+
+3. **`lehome_workspace/lehome-challenge/dummy_docker_policy/lerobot_policy_dino/`** (staged copy, gitignored)  
+   - `rsync -a` from `lehome_workspace/lerobot_policy_dino/` into the policy folder for Docker build context. **Do not commit** (see `.gitignore`).
+
+4. **`lehome_workspace/lehome-challenge/dummy_docker_policy/build_docker_submission.sh`** (patched)  
+   - After `cd "${POLICY_DIR}"`: set `PRETRAINED_PATH` early.  
+   - If `requirements.txt` missing → `cp requirements.submission.template requirements.txt`.  
+   - If `lerobot_policy_dino/` missing or empty → `rsync -a` from `$(cd ../.. && pwd)/lerobot_policy_dino` (i.e. `lehome_workspace/lerobot_policy_dino`).  
+   - Removed hard exit that required pre-existing `requirements.txt` before download.  
+   - `usage()` documents auto-bootstrap.  
+   - `--init-requirements` unchanged (explicit init).
+
+5. **`lehome_workspace/lehome-challenge/.gitignore`**  
+   - Added `dummy_docker_policy/lerobot_policy_dino/` with comment (staged BYOP copy).
+
+6. **`lehome_workspace/lehome-challenge/dummy_docker_policy/Dockerfile.submission`**  
+   - Replaced outdated manual `cp -r` comment with note that `build_docker_submission.sh` stages the package or a copy must exist in context.
+
+**Caveat**: `--ignore-existing` merge means if a filename exists locally but is stale vs GitHub, local still wins; refresh specific files from upstream deliberately if needed.
+
+**Diff summary** (`build_docker_submission.sh`, conceptual):
+
+```bash
+# after: cd "${POLICY_DIR}"
++PRETRAINED_PATH="${POLICY_DIR}/${PRETRAINED_DIR_NAME}"
++# auto requirements.txt + rsync stage lerobot_policy_dino ...
+-# block: exit if requirements.txt missing
+-PRETRAINED_PATH=...  # duplicate later — removed in favor of early definition
+```
+
 ### 2026-04-30 18:50:00 UTC — `Dockerfile.submission`: Reconstructed DINOv2 pre-cache and BYOP install
 
 **Why**: User lost changes on remote VM due to accidental closure. Reconstructed from agent readout images and summary. Ensures the Docker image has the custom policy package and pre-cached weights for offline evaluation.
