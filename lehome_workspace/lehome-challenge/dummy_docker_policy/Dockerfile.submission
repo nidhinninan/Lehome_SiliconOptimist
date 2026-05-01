@@ -21,10 +21,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --chown=user requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install the custom BYOP package (lerobot_policy_dino).
+# NOTE: Before running docker build, copy the package into this directory:
+# cp -r /path/to/lerobot_policy_dino dummy_docker_policy/lerobot_policy_dino
+COPY --chown=user lerobot_policy_dino/ /app/lerobot_policy_dino/
+RUN pip install --no-cache-dir -e /app/lerobot_policy_dino
+
+# Pre-cache the DINOv2 backbone so inference works without internet access.
+RUN python3 -c "from transformers import Dinov2Model; Dinov2Model.from_pretrained('facebook/dinov2-with-registers-small')"
+
 # Copy the server and policy scripts
 COPY --chown=user server.py policy.py ./
 
-# Copy the pre-downloaded W&B checkpoint into the image
+# Copy the pre-downloaded checkpoint into the image
 COPY --chown=user pretrained_model/ /app/pretrained_model/
 
 # Set user

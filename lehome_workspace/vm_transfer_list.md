@@ -1,6 +1,6 @@
 # LeHome VM Transfer List
 
-**Last Updated**: 2026-04-30 18:10:00 UTC
+**Last Updated**: 2026-04-30 18:50:00 UTC
 
 The following files must be copied to your VM machine to match the current local research state.
 
@@ -18,7 +18,7 @@ These files should overwrite the existing ones in your `lehome-challenge` clone.
 - `dummy_docker_policy/build_docker_submission.sh` (Updated: 2026-04-30 18:10:00 UTC — VM: W&B download + docker build + optional HF `registry.hf.space` push; prefers `--hf-image-ref` from Space UI; `./build_docker_submission.sh --help`)
 - `dummy_docker_policy/server.py` (Updated: 2026-04-30 18:00:00 UTC — upstream LeHome policy HTTP server; keep unmodified)
 - `dummy_docker_policy/requirements.submission.template` (Updated: 2026-04-30 18:00:00 UTC — seed for `requirements.txt`; add `lerobot` pins to match training)
-- `dummy_docker_policy/Dockerfile.submission`, `dummy_docker_policy/download_wandb_model.py`, `dummy_docker_policy/policy.py` — keep in sync with VM for Docker image bake (Updated: 2026-04-30 18:10:00 UTC — W&B artifact ref parsing hardened; `policy.py` must load your real checkpoint)
+- `dummy_docker_policy/Dockerfile.submission`, `dummy_docker_policy/download_wandb_model.py`, `dummy_docker_policy/policy.py` — keep in sync with VM for Docker image bake (Updated: 2026-04-30 18:50:00 UTC — Reconstructed DINOv2 pre-cache and BYOP install in Dockerfile; policy.py implementation; W&B artifact ref parsing hardened)
 - `scripts/eval_policy/classifier_router_policy.py` (Updated: 2026-04-11 15:19:36)
 - `scripts/garment_classifier/sanity_check_first_frames.py` (New: 2026-04-12 02:40:00)
 - `scripts/garment_classifier/export_garment_classifier_dataset.py` (New: 2026-04-12 02:40:00)

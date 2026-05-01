@@ -9,6 +9,53 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-30 18:50:00 UTC — `Dockerfile.submission`: Reconstructed DINOv2 pre-cache and BYOP install
+
+**Why**: User lost changes on remote VM due to accidental closure. Reconstructed from agent readout images and summary. Ensures the Docker image has the custom policy package and pre-cached weights for offline evaluation.
+
+**File**: `lehome_workspace/lehome-challenge/dummy_docker_policy/Dockerfile.submission`
+
+**Change**: 
+- Added `lerobot_policy_dino` installation steps.
+- Added DINOv2-with-registers-small pre-caching command.
+- Updated checkpoint comment (removed "W&B").
+- Positioned changes before `USER user` so they run as root.
+
+**Diff**:
+```dockerfile
++# Install the custom BYOP package (lerobot_policy_dino).
++COPY --chown=user lerobot_policy_dino/ /app/lerobot_policy_dino/
++RUN pip install --no-cache-dir -e /app/lerobot_policy_dino
++
++# Pre-cache the DINOv2 backbone so inference works without internet access.
++RUN python3 -c "from transformers import Dinov2Model; Dinov2Model.from_pretrained('facebook/dinov2-with-registers-small')"
+...
+-# Copy the pre-downloaded W&B checkpoint into the image
++# Copy the pre-downloaded checkpoint into the image
+ COPY --chown=user pretrained_model/ /app/pretrained_model/
+```
+
+### 2026-04-30 18:40:00 UTC — `policy.py`: Reconstructed DinoDiffusionPolicy implementation
+
+**Why**: User lost changes on remote VM due to accidental closure. Reconstructed from agent readout images and summary. Implements the DINOv2 MAP+Registers policy loading and inference logic.
+
+**File**: `lehome_workspace/lehome-challenge/dummy_docker_policy/policy.py`
+
+**Change**: 
+- Replaced placeholder logic with `DinoDiffusionPolicy` and `DinoDiffusionConfig`.
+- Configured for 3 cameras (480x640) and state (12,).
+- Uses `safetensors.torch.load_file` to load weights from `model.safetensors`.
+- Implemented `reset()` and `infer()` to use the policy's `select_action` and `reset` methods.
+- Added necessary imports for `lerobot_policy_dino` and `lerobot.configs.types`.
+
+**Diff**:
+```python
+# ... (imports updated) ...
+# ... (config built with exact sweep values) ...
+# ... (weights loaded with strict=False) ...
+# ... (infer() handles image/state conversion and select_action()) ...
+```
+
 ### 2026-04-30 18:00:00 UTC — `dummy_docker_policy/`: VM one-shot Docker build script + upstream `server.py` + requirements template
 
 **Why**: Provide a single bash entrypoint on the GPU VM to (1) optionally download a pinned W&B artifact into `pretrained_model/`, (2) `docker build` against `Dockerfile.submission`, (3) optionally `docker login` + push to HF Spaces registry (`registry.hf.space`). Aligns with `Artifacts/Custom_policy/docker_submission_plan.md` (no secrets in image; eval contract unchanged).
