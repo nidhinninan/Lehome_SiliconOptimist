@@ -1,0 +1,48 @@
+dataset:
+  repo_id: repo_dp
+  root: Datasets/example/top_long_merged
+  image_transforms:
+    # 🔗 LINKED DEPENDENCY: This must match the --dataset.image_transforms.enable 
+    # flag in lehome_workspace/run_10k_sweep.sh.
+    enable: false
+
+policy:
+  type: diffusion
+  device: cuda
+  push_to_hub: false
+  use_amp: false
+
+  # Use ImageNet-pretrained weights, standard DP defaults
+  vision_backbone: resnet18
+  pretrained_backbone_weights: ResNet18_Weights.IMAGENET1K_V1
+  use_group_norm: false  # required to load torchvision pretrained weights
+  crop_shape: null
+  crop_is_random: false
+
+  input_features:
+    observation.state:
+      type: STATE
+      shape: [12]
+    observation.images.top_rgb:
+      type: VISUAL
+      shape: [3, 480, 640]
+    observation.images.left_rgb:
+      type: VISUAL
+      shape: [3, 480, 640]
+    observation.images.right_rgb:
+      type: VISUAL
+      shape: [3, 480, 640]
+
+  output_features:
+    action:
+      type: ACTION
+      shape: [12]
+
+output_dir: outputs/sweep_10k/ResNet18_ImageNet
+batch_size: 8
+steps: 10000
+save_freq: 10000
+log_freq: 500
+
+wandb:
+  enable: false
