@@ -13,7 +13,7 @@ sudo chown -R principia:principia /data/lehome_workspace
 ______
 # clone files manually
 cd /data/lehome_workspace
-git clone -b vastai_instance --single-branch https://nidhinninan:<$GIT_TOKEN>@github.com/nidhinninan/Lehome_SiliconOptimist.git
+git clone -b vastai_instance --single-branch https://nidhinninan:xxxx@github.com/nidhinninan/Lehome_SiliconOptimist.git
 ______
 # need this to use the rsynce between the private clone (adapted) repo and the fresh repo downloaded form the hackathon official repo
 sudo apt update
