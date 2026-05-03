@@ -1,0 +1,290 @@
+_wandb:
+    value:
+        cli_version: 0.24.0
+        e:
+            xs5mxk9bibjsm3gztqfuff906drqahrp:
+                args:
+                    - --config_path=outputs/train/dp_merged_dino_map8_registers_a100_400k_norm/checkpoints/last/pretrained_model/train_config.json
+                    - --resume=true
+                    - --batch_size=32
+                    - --num_workers=16
+                    - --policy.map_num_queries=8
+                    - --dataset.image_transforms.enable=true
+                cpu_count: 28
+                cpu_count_logical: 28
+                cudaVersion: "12.2"
+                disk:
+                    /:
+                        total: "103865303040"
+                        used: "69882331136"
+                executable: /data/lehome_workspace/lehome-challenge/.venv/bin/python
+                gpu: NVIDIA A100 80GB PCIe
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100 80GB PCIe
+                      uuid: GPU-1bb21d99-c7fa-d2fd-51d4-bd875b932c4d
+                host: c17c551b069a
+                memory:
+                    total: "126711259136"
+                os: Linux-6.8.0-40-generic-x86_64-with-glibc2.39
+                program: /data/lehome_workspace/lerobot_train_with_plugins.py
+                python: CPython 3.11.15
+                root: outputs/train/dp_merged_dino_map8_registers_a100_400k_norm
+                startedAt: "2026-04-29T08:00:59.821478Z"
+                writerId: xs5mxk9bibjsm3gztqfuff906drqahrp
+        m: []
+        python_version: 3.11.15
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 51
+                - 53
+                - 71
+                - 83
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 51
+                - 53
+                - 71
+                - 83
+            "3":
+                - 5
+                - 13
+                - 14
+                - 15
+                - 16
+                - 62
+            "4": 3.11.15
+            "5": 0.24.0
+            "6": 4.57.6
+            "10":
+                - 21
+            "12": 0.24.0
+            "13": linux-x86_64
+batch_size:
+    value: 32
+checkpoint_path:
+    value: outputs/train/dp_merged_dino_map8_registers_a100_400k_norm/checkpoints/last
+dataset:
+    value:
+        episodes: null
+        image_transforms:
+            enable: true
+            max_num_transforms: 3
+            random_order: false
+            tfs:
+                affine:
+                    kwargs:
+                        degrees:
+                            - -5
+                            - 5
+                        translate:
+                            - 0.05
+                            - 0.05
+                    type: RandomAffine
+                    weight: 1
+                brightness:
+                    kwargs:
+                        brightness:
+                            - 0.8
+                            - 1.2
+                    type: ColorJitter
+                    weight: 1
+                contrast:
+                    kwargs:
+                        contrast:
+                            - 0.8
+                            - 1.2
+                    type: ColorJitter
+                    weight: 1
+                hue:
+                    kwargs:
+                        hue:
+                            - -0.05
+                            - 0.05
+                    type: ColorJitter
+                    weight: 1
+                saturation:
+                    kwargs:
+                        saturation:
+                            - 0.5
+                            - 1.5
+                    type: ColorJitter
+                    weight: 1
+                sharpness:
+                    kwargs:
+                        sharpness:
+                            - 0.5
+                            - 1.5
+                    type: SharpnessJitter
+                    weight: 1
+        repo_id: repo_dp
+        revision: null
+        root: Datasets/example/four_types_merged
+        streaming: false
+        use_imagenet_stats: true
+        video_backend: torchcodec
+env:
+    value: null
+eval:
+    value:
+        batch_size: 2
+        n_episodes: 8
+        use_async_envs: false
+eval_freq:
+    value: 10000
+job_name:
+    value: DINOv2_MAP8_Registers_merged_A100_400k_Normal
+log_freq:
+    value: 1000
+num_workers:
+    value: 16
+optimizer:
+    value:
+        betas:
+            - 0.95
+            - 0.999
+        eps: 1e-08
+        grad_clip_norm: 10
+        lr: 0.0001
+        type: adam
+        weight_decay: 1e-06
+output_dir:
+    value: outputs/train/dp_merged_dino_map8_registers_a100_400k_norm
+peft:
+    value: null
+policy:
+    value:
+        beta_end: 0.02
+        beta_schedule: squaredcos_cap_v2
+        beta_start: 0.0001
+        clip_sample: true
+        clip_sample_range: 1
+        crop_is_random: false
+        crop_shape: null
+        device: cuda
+        diffusion_step_embed_dim: 128
+        do_mask_loss_for_padding: false
+        down_dims:
+            - 512
+            - 1024
+            - 2048
+        drop_n_last_frames: 7
+        horizon: 16
+        input_features:
+            observation.images.left_rgb:
+                shape:
+                    - 3
+                    - 480
+                    - 640
+                type: VISUAL
+            observation.images.right_rgb:
+                shape:
+                    - 3
+                    - 480
+                    - 640
+                type: VISUAL
+            observation.images.top_rgb:
+                shape:
+                    - 3
+                    - 480
+                    - 640
+                type: VISUAL
+            observation.state:
+                shape:
+                    - 12
+                type: STATE
+        kernel_size: 5
+        license: null
+        map_num_queries: 8
+        n_action_steps: 8
+        n_groups: 8
+        n_obs_steps: 2
+        noise_scheduler_type: DDPM
+        normalization_mapping:
+            ACTION: MIN_MAX
+            STATE: MIN_MAX
+            VISUAL: MEAN_STD
+        num_inference_steps: null
+        num_register_tokens: 4
+        num_train_timesteps: 100
+        optimizer_betas:
+            - 0.95
+            - 0.999
+        optimizer_eps: 1e-08
+        optimizer_lr: 0.0001
+        optimizer_weight_decay: 1e-06
+        output_features:
+            action:
+                shape:
+                    - 12
+                type: ACTION
+        prediction_type: epsilon
+        pretrained_backbone_weights: null
+        pretrained_path: outputs/train/dp_merged_dino_map8_registers_a100_400k_norm/checkpoints/last/pretrained_model
+        private: null
+        push_to_hub: false
+        repo_id: null
+        scheduler_name: cosine
+        scheduler_warmup_steps: 500
+        spatial_pooling: map
+        spatial_softmax_num_keypoints: 32
+        tags: null
+        type: dino_diffusion
+        use_amp: true
+        use_cls_token: true
+        use_film_scale_modulation: true
+        use_group_norm: true
+        use_peft: false
+        use_registers: true
+        use_separate_rgb_encoder_per_camera: false
+        vision_backbone: facebook/dinov2-with-registers-small
+rabc_epsilon:
+    value: 1e-06
+rabc_head_mode:
+    value: sparse
+rabc_kappa:
+    value: 0.01
+rabc_progress_path:
+    value: null
+resume:
+    value: true
+save_checkpoint:
+    value: true
+save_freq:
+    value: 25000
+scheduler:
+    value:
+        name: cosine
+        num_warmup_steps: 500
+        type: diffuser
+seed:
+    value: 1000
+steps:
+    value: 125000
+tolerance_s:
+    value: 0.0001
+use_policy_training_preset:
+    value: true
+use_rabc:
+    value: false
+wandb:
+    value:
+        disable_artifact: false
+        enable: true
+        entity: null
+        mode: null
+        notes: null
+        project: lehome_challenge
+        run_id: p0sun3yr

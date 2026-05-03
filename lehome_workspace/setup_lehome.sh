@@ -5,17 +5,17 @@
 
 set -e # Exit on error
 
-# --- Configuration ---
+# --- Configuration (Principia VM: large deps on /data; see Artifacts/Instance_adaptation/principia_vm_troubleshooting.md) ---
 WORKSPACE_DIR="/data/lehome_workspace"
-REPO_DIR="$WORKSPACE_DIR/lehome-challenge"
+REPO_DIR="${WORKSPACE_DIR}/lehome-challenge"
 UV_BIN_DIR="/data/.local/bin"
 
 echo "🚀 Starting LeHome Challenge Setup..."
 
 # Phase 1: Storage and Environment Setup
 echo "📂 [1/6] Setting up storage and environment variables..."
-sudo mkdir -p "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache
-sudo chown -R $USER:$USER "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache
+sudo mkdir -p "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache "$UV_BIN_DIR"
+sudo chown -R principia:principia "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache "$UV_BIN_DIR"
 
 # Update .bashrc idempotently
 update_bashrc() {
@@ -29,19 +29,21 @@ update_bashrc() {
 update_bashrc 'export HF_HOME="/data/huggingface_cache"'
 update_bashrc 'export UV_CACHE_DIR="/data/uv_cache"'
 update_bashrc 'export __GLX_VENDOR_LIBRARY_NAME=nvidia'
-update_bashrc "export PATH=\"$UV_BIN_DIR:\$PATH\""
+update_bashrc 'export PATH="/data/.local/bin:$PATH"'
 
 # Export for current session
 export HF_HOME="/data/huggingface_cache"
 export UV_CACHE_DIR="/data/uv_cache"
-export PATH="$UV_BIN_DIR:$PATH"
+export PATH="${UV_BIN_DIR}:${PATH}"
 
 # Phase 2: System Dependencies
 echo "📦 [2/6] Installing system dependencies (requires sudo)..."
-sudo apt update && sudo apt install -y \
+# sudo apt update && \
+sudo apt install -y \
     libglu1-mesa libgl1 libegl1 libxrandr2 \
     libxinerama1 libxcursor1 libxi6 libxext6 libx11-6 \
-    zip psmisc  # psmisc includes 'fuser'
+    zip psmisc \
+    ffmpeg  # required by torchcodec video backend
 echo "   ✅ System dependencies installed."
 
 # Phase 3: uv Installation
@@ -52,7 +54,7 @@ echo "   ✅ uv installed at $UV_BIN_DIR/uv"
 # Phase 4: Repository Cloning
 echo "🔗 [4/6] Cloning repositories..."
 sudo mkdir -p "$WORKSPACE_DIR"
-sudo chown -R $USER:$USER "$WORKSPACE_DIR"
+sudo chown -R principia:principia "$WORKSPACE_DIR"
 
 cd "$WORKSPACE_DIR"
 
@@ -102,7 +104,7 @@ echo "📊 [6/6] Downloading LeHome datasets..."
 # Ensure HF login
 if ! "$REPO_DIR/.venv/bin/huggingface-cli" whoami &>/dev/null; then
     echo "   ⚠️  Not authenticated with Hugging Face. Initiating login..."
-    "$REPO_DIR/.venv/bin/huggingface-cli" login
+    "$REPO_DIR/.venv/bin/huggingface-cli" login --token HF_TOKEN_IDE
 fi
 
 # Use the absolute path to huggingface-cli in the venv

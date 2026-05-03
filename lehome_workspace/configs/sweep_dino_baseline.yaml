@@ -1,8 +1,8 @@
 dataset:
   repo_id: repo_dp
-  root: Datasets/example/top_long_merged
+  root: /root/data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged
   image_transforms:
-    # Linked to --dataset.image_transforms.enable in run_2run_dino_sweep.sh
+    # Linked to --dataset.image_transforms.enable in run_2run_dino_sweep.sh / run_2run_dino_sweep_no-gdrive.sh
     enable: false
 
 policy:
@@ -10,7 +10,7 @@ policy:
   vision_backbone: facebook/dinov2-small
   spatial_pooling: baseline
   use_registers: false
-  num_register_tokens: 4
+  num_register_tokens: 0
   map_num_queries: 8
   device: cuda
   push_to_hub: false
@@ -38,7 +38,7 @@ policy:
       type: ACTION
       shape: [12]
 
-output_dir: outputs/sweep_10k/DINOv2_Baseline
+output_dir: /root/data/lehome_workspace/outputs/sweep_10k/DINOv2_Baseline
 job_name: DINOv2_Baseline
 batch_size: 8
 steps: 10000

@@ -48,8 +48,11 @@ class DinoDiffusionConfig(DiffusionConfig):
                 raise ValueError(
                     "spatial_pooling='map' expects a `facebook/dinov2-with-registers-*` checkpoint."
                 )
-        if self.use_registers and "registers" not in self.vision_backbone.lower():
-            raise ValueError("use_registers=True requires vision_backbone id containing 'registers'.")
+        elif self.use_registers and "registers" not in self.vision_backbone.lower():
+            # Auto-correct if baseline YAML mistakenly kept use_registers=True without a registers backbone.
+            # This prevents the sweep from crashing on the baseline run.
+            self.use_registers = False
+            self.num_register_tokens = 0
 
         # Replicate the other non-ResNet checks from DiffusionConfig.__post_init__:
         supported_prediction_types = ["epsilon", "sample"]

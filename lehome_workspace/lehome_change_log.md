@@ -9,6 +9,421 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-04-30 22:10:00 UTC — Docker submission: upstream merge + VM parity (requirements, BYOP staging, build script, gitignore)
+
+**Why**: Replicate VM fixes locally after GDrive sync dropped build context pieces; merge missing paths from official `lehome-official/lehome-challenge` without overwriting customized submission files.
+
+**Files / actions**:
+
+1. **Upstream merge (add-only)**  
+   - Shallow clone `https://github.com/lehome-official/lehome-challenge.git` (branch `main`) to a temp dir, then:
+   - `rsync -a --ignore-existing <clone>/dummy_docker_policy/ → lehome_workspace/lehome-challenge/dummy_docker_policy/`  
+   - **Effect**: Added files that did not exist locally (e.g. official `Dockerfile`, `README.md`). Existing local files (`Dockerfile.submission`, `policy.py`, `server.py`, `build_docker_submission.sh`, etc.) were **not** overwritten (`--ignore-existing`).
+
+2. **`lehome_workspace/lehome-challenge/dummy_docker_policy/requirements.txt`** (new)  
+   - Same dependency lines as `requirements.submission.template` so `COPY requirements.txt` in `Dockerfile.submission` succeeds for plain `docker build`.
+
+3. **`lehome_workspace/lehome-challenge/dummy_docker_policy/lerobot_policy_dino/`** (staged copy, gitignored)  
+   - `rsync -a` from `lehome_workspace/lerobot_policy_dino/` into the policy folder for Docker build context. **Do not commit** (see `.gitignore`).
+
+4. **`lehome_workspace/lehome-challenge/dummy_docker_policy/build_docker_submission.sh`** (patched)  
+   - After `cd "${POLICY_DIR}"`: set `PRETRAINED_PATH` early.  
+   - If `requirements.txt` missing → `cp requirements.submission.template requirements.txt`.  
+   - If `lerobot_policy_dino/` missing or empty → `rsync -a` from `$(cd ../.. && pwd)/lerobot_policy_dino` (i.e. `lehome_workspace/lerobot_policy_dino`).  
+   - Removed hard exit that required pre-existing `requirements.txt` before download.  
+   - `usage()` documents auto-bootstrap.  
+   - `--init-requirements` unchanged (explicit init).
+
+5. **`lehome_workspace/lehome-challenge/.gitignore`**  
+   - Added `dummy_docker_policy/lerobot_policy_dino/` with comment (staged BYOP copy).
+
+6. **`lehome_workspace/lehome-challenge/dummy_docker_policy/Dockerfile.submission`**  
+   - Replaced outdated manual `cp -r` comment with note that `build_docker_submission.sh` stages the package or a copy must exist in context.
+
+**Caveat**: `--ignore-existing` merge means if a filename exists locally but is stale vs GitHub, local still wins; refresh specific files from upstream deliberately if needed.
+
+**Diff summary** (`build_docker_submission.sh`, conceptual):
+
+```bash
+# after: cd "${POLICY_DIR}"
++PRETRAINED_PATH="${POLICY_DIR}/${PRETRAINED_DIR_NAME}"
++# auto requirements.txt + rsync stage lerobot_policy_dino ...
+-# block: exit if requirements.txt missing
+-PRETRAINED_PATH=...  # duplicate later — removed in favor of early definition
+```
+
+### 2026-04-30 18:50:00 UTC — `Dockerfile.submission`: Reconstructed DINOv2 pre-cache and BYOP install
+
+**Why**: User lost changes on remote VM due to accidental closure. Reconstructed from agent readout images and summary. Ensures the Docker image has the custom policy package and pre-cached weights for offline evaluation.
+
+**File**: `lehome_workspace/lehome-challenge/dummy_docker_policy/Dockerfile.submission`
+
+**Change**: 
+- Added `lerobot_policy_dino` installation steps.
+- Added DINOv2-with-registers-small pre-caching command.
+- Updated checkpoint comment (removed "W&B").
+- Positioned changes before `USER user` so they run as root.
+
+**Diff**:
+```dockerfile
++# Install the custom BYOP package (lerobot_policy_dino).
++COPY --chown=user lerobot_policy_dino/ /app/lerobot_policy_dino/
++RUN pip install --no-cache-dir -e /app/lerobot_policy_dino
++
++# Pre-cache the DINOv2 backbone so inference works without internet access.
++RUN python3 -c "from transformers import Dinov2Model; Dinov2Model.from_pretrained('facebook/dinov2-with-registers-small')"
+...
+-# Copy the pre-downloaded W&B checkpoint into the image
++# Copy the pre-downloaded checkpoint into the image
+ COPY --chown=user pretrained_model/ /app/pretrained_model/
+```
+
+### 2026-04-30 18:40:00 UTC — `policy.py`: Reconstructed DinoDiffusionPolicy implementation
+
+**Why**: User lost changes on remote VM due to accidental closure. Reconstructed from agent readout images and summary. Implements the DINOv2 MAP+Registers policy loading and inference logic.
+
+**File**: `lehome_workspace/lehome-challenge/dummy_docker_policy/policy.py`
+
+**Change**: 
+- Replaced placeholder logic with `DinoDiffusionPolicy` and `DinoDiffusionConfig`.
+- Configured for 3 cameras (480x640) and state (12,).
+- Uses `safetensors.torch.load_file` to load weights from `model.safetensors`.
+- Implemented `reset()` and `infer()` to use the policy's `select_action` and `reset` methods.
+- Added necessary imports for `lerobot_policy_dino` and `lerobot.configs.types`.
+
+**Diff**:
+```python
+# ... (imports updated) ...
+# ... (config built with exact sweep values) ...
+# ... (weights loaded with strict=False) ...
+# ... (infer() handles image/state conversion and select_action()) ...
+```
+
+### 2026-04-30 18:00:00 UTC — `dummy_docker_policy/`: VM one-shot Docker build script + upstream `server.py` + requirements template
+
+**Why**: Provide a single bash entrypoint on the GPU VM to (1) optionally download a pinned W&B artifact into `pretrained_model/`, (2) `docker build` against `Dockerfile.submission`, (3) optionally `docker login` + push to HF Spaces registry (`registry.hf.space`). Aligns with `Artifacts/Custom_policy/docker_submission_plan.md` (no secrets in image; eval contract unchanged).
+
+**Updated**: Modified `Dockerfile.submission` to use non-root `user` (ID 1000) to comply with Hugging Face Spaces security standards.
+
+**Files**:
+- `lehome_workspace/lehome-challenge/dummy_docker_policy/build_docker_submission.sh` — executable; flags `--wb-project`, `--wb-artifact`, `--skip-download`, `--policy-dir`, `--image-tag`, `--push`, `--hf-image-ref` (preferred), `--hf-user/--hf-space` (fallback), `--env-file`; sources `.env` for `WANDB_API_KEY` / `HF_TOKEN` / `HUGGING_FACE_HUB_TOKEN`.
+- `lehome_workspace/lehome-challenge/dummy_docker_policy/server.py` — copied from upstream `lehome-official/lehome-challenge` `main` `dummy_docker_policy/server.py` (official HTTP contract; do not edit per challenge docs).
+- `lehome_workspace/lehome-challenge/dummy_docker_policy/requirements.submission.template` — minimal non-torch deps + commented pins; copy to `requirements.txt` via `--init-requirements` or manually; extend with `lerobot` etc. to match training.
+
+**Also updated**: `download_wandb_model.py` now accepts fully-qualified W&B artifact refs like `entity/project/name:alias` directly via `--artifact` (in addition to the older `--project` + short-name style). This matches W&B documented formats and reduces one-shot failures.
+
+**Existing (unchanged this step)**: `Dockerfile.submission`, `policy.py`.
+
+### 2026-04-29 20:15:00 UTC — `source/lehome/setup.py`: fix editable install without PyPI `toml`
+
+**Why**: `uv pip install -e …/source/lehome` runs setuptools in an isolated build environment. Upstream `setup.py` did `import toml` at module scope; if `[build-system].requires` omits `toml` (or isolation does not install it), metadata preparation fails with `ModuleNotFoundError: No module named 'toml'` on Python 3.12.
+
+**File**: `lehome_workspace/lehome-challenge/source/lehome/setup.py`
+
+**Change**: On Python **3.11+**, read `config/extension.toml` with stdlib **`tomllib`** and binary `open(..., "rb")`. On **3.10**, keep **`toml.load`** (requires `toml` in build isolation — declare in `pyproject.toml` `[build-system].requires` for that case).
+
+**Diff** (conceptual): remove top-level `import toml`; add `sys.version_info` branch with `tomllib.load` vs `toml.load`.
+
+### 2026-04-29 12:00:00 UTC — setup_lehome.sh: Principia `/data` paths
+
+**Why**: Align `setup_lehome.sh` with Principia layout from `principia_vm_troubleshooting.md` / `technical_grounding_architectural_synthesis.md` — workspace and caches on `/data`, not `$HOME/data`.
+
+**File**: `lehome_workspace/setup_lehome.sh`
+
+**Diff summary**:
+- `WORKSPACE_DIR=/data/lehome_workspace`, `UV_BIN_DIR=/data/.local/bin`.
+- `HF_HOME=/data/huggingface_cache`, `UV_CACHE_DIR=/data/uv_cache`; `.bashrc` and current-session exports use those absolute paths.
+- `sudo mkdir` includes `$UV_BIN_DIR`; `chown -R principia:principia` on workspace, cache dirs, and uv bin parent.
+
+### 2026-04-28 23:05:00 UTC — Split: merged launcher = A100 tiers; dp_top_short = 4070 Ti on Principia
+
+**Why**: Correct earlier mix-up — `run_train_dino_merged_a100.sh` must keep **A100** batch/worker presets regardless of Principia `/data` paths (only cache/PATH exports are Principia-specific). **RTX 4070 Ti 16GB** tuning belongs on **`run_train_dino_dp_top_short_150k.sh`** when `TOP_SHORT_GPU_PROFILE=4070ti` (default on Principia `/data` paths). Parallel eval default checkpoint remains the **A100** merged artifact unless `POLICY_PATH` is set.
+
+**Files**:
+- `lehome_workspace/run_train_dino_merged_a100.sh`
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh`
+- `lehome_workspace/parallel_eval_merged_strong.sh`
+
+**Summary**:
+- **Shared (paths)**: When `LEHOME_VM_PROFILE=principia` or `WORKSPACE_DIR` is under `/data/lehome_workspace`, export `UV_CACHE_DIR`, `HF_HOME`, optional `/data/.local/bin` `PATH`.
+- **`run_train_dino_merged_a100.sh`**: Removed `principia_*` tiers and path-based default-tier override. **`A100_TIER:-normal`** only: conservative/normal/aggressive/smoke_* — same on Principia as on an A100 box; docs clarify Principia path block does not change GPU presets.
+- **`run_train_dino_dp_top_short_150k.sh`**: **`TOP_SHORT_GPU_PROFILE`** default `4070ti`; when `4070ti` and Principia `/data` workspace: default `JOB_NAME`/`OUTPUT` suffix `_4070ti`, append `--batch_size=12 --num_workers=10` if `--batch_size=` not already in `EXTRA_TRAIN_ARGS`, `WORKERS=10` when shm OK. Set **`TOP_SHORT_GPU_PROFILE=a100`** to use legacy names/batches on the same paths.
+- **`parallel_eval_merged_strong.sh`**: Single default **`POLICY_PATH`** → `..._a100_400k_norm/...`; Principia still gets `HF_HOME`/PATH and optional `CHALLENGE_DIR`.
+
+### 2026-04-28 20:00:00 UTC — A100 merged DINO training launcher + strong parallel eval script (plan implementation)
+
+**Why**: Execute the A100 DINO MAP+registers tuning plan without altering the existing `run_train_dino_dp_top_short_150k.sh` 4070-oriented launcher.
+
+**Files**:
+- `lehome_workspace/run_train_dino_merged_a100.sh` (new)
+- `lehome_workspace/parallel_eval_merged_strong.sh` (new)
+
+**Summary**:
+- **`run_train_dino_merged_a100.sh`**: Same training entry as `run_train_dino_dp_top_short_150k.sh` (`lerobot_train_with_plugins.py`, `configs/sweep_dino_map_registers.yaml`, BYOP install, rclone optional, thread caps). Defaults `DATASET=Datasets/example/dataset_challenge_merged`. **`A100_TIER`** selects plan presets when `RESUME!=true` and vars are unset: `conservative|normal|aggressive|smoke_cons|smoke_norm|smoke_aggr` (steps/save/eval/output/`EXTRA_TRAIN_ARGS` for batch/workers/map queries). **`SHM_TARGET`** (default `16G`) used when remounting small `/dev/shm`; fallback to `2G` if needed. **`SHM_MIN_KB=$((16*1024*1024))`**: remount attempted when `df -Pk` free 1K-blocks is below ~16 GiB.
+- **`parallel_eval_merged_strong.sh`**: Four background `python -m scripts.eval` jobs (`--policy_type lerobot`, `--device cpu`, `--headless`, default **`NUM_EPISODES=20`**), per-garment **`dataset_root`** (`top_long_merged`, …). Override checkpoint with **`POLICY_PATH`** (relative to `lehome-challenge` after `cd`).
+
+**VM**: `chmod +x` both scripts; run launcher from `lehome_workspace`; run eval with `CHALLENGE_DIR` pointing at the VM’s `lehome-challenge` clone (script default: `$WORKSPACE_DIR/lehome-challenge`).
+
+### 2026-04-28 11:43:30 UTC — Minimal fix: rclone filter matches LeRobot numeric checkpoint dirs (`030000/`) not just `step_*/`
+
+(Reverted unrelated additions from 11:35:45 UTC entry below: `is_truthy()` helper, `RCLONE_COPY_LAST_DURING_TRAINING`, per-pass log markers — none were needed to fix the reported bug.)
+
+### 2026-04-28 11:41:29 UTC — Fix: rclone filter matches LeRobot numeric checkpoint dirs (`030000/`) not just `step_*/`
+
+**Why**: On VM, LeRobot saved checkpoints as numeric directories (`030000`, `060000`, …). The launcher’s rclone loop filtered only `step_*/**`, so nothing was moved mid-training (and the final sync also skipped them).
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh`
+
+**Diff summary**:
+```diff
+ rclone move "$SRC_DIR" "${RCLONE_DST}checkpoints" \
+   --filter '+ step_*/**' \
++  --filter '+ [0-9]*/**' \
+   --filter '- **' \
+   ...
+
+ rclone move "$OUTPUT/checkpoints" "${RCLONE_DST}checkpoints" \
+   --filter '+ step_*/**' \
++  --filter '+ [0-9]*/**' \
+   --filter '- **' \
+   ...
+
+-find ... -name 'step_*' ...
++find ... \( -name 'step_*' -o -name '[0-9]*' \) ...
+```
+
+### 2026-04-28 11:35:45 UTC — Fix: make mid-training rclone sync verifiable + enable with truthy flags
+
+**Why**: User suspected checkpoints were not being uploaded mid-training. The launcher *did* spawn a background rclone loop, but it only enabled when `ENABLE_RCLONE_CHECKPOINT_SYNC=1` (not `true/yes`), only moved `step_*` after `--min-age`, and had no obvious per-pass marker in logs.
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh`
+
+**Diff summary**:
+```diff
+-if [ "${ENABLE_RCLONE_CHECKPOINT_SYNC:-0}" = 1 ]; then
++is_truthy() { case "${1:-}" in 1|true|yes|on|... ) return 0 ;; *) return 1 ;; esac; }
++RCLONE_COPY_LAST_DURING_TRAINING="${RCLONE_COPY_LAST_DURING_TRAINING:-0}"
++if is_truthy "${ENABLE_RCLONE_CHECKPOINT_SYNC:-0}"; then
+   ...
+   while true; do
+     rclone move ... --filter '+ step_*/**' ... --min-age "$RCLONE_MIN_AGE" ...
++    # optional safety: non-destructive copy of checkpoints/last during training
++    rclone copy "$SRC_DIR/last" "${RCLONE_DST}checkpoints/last" --update ...
+   done
+```
+
+**How to verify on VM**:
+```bash
+ENABLE_RCLONE_CHECKPOINT_SYNC=true \
+RCLONE_COPY_LAST_DURING_TRAINING=true \
+RCLONE_SLEEP_SEC=300 \
+RCLONE_MIN_AGE=5m \
+./run_train_dino_dp_top_short_150k.sh
+```
+Then watch the rclone log:
+`lehome-challenge/logs/readout/dino_map_dp_top_short_150k_phase1_rclone_*.log`
+
+### 2026-04-28 12:30:00 UTC — Balanced training-time eval for DINOv2+MAP 150k run
+
+**Why**: User wants to monitor ongoing learning progress via eval metrics (loss curves, success rate, etc.) in W&B/console while avoiding the OOM that occurred at the first `eval_freq=10000` boundary. 
+- Increased `eval_freq` to 20000 (fewer but still informative checkpoints)
+- Reduced to very light eval (`n_episodes=4`, `batch_size=2`) to minimize GPU spike on heavy model (DINOv2 registers + MAP head)
+- Added explicit `eval:` section to YAML for self-documenting config
+- Updated script defaults and comments
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh` (updated defaults + comments)
+- `lehome_workspace/configs/sweep_dino_map_registers.yaml` (added eval section)
+
+**Recommended launch**:
+```bash
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+  RESUME=true ./run_train_dino_dp_top_short_150k.sh
+```
+
+### 2026-04-28 02:45:00 UTC — Update: phase-1 150k launcher (light eval + keep `last/` local while rclone offloads step checkpoints)
+
+**Why**: Make the first phase of the planned 2-stage run (70k no-aug → resume with aug later) cheaper to monitor and safer to resume by keeping `checkpoints/last` locally while still offloading `step_*` checkpoints to Google Drive.
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh` (updated)
+
+**Key behavior changes (diff summary)**:
+```diff
+ # Defaults now match recommended “production” cadence
+-SAVE_FREQ=20000
+-EVAL_FREQ=20000
++SAVE_FREQ=50000
++EVAL_FREQ=10000
+ JOB_NAME default now includes _phase1
+
+ # Light training-time eval overrides (LeRobot v0.4.3 EvalConfig)
++--eval.n_episodes=10
++--eval.batch_size=10
++--eval.use_async_envs=false
+
+ # Optional rclone support (ENABLE_RCLONE_CHECKPOINT_SYNC=1)
++During training: rclone move only step_*/** (keeps checkpoints/last local)
++After training: rclone copy checkpoints/last to Drive; move any remaining step_*/**
++Best-effort prune of local step_* dirs; leaves checkpoints/last for phase-2 resume
+```
+
+**Notes / gotchas**:
+- Phase-2 augmentation switch (`dataset.image_transforms.enable=true`) cannot be applied via CLI when resuming because LeRobot resume loads config from `checkpoints/last/pretrained_model/train_config.json`. You must edit that JSON before resuming (or start a fresh run with the desired config).
+
+### 2026-04-27 23:45:00 UTC — DINO MAP+registers 150k launcher (dp_top_short, CLI overrides on sweep YAML)
+
+**Why**: Single long-run script for `dp_top_short` using existing `configs/sweep_dino_map_registers.yaml` without editing it; CLI overrides `steps`, `dataset.root`, `output_dir`, `save_freq`/`eval_freq`/`log_freq`/`job_name`; same BYOP/shm/W&B/thread-cap pattern as `run_2run_dino_sweep.sh`.
+
+**Files**:
+- `lehome_workspace/run_train_dino_dp_top_short_150k.sh` (new)
+
+**Behavior summary**:
+- `WORKSPACE_DIR` from `BASH_SOURCE`; `cd lehome-challenge`; `uv`/`pip install -e lerobot_policy_dino`; optional `.env` + `WANDB_API_UCMO` → `WANDB_API_KEY`.
+- SHM check → `WORKERS=12` or `0`; exports `OMP_NUM_THREADS`/`MKL_NUM_THREADS`/`OPENBLAS_NUM_THREADS` default `1`.
+- Fresh: `lerobot_train_with_plugins.py --config_path=$WORKSPACE_DIR/configs/sweep_dino_map_registers.yaml` + `--steps=150000` (default), `--save_freq=20000`, `--eval_freq=20000`, `--log_freq=1000`, `--job_name=DINOv2_MAP_Registers_dp_top_short_150k`, `--dataset.root=Datasets/example/top_short_merged`, `--output_dir=outputs/train/dp_top_short_dino_map_registers_150k`, `--dataset.image_transforms.enable=false`, `--num_workers=$WORKERS`. Env overrides: `RESUME`, `STEPS`, `SAVE_FREQ`, `EVAL_FREQ`, `LOG_FREQ`, `JOB_NAME`, `DATASET`, `OUTPUT`, `SKIP_IF_LAST_EXISTS`, `EXTRA_TRAIN_ARGS`.
+- Resume: `--config_path=$OUTPUT/checkpoints/last/pretrained_model/train_config.json --resume=true` (minimal CLI). Optional skip: `SKIP_IF_LAST_EXISTS=1` when not resuming if `checkpoints/last` exists (also checks `/root/data/...` and `/data/...` absolute variants).
+- **VM**: run on GPU VM; local workspace does not execute `lerobot_train`.
+
+### 2026-04-27 22:57:13 UTC — MAP+registers training profile: AMP, torchcodec, num_workers in YAML; thread caps in sweep scripts
+
+**Why**: Adopt the concrete MAP+registers VM profile (`use_amp`, `dataset.video_backend=torchcodec`, `num_workers=12`, `OMP_NUM_THREADS`/`MKL_NUM_THREADS`/`OPENBLAS_NUM_THREADS` defaults, transforms off).
+
+**Files**:
+- `lehome_workspace/configs/sweep_dino_map_registers.yaml`
+- `lehome_workspace/run_2run_dino_sweep.sh`
+- `lehome_workspace/run_2run_dino_sweep_no-gdrive.sh`
+
+**`configs/sweep_dino_map_registers.yaml` (diff summary)**:
+```diff
+ dataset:
+   repo_id: repo_dp
+   root: /root/data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged
++  video_backend: torchcodec
++  # comment: FFmpeg + torchcodec required; CLI override --dataset.video_backend=pyav if needed
+   image_transforms:
+     enable: false
+ policy:
+   ...
+-  use_amp: false
++  use_amp: true
+ ...
+ batch_size: 8
++num_workers: 12
+```
+
+**Sweep scripts**: Before `lerobot_train_with_plugins.py`, export `OMP_NUM_THREADS`, `MKL_NUM_THREADS`, `OPENBLAS_NUM_THREADS` with `${VAR:-1}` so the VM can override. Header comment documents MAP+registers throughput rationale.
+
+**Note**: `sweep_dino_baseline.yaml` unchanged. Second sweep job still uses `--dataset.image_transforms.enable=false` from CLI; MAP YAML keeps `image_transforms.enable: false`.
+
+### 2026-04-27 16:13:41 UTC — Rename sweep scripts: trial → default name; original → `no-gdrive`
+
+**Renames (git mv)**:
+- `lehome_workspace/run_2run_dino_sweep_trial.sh` → `lehome_workspace/run_2run_dino_sweep.sh` (rclone-capable driver is now the canonical filename).
+- `lehome_workspace/run_2run_dino_sweep.sh` → `lehome_workspace/run_2run_dino_sweep_no-gdrive.sh` (previous default two-run sweep without Drive offload).
+
+**Edits**:
+- `run_2run_dino_sweep.sh`: header/usage comments use new basename; echo labels drop “(trial)”; docstring cross-ref points to `run_2run_dino_sweep_no-gdrive.sh` for the simpler variant.
+- `run_2run_dino_sweep_no-gdrive.sh`: header states no-gdrive role and points to `run_2run_dino_sweep.sh` for optional sync.
+- `configs/sweep_dino_baseline.yaml`, `configs/sweep_dino_map_registers.yaml`: YAML comment mentions both launcher names for `--dataset.image_transforms.enable`.
+- `To_RUN_onVM_cmds.txt`: Drive section uses `./run_2run_dino_sweep.sh`; notes `./run_2run_dino_sweep_no-gdrive.sh` for no-offload.
+
+**Historical note**: Log entries before this rename that cite **`run_2run_dino_sweep.sh`** for the 2026-04-26 pyav-only fix refer to the file that is now **`run_2run_dino_sweep_no-gdrive.sh`**.
+
+### 2026-04-27 16:20:00 — New: `run_2run_dino_sweep_trial.sh` (rclone → Drive + `.complete` skip marker) *(filename later merged into `run_2run_dino_sweep.sh`; see 2026-04-27 16:13 UTC entry)*
+
+**Files added**:
+- `lehome_workspace/run_2run_dino_sweep_trial.sh` *(renamed to `run_2run_dino_sweep.sh` — see newer log entry)*
+
+**Description**:
+- Duplicate of the two-run DINO sweep driver with **trial** features: optional **Google Drive offload** via `rclone move`, and a **`output_dir/.complete` marker** so reruns skip after checkpoints were moved off-VM (not only when `checkpoints/last` exists).
+- **`WORKSPACE_DIR`** is derived from the script path (`BASH_SOURCE`), matching `run_10k_sweep.sh` robustness (works regardless of `cwd`).
+- **Drive layout** (when `ENABLE_RCLONE_CHECKPOINT_SYNC=1`):  
+  `{RCLONE_REMOTE}:LeHome/models/{wandb.project}/{job_name}/{config_stem}__{RUN_TAG}/checkpoints/...`  
+  where `RUN_TAG="${job_name}__${config_stem}__$(date +%Y%m%d_%H%M%S)__$(hostname -s)"`, and `job_name` / `wandb.project` / `output_dir` are parsed from each YAML with small `grep`/`sed` helpers.
+- **During training**: background loop every `RCLONE_SLEEP_SEC` (default 600s) runs  
+  `rclone move … --filter '+ step_*/**' --filter '- **' --min-age "${RCLONE_MIN_AGE:-15m}" --delete-empty-src-dirs`  
+  so **`checkpoints/last/` is not moved** until training finishes.
+- **After training**: stop background job, **final** `rclone move` (no step filter) moves **`last/`** and any remainder; on success, **`touch "$OUTPUT_DIR/.complete"`**. If rclone is disabled, still writes `.complete` after a successful training run so the sweep does not restart blindly.
+- **Skip order**: if `"$OUTPUT_DIR/.complete"` exists → skip; else if `outputs/.../checkpoints/last` or `/root/data/lehome_workspace/.../last` exists → skip (same as original).
+- **Training CLI**: keeps `--dataset.video_backend=pyav` (VM-safe vs missing FFmpeg libs for torchcodec).
+- **Env knobs**: `ENABLE_RCLONE_CHECKPOINT_SYNC` (default 0), `RCLONE_REMOTE` (default `gdrive`), `RCLONE_MIN_AGE`, `RCLONE_SLEEP_SEC`.
+
+**Authoritative source**: same implementation now lives in [`lehome_workspace/run_2run_dino_sweep.sh`](./run_2run_dino_sweep.sh) (~230 lines). Key fragments:
+
+```bash
+WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+RCLONE_BASE="LeHome/models/${WANDB_PROJECT}/${JOB_NAME}/${CONFIG_STEM}__${RUN_TAG}"
+RCLONE_DST="${RCLONE_REMOTE_NAME}:${RCLONE_BASE}/"
+rclone move "$LOOP_SRC" "${RCLONE_DST}checkpoints" \
+  --filter '+ step_*/**' --filter '- **' --min-age "$RCLONE_MIN_AGE" --delete-empty-src-dirs
+# after training: rclone move "$CHECK_SRC" "${RCLONE_DST}checkpoints" --delete-empty-src-dirs
+# touch "$OUTPUT_DIR/.complete"
+```
+
+**Operational note**: To re-run a finished trial for the same YAML/output path, remove `"$output_dir/.complete"` (and any partial local checkpoints) on the VM.
+
+### 2026-04-26 20:05 — Fix: torchcodec FFmpeg missing → switch to pyav video backend
+
+**Problem**: `run_2run_dino_sweep.sh` crashed in the DataLoader with:
+```
+RuntimeError: Could not load libtorchcodec. FFmpeg shared libraries not found
+(libavutil.so.59/58/57 and libavdevice.so.58 all missing).
+```
+The VM's LeRobot install uses `torchcodec` as the default video backend, which requires system FFmpeg shared libraries that were not installed.
+
+**Fix 1** — `lehome_workspace/run_2run_dino_sweep.sh`:
+Added `--dataset.video_backend=pyav` to the training command. `pyav` decodes video frames via the Python `av` package (already installed as a LeRobot dependency) without needing system FFmpeg `.so` files.
+
+**Diff**:
+```diff
+ "$VENV_PYTHON" "$WORKSPACE_DIR/lerobot_train_with_plugins.py" \
+     --config_path="$CONFIG" \
+     --steps="$STEPS" \
+     --eval_freq="$EVAL_FREQ" \
+     --dataset.image_transforms.enable=false \
++    --dataset.video_backend=pyav \
+     --num_workers="$WORKERS" \
+```
+
+**Fix 2** — `lehome_workspace/setup_lehome.sh`:
+Added `ffmpeg` to the `apt install` block so future fresh VM setups will have the system FFmpeg libraries available (allowing `torchcodec` to work as well).
+
+**Diff**:
+```diff
+ sudo apt install -y \
+     libglu1-mesa libgl1 libegl1 libxrandr2 \
+     libxinerama1 libxcursor1 libxi6 libxext6 libx11-6 \
+-    zip psmisc  # psmisc includes 'fuser'
++    zip psmisc \
++    ffmpeg  # required by torchcodec video backend
+```
+
+### 2026-04-26 18:44:41 — Fix: `setup_lehome.sh` paths use `$HOME` (not literal `~`)
+**Files modified**:
+- `lehome_workspace/setup_lehome.sh`
+
+**Description**:
+- `WORKSPACE_DIR`, `REPO_DIR`, and `UV_BIN_DIR` now use `${HOME}/data/...` so `cd`, `mkdir`, and `uv` install see real absolute paths (tilde inside `"..."` assignments stays literal and broke `cd "$REPO_DIR"` on the VM).
+- `.bashrc` snippets now append `export HF_HOME="$HOME/data/huggingface_cache"`, `export UV_CACHE_DIR="$HOME/data/uv_cache"`, and `export PATH="$HOME/data/.local/bin:$PATH"` so new shells expand home correctly.
+- Session exports use `${HOME}/data/...` and `PATH="${UV_BIN_DIR}:${PATH}"`.
+
+**Diff (configuration block)**:
+```bash
+# before
+WORKSPACE_DIR="~/data/lehome_workspace"
+REPO_DIR="$WORKSPACE_DIR/lehome-challenge"
+UV_BIN_DIR="~/data/.local/bin"
+# after
+WORKSPACE_DIR="${HOME}/data/lehome_workspace"
+REPO_DIR="${WORKSPACE_DIR}/lehome-challenge"
+UV_BIN_DIR="${HOME}/data/.local/bin"
+```
+
+**VM note**: If `.bashrc` already contains the old `~/data/...` lines, remove those duplicates after sync so only the `$HOME`-based exports remain.
+
 ### 2026-04-26 12:00:00 — DINOv2 MAP + registers variant + 2-run sweep + W&B
 **Files modified / added**:
 - `lehome_workspace/lerobot_policy_dino/src/lerobot_policy_dino/configuration_dino_diffusion.py`
