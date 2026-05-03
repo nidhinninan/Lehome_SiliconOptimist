@@ -13,6 +13,11 @@ updated_file_*.zip
 .geminiignore
 .agentrules
 .geminiignore
+To_RUN_onVM_cmds.txt
+Silicon-Optimist_LeHome.zip
+Silicon-Optimist_LeHome/
+SOLVERS AR solvers for.txt 
+Personal_Learning
 
 # Python bytecode (do not mirror build artifacts)
 __pycache__/

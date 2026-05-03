@@ -13,7 +13,7 @@ sudo chown -R principia:principia /data/lehome_workspace
 ______
 # clone files manually
 cd /data/lehome_workspace
-git clone -b vastai_instance --single-branch https://nidhinninan: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@github.com/nidhinninan/Lehome_SiliconOptimist.git
+git clone -b vastai_instance --single-branch https://nidhinninan:<$GIT_TOKEN>@github.com/nidhinninan/Lehome_SiliconOptimist.git
 ______
 # need this to use the rsynce between the private clone (adapted) repo and the fresh repo downloaded form the hackathon official repo
 sudo apt update
@@ -26,8 +26,8 @@ rsync -av \
   --exclude "lehome-challenge/Assets/" \
   --exclude "lehome-challenge/Datasets/" \
   --exclude "lehome-challenge/third_party/" \
-  ~/data/Lehome_SiliconOptimist/lehome_workspace/ \
-  ~/data/lehome_workspace/
+  /data/Lehome_SiliconOptimist/lehome_workspace/ \
+  /data/lehome_workspace/
   
 ```
 
@@ -81,6 +81,10 @@ docker login
 
 python download_wandb_model.py --project lehome_challenge --artifact "nidhinninan_ucmo_schoolid/lehome_challenge/policy_dino_diffusion-seed_1000-dataset_repo_dp-125000:v0" --out pretrained_model
 
+# WandB login
+pip install -U wandb
+wandb login
+
 # docker login
 docker login -u nninspaceexp
 
@@ -104,8 +108,6 @@ I have downloaded my custom DINOv2 MAP+Registers checkpoint to pretrained_model/
 
 Please read lehome_workspace/configs/sweep_dino_map_registers.yaml and lehome_workspace/lerobot_policy_dino/src/lerobot_policy_dino/modeling_dino_diffusion.py if you need to verify the exact input shapes or dependencies.
 ```
-
-
 
 
 
@@ -213,3 +215,49 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
   EXTRA_TRAIN_ARGS="--dataset.image_transforms.enable=true --num_workers=16" \
   RESUME=true ./run_train_dino_dp_top_short_150k.sh
 ```
+
+Option A (if it was already built with that exact tag)
+docker push nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell
+
+Option B (retag the latest-built local image, then push)
+docker images --format '{{.Repository}}:{{.Tag}}\t{{.CreatedAt}}' | head
+
+# pick the correct local image ref, then:
+docker tag <LOCAL_IMAGE_REF> nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell
+docker push nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell
+
+Option C (rebuild + push in one shot using your script)
+From lehome-challenge/dummy_docker_policy:
+
+
+./build_docker_submission.sh --skip-download \
+  --image-tag nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell \
+  --push-image-tag
+
+How to rebuild + upload (run on your GPU VM where Docker daemon is running)
+From lehome-challenge/dummy_docker_policy/:
+
+Ensure weights exist at dummy_docker_policy/pretrained_model/model.safetensors
+Either download via W&B:
+./build_docker_submission.sh \
+  --wb-artifact "<YOUR_WANDB_ARTIFACT_NAME>" \
+  --image-tag "nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_fixed-queues"
+Build + push the same tag to your registry (Docker Hub in this example):
+./build_docker_submission.sh \
+  --skip-download \
+  --image-tag "nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_fixed-queues" \
+  --push-image-tag
+
+How to rebuild + upload (run on your GPU VM where Docker daemon is running)
+From lehome-challenge/dummy_docker_policy/:
+
+Ensure weights exist at dummy_docker_policy/pretrained_model/model.safetensors
+Either download via W&B:
+./build_docker_submission.sh \
+  --wb-artifact "<YOUR_WANDB_ARTIFACT_NAME>" \
+  --image-tag "nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_fixed-queues"
+Build + push the same tag to your registry (Docker Hub in this example):
+./build_docker_submission.sh \
+  --skip-download \
+  --image-tag "nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_fixed-queues" \
+  --push-image-tag
