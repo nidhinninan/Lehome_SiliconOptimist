@@ -2,6 +2,7 @@ import torch
 import numpy as np
 from typing import Dict, Any, Optional, Set, Union
 from torch import Tensor
+from pathlib import Path
 
 from lerobot.configs.policies import PreTrainedConfig
 from lerobot.policies.factory import make_policy, make_pre_post_processors
@@ -14,6 +15,29 @@ from .base_policy import BasePolicy
 from .registry import PolicyRegistry
 
 logger = get_logger(__name__)
+
+def _validate_pretrained_model_dir(policy_path: str) -> None:
+    p = Path(policy_path)
+    if not p.exists():
+        raise FileNotFoundError(f"--policy_path does not exist: {policy_path}")
+    if not p.is_dir():
+        raise NotADirectoryError(f"--policy_path must be a directory: {policy_path}")
+
+    cfg = p / "config.json"
+    if not cfg.exists():
+        raise FileNotFoundError(
+            "LeRobot pretrained model is missing config.json. "
+            f"Expected: {cfg} (did you point --policy_path at the correct pretrained_model/ folder?)"
+        )
+
+    # Most LeRobot pretrained models store weights as model.safetensors; keep this as a helpful hint.
+    weights_ok = any((p / name).exists() for name in ("model.safetensors", "pytorch_model.bin"))
+    if not weights_ok:
+        raise FileNotFoundError(
+            "LeRobot pretrained model appears to be missing weights "
+            "(expected model.safetensors or pytorch_model.bin) under "
+            f"{policy_path}"
+        )
 
 
 @PolicyRegistry.register("lerobot")
@@ -50,6 +74,8 @@ class LeRobotPolicy(BasePolicy):
         self.task_description = task_description
         
         logger.info(f"Loading LeRobot policy from: {policy_path}")
+
+        _validate_pretrained_model_dir(policy_path)
         
         # 1. Load Metadata
         meta = LeRobotDatasetMetadata(repo_id="lehome", root=dataset_root)

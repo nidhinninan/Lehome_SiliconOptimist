@@ -15,7 +15,7 @@ echo "🚀 Starting LeHome Challenge Setup..."
 # Phase 1: Storage and Environment Setup
 echo "📂 [1/6] Setting up storage and environment variables..."
 sudo mkdir -p "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache "$UV_BIN_DIR"
-sudo chown -R principia:principia "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache "$UV_BIN_DIR"
+sudo chown -R $USER:$USER "$WORKSPACE_DIR" /data/huggingface_cache /data/uv_cache "$UV_BIN_DIR"
 
 # Update .bashrc idempotently
 update_bashrc() {
@@ -54,7 +54,7 @@ echo "   ✅ uv installed at $UV_BIN_DIR/uv"
 # Phase 4: Repository Cloning
 echo "🔗 [4/6] Cloning repositories..."
 sudo mkdir -p "$WORKSPACE_DIR"
-sudo chown -R principia:principia "$WORKSPACE_DIR"
+sudo chown -R $USER:$USER "$WORKSPACE_DIR"
 
 cd "$WORKSPACE_DIR"
 
