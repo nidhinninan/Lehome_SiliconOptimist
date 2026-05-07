@@ -288,6 +288,7 @@ def eval(args: argparse.Namespace, simulation_app: Any) -> None:
                 "policy_path": args.policy_path,
                 "dataset_root": args.dataset_root,
                 "task_description": args.task_description,
+                "task_name": args.task,
             }
         )
     elif args.policy_type == "classifier_router":

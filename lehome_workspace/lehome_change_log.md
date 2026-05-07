@@ -9,6 +9,67 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-05-07 18:05:00 UTC — `lerobot_eval_with_plugins.py`: DINO-only plugin requirement
+
+**Why**: Eval runs using DINO diffusion checkpoints should not require `lerobot_policy_clip` on disk or on `sys.path`.
+
+**File**: `lehome_workspace/lehome-challenge/lerobot_eval_with_plugins.py`
+
+**Changes**:
+- Validate and import only `lerobot_policy_dino` (`…/lerobot_policy_dino/src` must exist).
+- Removed mandatory `lerobot_policy_clip` directory check and import loop.
+- Docstring notes that CLIP-based policies need the clip plugin handled separately.
+
+---
+
+### 2026-05-07 16:50:00 UTC — Eval wrapper + LeRobot policy hardening (plugins path, config decode, action dim)
+
+**Why**: Make `lerobot_eval_with_plugins.py` deterministic when plugin repos sit outside the default layout; fail fast instead of silent warnings. Align `PreTrainedConfig.from_pretrained` with LeRobot’s `cli_overrides` list API; fix `_infer_action_dim` bug and use `--task` for bimanual heuristic when metadata is incomplete.
+
+**Files**:
+
+1. **`lehome_workspace/lehome-challenge/lerobot_eval_with_plugins.py`**
+   - Document `LEHOME_PLUGIN_WORKSPACE` (parent of `lerobot_policy_dino/` and `lerobot_policy_clip/`).
+   - `_plugin_workspace_dir()` resolves env override or default `parents[1]` of this script.
+   - Require both `…/lerobot_policy_*/src` directories; raise `RuntimeError` with layout hint if missing.
+   - On failed plugin import, raise `RuntimeError` (no silent warn-and-continue).
+   - Flush stdout on success prints.
+
+2. **`lehome_workspace/lehome-challenge/scripts/eval_policy/lerobot_policy.py`**
+   - `PreTrainedConfig.from_pretrained(..., cli_overrides=[])` (was `{}`).
+   - Optional `task_name`; stored as `self.task_name` for `_infer_action_dim`.
+   - `_infer_action_dim`: use `state_shape` for observation.state fallback (was erroneous `action_shape` guard).
+   - Heuristic: `"Bi"` / `"bi"` checked on `f"{task_name} {task_description}"`.
+   - Drop unused `Union` import.
+
+3. **`lehome_workspace/lehome-challenge/scripts/utils/evaluation.py`**
+   - For `policy_type == "lerobot"`, pass `"task_name": args.task` into `PolicyRegistry.create`.
+
+**Diff excerpts**:
+
+```python
+# lerobot_eval_with_plugins.py — workspace resolution
+def _plugin_workspace_dir() -> Path:
+    raw = os.environ.get("LEHOME_PLUGIN_WORKSPACE", "").strip()
+    if raw:
+        p = Path(raw).expanduser().resolve()
+        if not p.is_dir():
+            raise RuntimeError(...)
+        return p
+    return Path(__file__).resolve().parents[1]
+
+# lerobot_policy.py
+policy_cfg = PreTrainedConfig.from_pretrained(policy_path, cli_overrides=[])
+# ...
+if state_shape and len(state_shape) > 0:
+    action_dim = state_shape[0]
+hint = f"{self.task_name} {self.task_description}"
+
+# evaluation.py (lerobot branch)
+policy_kwargs.update({..., "task_name": args.task})
+```
+
+---
 ### 2026-04-30 22:10:00 UTC — Docker submission: upstream merge + VM parity (requirements, BYOP staging, build script, gitignore)
 
 **Why**: Replicate VM fixes locally after GDrive sync dropped build context pieces; merge missing paths from official `lehome-official/lehome-challenge` without overwriting customized submission files.

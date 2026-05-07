@@ -1,6 +1,6 @@
 # LeHome VM Transfer List
 
-**Last Updated**: 2026-04-30 22:10:00 UTC
+**Last Updated**: 2026-05-07 18:05:00 UTC
 
 The following files must be copied to your VM machine to match the current local research state.
 
@@ -10,7 +10,9 @@ These files should overwrite the existing ones in your `lehome-challenge` clone.
 - `source/lehome/setup.py` (Updated: 2026-04-29 20:15:00 UTC — editable install: use stdlib `tomllib` on Python 3.11+ so isolated builds do not require PyPI `toml`; fixes `ModuleNotFoundError: No module named 'toml'` during `uv pip install -e source/lehome`)
 - `scripts/eval_policy/__init__.py` (Updated: 2026-04-11 15:19:36)
 - `scripts/utils/eval_utils.py` (Updated: 2026-04-11 15:19:36)
-- `scripts/utils/evaluation.py` (Updated: 2026-04-11 15:19:36)
+- `scripts/utils/evaluation.py` (Updated: 2026-05-07 16:50:00 UTC — pass `task_name=args.task` into `LeRobotPolicy` for bimanual action-dim fallback)
+- `lerobot_eval_with_plugins.py` (Updated: 2026-05-07 18:05:00 UTC — `LEHOME_PLUGIN_WORKSPACE`; **DINO plugin only** — validate/import `lerobot_policy_dino`; clip not required)
+- `scripts/eval_policy/lerobot_policy.py` (Updated: 2026-05-07 16:50:00 UTC — `cli_overrides=[]`, `task_name`, fix `_infer_action_dim` state-shape branch + heuristic uses task id + description)
 - `scripts/utils/parser.py` (Updated: 2026-04-11 15:19:36)
 - `configs/train_dp.yaml` (Updated: 2026-04-11 15:19:36)
 

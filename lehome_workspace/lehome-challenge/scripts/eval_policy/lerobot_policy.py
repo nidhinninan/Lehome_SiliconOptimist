@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from typing import Dict, Any, Optional, Set, Union
+from typing import Dict, Any, Optional, Set
 from torch import Tensor
 from pathlib import Path
 
@@ -58,7 +58,8 @@ class LeRobotPolicy(BasePolicy):
         policy_path: str, 
         dataset_root: str, 
         task_description: str, 
-        device: str = "cuda"
+        device: str = "cuda",
+        task_name: Optional[str] = None,
     ):
         """
         Initialize the LeRobot policy.
@@ -68,10 +69,12 @@ class LeRobotPolicy(BasePolicy):
             dataset_root: Path to the dataset root (used for metadata).
             task_description: Text description of the task (for VLA models).
             device: Device to run the model on ('cpu' or 'cuda').
+            task_name: Isaac Lab task id (e.g. ``--task``); used to infer bimanual action dim when metadata is incomplete.
         """
         super().__init__()
         self.device = torch.device(device)
         self.task_description = task_description
+        self.task_name = task_name or ""
         
         logger.info(f"Loading LeRobot policy from: {policy_path}")
 
@@ -81,7 +84,7 @@ class LeRobotPolicy(BasePolicy):
         meta = LeRobotDatasetMetadata(repo_id="lehome", root=dataset_root)
         
         # 2. Load Policy Config
-        policy_cfg = PreTrainedConfig.from_pretrained(policy_path, cli_overrides={})
+        policy_cfg = PreTrainedConfig.from_pretrained(policy_path, cli_overrides=[])
         policy_cfg.pretrained_path = policy_path
         
         # 3. Filter Metadata (Logic from original create_il_policy)
@@ -107,7 +110,7 @@ class LeRobotPolicy(BasePolicy):
         )
         
         # 6. Infer Action Dimension (Logic from original run_evaluation_loop)
-        self.action_dim = self._infer_action_dim(meta, task_description)
+        self.action_dim = self._infer_action_dim(meta)
         logger.info(f"LeRobotPolicy initialized. Action dim: {self.action_dim}")
 
     def reset(self):
@@ -165,8 +168,8 @@ class LeRobotPolicy(BasePolicy):
             if feature.startswith("observation."):
                 del meta.features[feature]
 
-    def _infer_action_dim(self, meta: LeRobotDatasetMetadata, task_description: str) -> int:
-        """Infer action dimension from metadata or task description."""
+    def _infer_action_dim(self, meta: LeRobotDatasetMetadata) -> int:
+        """Infer action dimension from metadata or task name / description heuristic."""
         action_dim = None
         
         # Try metadata 'action' shape
@@ -179,12 +182,13 @@ class LeRobotPolicy(BasePolicy):
         if (action_dim is None and meta and hasattr(meta, "features") 
             and "observation.state" in meta.features):
             state_shape = meta.features["observation.state"].get("shape", [])
-            if action_shape and len(state_shape) > 0:
+            if state_shape and len(state_shape) > 0:
                 action_dim = state_shape[0]
                 
-        # Final fallback based on task name (heuristic)
+        # Final fallback based on task id + description (heuristic for bimanual)
         if action_dim is None:
-            if "Bi" in task_description or "bi" in task_description.lower():
+            hint = f"{self.task_name} {self.task_description}"
+            if "Bi" in hint or "bi" in hint.lower():
                 action_dim = 12  # Dual-arm
             else:
                 action_dim = 6   # Single-arm
