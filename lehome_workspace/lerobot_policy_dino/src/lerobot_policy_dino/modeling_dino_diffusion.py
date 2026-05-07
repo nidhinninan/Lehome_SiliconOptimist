@@ -24,6 +24,7 @@ from transformers import Dinov2Model
 # OBS_ROBOT / OBS_ENV are simple string keys defined in the LeRobot source.
 OBS_ROBOT = "observation.state"
 OBS_ENV = "observation.environment_state"
+OBS_IMAGES = "observation.images"
 from lerobot.policies.diffusion.modeling_diffusion import (
     DiffusionConditionalUnet1d,
     DiffusionPolicy,
@@ -175,12 +176,30 @@ class DinoDiffusionModel(nn.Module):
         B = batch[OBS_ROBOT].shape[0]
 
         # 1. Encode each camera independently.
+        # During select_action(), DiffusionPolicy queues only OBS_ROBOT/OBS_IMAGES/ACTION,
+        # so per-camera image keys are not available anymore.
         image_features = []
-        for img_key in self.config.image_features:
-            img = batch[img_key]        # (B, N_obs, C, H, W)
-            _, N, C, H, W = img.shape
-            feat = self._encode_images(img.view(B * N, C, H, W))  # (B*N, feature_dim)
-            image_features.append(feat.view(B, N, -1))            # (B, N, feature_dim)
+        if OBS_IMAGES in batch:
+            stacked_images = batch[OBS_IMAGES]  # (B, N_obs, N_cams, C, H, W)
+            n_cams = stacked_images.shape[2]
+            expected_cams = len(self.config.image_features)
+            if n_cams != expected_cams:
+                raise ValueError(
+                    "Camera count mismatch between OBS_IMAGES and config.image_features: "
+                    f"{n_cams} != {expected_cams}"
+                )
+            for cam_idx in range(n_cams):
+                img = stacked_images[:, :, cam_idx, :, :, :]      # (B, N_obs, C, H, W)
+                _, N, C, H, W = img.shape
+                feat = self._encode_images(img.reshape(B * N, C, H, W))
+                image_features.append(feat.view(B, N, -1))
+        else:
+            # Fallback path for direct calls that still pass named camera keys.
+            for img_key in self.config.image_features:
+                img = batch[img_key]        # (B, N_obs, C, H, W)
+                _, N, C, H, W = img.shape
+                feat = self._encode_images(img.reshape(B * N, C, H, W))
+                image_features.append(feat.view(B, N, -1))
 
         # 2. Collect robot state (B, N, state_dim) and optionally env state.
         all_feats = [batch[OBS_ROBOT]]   # robot state: (B, N, state_dim)
@@ -229,7 +248,8 @@ class DinoDiffusionModel(nn.Module):
 
         self.noise_scheduler.set_timesteps(self.num_inference_steps)
         for t in self.noise_scheduler.timesteps:
-            noise_pred = self.unet(sample, t, global_cond=global_cond)
+            timesteps = torch.full(sample.shape[:1], t, dtype=torch.long, device=sample.device)
+            noise_pred = self.unet(sample, timesteps, global_cond=global_cond)
             sample = self.noise_scheduler.step(noise_pred, t, sample).prev_sample
 
         return sample

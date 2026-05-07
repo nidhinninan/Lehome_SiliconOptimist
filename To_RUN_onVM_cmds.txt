@@ -28,6 +28,17 @@ rsync -av \
   --exclude "lehome-challenge/third_party/" \
   /data/Lehome_SiliconOptimist/lehome_workspace/ \
   /data/lehome_workspace/
+
+
+rsync -av \
+  --exclude ".git/" \
+  --exclude "lehome-challenge/.venv/" \
+  --exclude "lehome-challenge/Assets/" \
+  --exclude "lehome-challenge/Datasets/" \
+  --exclude "lehome-challenge/third_party/" \
+  --exclude "lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model/" \
+  /data/lehome_workspace/ \
+  /data/Lehome_SiliconOptimist/lehome_workspace/ 
   
 ```
 
