@@ -1,0 +1,90 @@
+Here is a concise breakdown of what shows up in `eval_top_long_fast.log`, grouped by kind (many lines repeat the same underlying issue).
+
+## 1. `cat: ... cpufreq/scaling_governor` (line 41)
+
+Isaac Sim’s startup script tries to read CPU frequency governors. On your kernel/VM those sysfs paths are missing, so `cat` prints an error.
+
+**Fix:** Ignore it, or patch the launcher script to silence the `cat` when the path does not exist. It does not affect simulation correctness.
+
+---
+
+## 2. PyTorch `UserWarning`: RTX 5080 `sm_120` not supported (lines 700–705)
+
+Your PyTorch wheel only supports up to `sm_90`. The RTX 5080 is **Blackwell (`sm_120`)**, so PyTorch **cannot use that GPU for CUDA kernels** and effectively treats it as unsupported (your log also shows `[INFO][AppLauncher]: Using device: cpu`).
+
+**Fix:** Install a **PyTorch build that includes `sm_120`** (nightly or a release that lists Blackwell), or run policy inference on **CPU** until such a build exists. This is separate from Isaac Sim’s own GPU use.
+
+---
+
+## 3. PhysX: `PxgCudaDeviceMemoryAllocator failed to allocate 268435456 bytes` (line 732)
+
+PhysX’s **GPU** path tried to reserve **256 MiB** on the device and failed (`Result = 2` is an allocation failure). Common causes: **no usable CUDA context for PhysX**, **VRAM already heavily used**, or **driver/runtime mismatch** with a very new GPU.
+
+**Fix:** In Isaac Lab / PhysX scene settings, try **CPU physics** or reduce PhysX GPU memory budget; ensure **one consistent CUDA stack** with Isaac Sim; close other GPU consumers. If you need GPU cloth/particles, PhysX GPU must succeed first.
+
+---
+
+## 4. PhysX: `Unable to create scene` (line 733)
+
+Direct follow-on from the failed GPU allocator: the **GPU-backed PhysX scene** could not be created.
+
+**Fix:** Same as (3): get GPU PhysX working or **force CPU dynamics** so scene creation does not depend on that allocation.
+
+---
+
+## 5. PhysX: `attachShape: non-SDF triangle mesh ... not supported for non-kinematic PxRigidDynamic` (line 734)
+
+Something in the stage attaches a **raw triangle mesh** (or similar) as a **simulation** collider on a **dynamic** rigid body. PhysX does not allow that unless you use **convex decomposition**, **SDF mesh**, **tetra mesh in supported mode**, etc.
+
+**Fix:** In USD / Isaac Lab asset setup: use **convex hulls / convex decomposition**, **SDF collision** for complex meshes, or mark the body **kinematic** if it must stay triangle-mesh. This is an **asset/collision recipe** fix in the garment or prop setup.
+
+---
+
+## 6. PhysX: particles / particle cloth “only supported on GPU” (lines 735–736)
+
+The scene uses **GPU particle / particle cloth**, but the **physics scene does not have GPU dynamics** enabled (and in your log, GPU PhysX already failed).
+
+**Fix:** Enable **GPU dynamics** on the physics scene **and** fix (3) so GPU PhysX actually runs, **or** disable particle cloth / switch to a non-GPU cloth path if the stack allows.
+
+---
+
+## 7. `Possible version incompatibility` — `IStageReaderWriter` v0.14 vs v0.13 (line 737)
+
+Extension **ABI/version skew** between two loaded pieces (often benign if everything still runs).
+
+**Fix:** Align **Isaac Sim / Isaac Lab / extensions** to versions documented as compatible; upgrade/downgrade as a set. Only chase this if you see real fabric-related crashes.
+
+---
+
+## 8. `zenity` + AT-SPI / atk-bridge warnings (lines 739–758)
+
+Something (often a **file dialog** or GUI helper) launched **zenity** in an environment with **incomplete desktop / accessibility** (common on servers, containers, minimal X).
+
+**Fix:** Run headless / disable UI prompts, set `DISPLAY` appropriately, or ignore if dialogs still work. Not related to physics.
+
+---
+
+## 9. `Replicate physics: True` + **~550 s** to start simulation (line 759)
+
+Simulation start took **~9 minutes**, which usually means **retrying, blocking, or pathological init** (here, consistent with **broken or partial GPU PhysX + heavy scene**).
+
+**Fix:** Address (3)–(6) and reduce scene cost; consider `replicate_physics` / env layout if you scale envs.
+
+---
+
+## 10. Vulkan / RTX: `ERROR_OUT_OF_DEVICE_MEMORY` and `AccelStruct` failures (many lines from ~764 onward)
+
+The **GPU ran out of memory** for Vulkan allocations. **`AccelStruct`** points at **RTX ray-tracing acceleration structures** (rendering), not your Python code. The repeated **`Releasing memory that isn't owned`** lines are very often **allocator confusion after OOM**, not the original bug.
+
+**Fix:** Lower **RTX / rendering** memory use: smaller resolution, fewer viewports, lower RTX quality, disable heavy RT features if possible, **restart Kit** between long runs, ensure no **VRAM leak** from repeated env loads. **Free other GPU processes.** With **~16 GB** on the 5080, pathological scenes + RTX + PhysX can exhaust VRAM.
+
+---
+
+### Big-picture “quick fix” order
+
+1. **Stabilize VRAM:** reduce RTX/render settings and process count; restart between episodes if memory grows.  
+2. **Pick a physics path:** either **fix GPU PhysX** (driver + Sim versions + scene GPU flag) or **run physics on CPU** and adjust cloth/particles accordingly.  
+3. **Fix the dynamic + triangle-mesh collision** setup (convex / SDF / kinematic).  
+4. **Update PyTorch** for `sm_120` if you need GPU inference on the 5080.
+
+If you tell me whether you must use **GPU cloth** and whether you run **headless**, the same log can be narrowed to a minimal config change list for this repo.
