@@ -1,6 +1,6 @@
 # LeHome VM Transfer List
 
-**Last Updated**: 2026-05-07 18:05:00 UTC
+**Last Updated**: 2026-05-08 10:20:00 UTC
 
 The following files must be copied to your VM machine to match the current local research state.
 
@@ -20,10 +20,12 @@ These files should overwrite the existing ones in your `lehome-challenge` clone.
 - `dummy_docker_policy/build_docker_submission.sh` (Updated: 2026-04-30 22:10:00 UTC — auto `requirements.txt` from template + `rsync` stage `lerobot_policy_dino` from `../../lerobot_policy_dino` when missing; `PRETRAINED_PATH` before download; W&B + docker build + optional HF push; `./build_docker_submission.sh --help`)
 - `dummy_docker_policy/requirements.txt` (Updated: 2026-04-30 22:10:00 UTC — same pins as `requirements.submission.template` for `COPY requirements.txt` in Docker)
 - `dummy_docker_policy/Dockerfile.submission` (Updated: 2026-04-30 22:10:00 UTC — comment: staging via build script / plain build context)
+- `dummy_docker_policy/Dockerfile.patch` (Updated: 2026-05-08 10:20:00 UTC — micro rebuild layer `FROM FullDP-v2_Blackwell`; copies fixed `policy.py` and `meta/` only)
 - `dummy_docker_policy/server.py` (Updated: 2026-04-30 18:00:00 UTC — upstream LeHome policy HTTP server; keep unmodified)
 - `dummy_docker_policy/requirements.submission.template` (Updated: 2026-04-30 18:00:00 UTC — seed for `requirements.txt`; add `lerobot` pins to match training)
 - `dummy_docker_policy/README.md`, `dummy_docker_policy/Dockerfile` (Updated: 2026-04-30 22:10:00 UTC — add-only merge from `lehome-official/lehome-challenge` `main`; official minimal Docker sample; submission flow uses `Dockerfile.submission`)
-- `dummy_docker_policy/Dockerfile.submission`, `dummy_docker_policy/download_wandb_model.py`, `dummy_docker_policy/policy.py` — keep in sync with VM for Docker image bake (Updated: 2026-04-30 18:50:00 UTC — Reconstructed DINOv2 pre-cache and BYOP install in Dockerfile; policy.py implementation; W&B artifact ref parsing hardened)
+- `dummy_docker_policy/Dockerfile.submission`, `dummy_docker_policy/download_wandb_model.py`, `dummy_docker_policy/policy.py` — keep in sync with VM for Docker image bake (Updated: 2026-05-08 10:20:00 UTC — policy.py now uses LeRobot pre/post processors with metadata-backed normalization; submission Dockerfile unchanged)
+- `dummy_docker_policy/meta/` (Updated: 2026-05-08 10:20:00 UTC — normalization metadata directory copied into `/app/meta` by `Dockerfile.patch`)
 - `.gitignore` (Updated: 2026-04-30 22:10:00 UTC — ignore `dummy_docker_policy/lerobot_policy_dino/` staged copy)
 - `scripts/eval_policy/classifier_router_policy.py` (Updated: 2026-04-11 15:19:36)
 - `scripts/garment_classifier/sanity_check_first_frames.py` (New: 2026-04-12 02:40:00)

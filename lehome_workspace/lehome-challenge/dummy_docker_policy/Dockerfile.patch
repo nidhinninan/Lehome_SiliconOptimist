@@ -1,0 +1,20 @@
+# Micro-rebuild to fix normalization and action space issues in the LeHome submission.
+# This image layers on top of the original submission to ensure minimal changes.
+
+# 1. Start from the original submitted image
+FROM nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell
+
+# 2. Set working directory
+WORKDIR /app
+
+# 3. Copy the fixed policy.py (which now includes normalization logic)
+COPY policy.py /app/policy.py
+
+# 4. Copy the dataset metadata (normalization stats)
+# NOTE: You must copy the 'meta' folder from your training dataset 
+# into the 'dummy_docker_policy/meta' directory on the host before building.
+COPY meta /app/meta
+
+# 5. The base image already has the entrypoint set to run policy.py
+# If not, we can re-specify it here:
+CMD ["python", "policy.py"]

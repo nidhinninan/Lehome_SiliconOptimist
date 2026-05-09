@@ -1,0 +1,794 @@
+✅ Registered plugin: lerobot_policy_dino
+[INFO][AppLauncher]: Using device: cpu
+[INFO][AppLauncher]: Loading experience file: /data/lehome_workspace/lehome-challenge/third_party/IsaacLab/apps/isaaclab.python.kit
+[0.097s] Failed to solve some dependencies locally, syncing with extension registry...
+[0.105s] [ext: omni.kit.async_engine-0.0.3] startup
+DEBUG:asyncio:Using selector: EpollSelector
+[0.117s] [ext: omni.client.lib-1.1.0] startup
+[0.229s] [ext: omni.kit.registry.nucleus-0.0.0] startup
+INFO:omni.kit.registry.nucleus.registry_manager:'trusted' is not set for registry 'kit/default' in '/exts/omni.kit.registry.nucleus/registries'
+INFO:omni.kit.registry.nucleus.auth_manager:switch auth for host: ovextensionsprod.blob.core.windows.net, account: :
+INFO:omni.kit.registry.nucleus.registry_manager:'trusted' is not set for registry 'kit/sdk' in '/exts/omni.kit.registry.nucleus/registries'
+INFO:omni.kit.registry.nucleus.registry_manager:'trusted' is not set for registry 'kit/community' in '/exts/omni.kit.registry.nucleus/registries'
+INFO:omni.kit.registry.nucleus.auth_manager:switch auth for host: dw290v42wisod.cloudfront.net, account: :
+[5.051s] Pulling extension: `omni.kit.pip_archive-0.0.0` from the registry.
+INFO:packman.link:Created symbolic link
+[7.221s] Extension: `omni.kit.pip_archive-0.0.0` was installed.
+[7.221s] Pulling extension: `isaacsim.asset.importer.urdf-2.4.31` from the registry.
+INFO:packman.link:Created symbolic link
+INFO:packman.link:Created symbolic link
+[7.899s] Extension: `isaacsim.asset.importer.urdf-2.4.31` was installed.
+[7.924s] [ext: omni.metrics.core-0.0.3] startup
+[7.924s] [ext: omni.blobkey-1.1.2] startup
+[7.926s] [ext: omni.stats-1.0.1] startup
+[8.131s] [ext: omni.datastore-0.0.0] startup
+[8.167s] [ext: omni.client-1.3.0] startup
+[8.172s] [ext: omni.ujitso.default-1.0.0] startup
+[8.175s] [ext: omni.hsscclient-1.1.2] startup
+[8.184s] [ext: omni.gpu_foundation.shadercache.vulkan-1.0.0] startup
+[8.191s] [ext: omni.assets.plugins-0.0.0] startup
+[8.201s] [ext: omni.gpu_foundation-0.0.0] startup
+[8.433s] [ext: carb.windowing.plugins-1.0.0] startup
+[8.554s] [ext: omni.kit.renderer.init-0.0.0] startup
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.105.08    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4070 Ti SUPER | Yes: 0 |     | 16622   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2705      | 880d53ae.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-87-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: AMD EPYC 7702P 64-Core Processor
+| Cores: 15 | Logical Cores: 15
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 50538 | Free Memory: 45840
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+cat: '/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor': No such file or directory
+[10.093s] [ext: omni.materialx.libs-1.0.7] startup
+[10.107s] [ext: omni.kit.telemetry-0.5.2] startup
+[10.222s] [ext: omni.kit.pipapi-0.0.0] startup
+[10.233s] [ext: omni.usd.config-1.0.6] startup
+[10.245s] [ext: omni.gpucompute.plugins-0.0.0] startup
+[10.250s] [ext: omni.usd.libs-1.0.1] startup
+[10.461s] [ext: omni.kit.pip_archive-0.0.0] startup
+[10.462s] [ext: omni.mdl-56.0.3] startup
+[10.640s] [ext: omni.iray.libs-0.0.0] startup
+[10.648s] [ext: omni.mdl.neuraylib-0.2.12] startup
+[10.655s] [ext: omni.kit.usd.mdl-1.1.5] startup
+[10.790s] [ext: omni.kit.loop-isaac-1.3.7] startup
+[10.795s] [ext: omni.kit.test-2.0.1] startup
+[10.913s] [ext: omni.appwindow-1.1.10] startup
+[10.920s] [ext: omni.kit.renderer.core-1.1.0] startup
+[11.205s] [ext: omni.kit.renderer.capture-0.0.0] startup
+[11.215s] [ext: omni.kit.renderer.imgui-2.0.5] startup
+[11.345s] [ext: omni.ui-2.27.1] startup
+[11.364s] [ext: omni.kit.mainwindow-1.0.3] startup
+[11.366s] [ext: carb.audio-0.1.0] startup
+[11.386s] [ext: omni.uiaudio-1.0.0] startup
+[11.388s] [ext: omni.kit.uiapp-0.0.0] startup
+[11.388s] [ext: omni.usd.schema.metrics.assembler-107.3.1] startup
+[11.392s] [ext: omni.usd.schema.audio-0.0.0] startup
+[11.399s] [ext: omni.usd.schema.omnigraph-1.0.0] startup
+[11.409s] [ext: omni.usd_resolver-1.0.0] startup
+[11.417s] [ext: omni.usd.core-1.5.3] startup
+[11.423s] [ext: omni.usd.schema.omni_sensors-0.0.0] startup
+[11.473s] [ext: omni.usd.schema.geospatial-0.0.0] startup
+[11.478s] [ext: omni.usd.schema.anim-0.0.0] startup
+[11.517s] [ext: omni.usd.schema.omni_lens_distortion-0.0.0] startup
+[11.517s] [ext: omni.usd.schema.omniscripting-1.0.0] startup
+[11.526s] [ext: omni.usd.schema.physx-107.3.26] startup
+[11.575s] [ext: omni.usd.schema.semantics-0.0.0] startup
+[11.580s] [ext: isaacsim.robot.schema-3.6.0] startup
+[11.605s] [ext: omni.usd.schema.render_settings.rtx-0.0.0] startup
+[11.607s] [ext: omni.graph.exec-0.9.6] startup
+[11.608s] [ext: omni.kit.actions.core-1.0.0] startup
+[11.613s] [ext: omni.kit.usd_undo-0.1.8] startup
+[11.614s] [ext: omni.kit.exec.core-0.13.4] startup
+[11.617s] [ext: omni.kit.commands-1.4.10] startup
+[11.629s] [ext: omni.kit.window.popup_dialog-2.0.24] startup
+[11.642s] [ext: omni.activity.core-1.0.3] startup
+[11.647s] [ext: omni.resourcemonitor-107.0.1] startup
+[11.650s] [ext: omni.timeline-1.0.14] startup
+[11.653s] [ext: omni.kit.widget.nucleus_connector-2.0.1] startup
+[11.662s] [ext: usdrt.scenegraph-7.6.1] startup
+[11.718s] [ext: omni.kit.audiodeviceenum-1.0.2] startup
+[11.720s] [ext: omni.hydra.usdrt_delegate-7.5.1] startup
+[11.737s] [ext: omni.hydra.scene_delegate-0.3.4] startup
+[11.749s] [ext: omni.usd-1.13.10] startup
+[11.893s] [ext: omni.kit.asset_converter-5.0.17] startup
+[11.919s] [ext: omni.index.libs-380600.8087.0] startup
+[11.919s] [ext: omni.index-1.0.1] startup
+[11.920s] [ext: omni.ujitso.client-0.0.0] startup
+[11.921s] [ext: omni.hydra.rtx.shadercache.vulkan-1.0.0] startup
+[11.923s] [ext: omni.volume-0.5.2] startup
+[11.927s] [ext: omni.kit.notification_manager-1.0.10] startup
+[11.933s] [ext: omni.kit.clipboard-1.0.5] startup
+[11.934s] [ext: omni.hydra.rtx-1.0.0] startup
+[12.268s] [ext: omni.kit.viewport.registry-104.0.6] startup
+[12.271s] [ext: omni.kit.menu.core-1.1.2] startup
+[12.274s] [ext: omni.kit.widget.options_menu-1.1.6] startup
+[12.285s] [ext: omni.kit.helper.file_utils-0.1.9] startup
+[12.290s] [ext: omni.kit.widget.path_field-2.0.11] startup
+[12.294s] [ext: omni.kit.widget.context_menu-1.2.5] startup
+[12.299s] [ext: omni.kit.widget.options_button-1.0.3] startup
+[12.301s] [ext: omni.kit.widget.filebrowser-2.12.3] startup
+[12.328s] [ext: omni.kit.widget.browser_bar-2.0.10] startup
+[12.331s] [ext: omni.kit.viewport.legacy_gizmos-1.0.19] startup
+[12.338s] [ext: omni.ui.scene-1.11.5] startup
+[12.344s] [ext: omni.kit.usd.layers-2.2.11] startup
+[12.379s] [ext: omni.kit.window.filepicker-2.13.4] startup
+[12.433s] [ext: omni.kit.hydra_texture-1.4.6] startup
+[12.441s] [ext: omni.kit.viewport.scene_camera_model-1.0.6] startup
+[12.454s] [ext: omni.kit.context_menu-1.8.6] startup
+[12.464s] [ext: omni.kit.window.file_importer-1.1.18] startup
+[12.471s] [ext: omni.kit.menu.utils-2.0.5] startup
+[12.505s] [ext: omni.kit.widget.viewport-107.1.3] startup
+[12.525s] [ext: omni.kit.window.drop_support-1.0.5] startup
+[12.527s] [ext: omni.kit.raycast.query-1.1.0] startup
+[12.540s] [ext: omni.kit.material.library-2.0.7] startup
+[12.569s] [ext: omni.hydra.engine.stats-1.0.3] startup
+[12.577s] [ext: omni.kit.viewport.window-107.2.0] startup
+[12.633s] [ext: omni.kit.widget.searchable_combobox-1.0.6] startup
+[12.638s] [ext: omni.kit.viewport.utility-1.1.2] startup
+[12.642s] [ext: omni.kit.widget.settings-1.2.6] startup
+[12.653s] [ext: omni.kit.widget.filter-1.1.4] startup
+[12.655s] [ext: omni.kit.hotkeys.core-1.3.10] startup
+[12.656s] [ext: omni.kit.stage_template.core-1.1.22] startup
+[12.658s] [ext: omni.kit.window.preferences-1.8.0] startup
+[12.682s] [ext: omni.kit.window.file_exporter-1.0.33] startup
+[12.685s] [ext: omni.kit.widget.searchfield-1.1.8] startup
+[12.690s] [ext: omni.kit.manipulator.transform-107.0.0] startup
+[12.712s] [ext: omni.inspect-1.0.2] startup
+[12.715s] [ext: omni.kit.widget.stage-3.1.4] startup
+[12.766s] [ext: omni.kit.window.file-2.0.5] startup
+[12.781s] [ext: omni.kit.window.content_browser_registry-0.0.6] startup
+[12.783s] [ext: omni.kit.widget.prompt-1.0.7] startup
+[12.786s] [ext: omni.kit.widget.toolbar-2.0.1] startup
+[12.808s] [ext: omni.kit.window.content_browser-3.1.3] startup
+[12.835s] [ext: omni.graph.core-2.184.5] startup
+[12.853s] [ext: omni.kit.manipulator.selector-1.1.3] startup
+[12.857s] [ext: omni.kit.widget.layers-1.8.6] startup
+[12.913s] [ext: omni.kit.manipulator.tool.snap-1.5.13] startup
+[12.927s] [ext: isaacsim.core.deprecation_manager-0.2.7] startup
+[12.930s] [ext: omni.kit.manipulator.viewport-107.0.1] startup
+[12.933s] [ext: omni.kit.primitive.mesh-1.0.17] startup
+[12.949s] [ext: omni.kit.viewport.manipulator.transform-107.0.4] startup
+[12.956s] [ext: omni.kit.stagerecorder.core-107.0.3] startup
+[12.963s] [ext: isaacsim.core.version-2.0.6] startup
+[12.966s] [ext: omni.physics-107.3.26] startup
+[12.970s] [ext: omni.kit.manipulator.prim.core-107.0.8] startup
+[12.997s] [ext: omni.fabric.commands-1.1.6] startup
+[13.016s] [ext: omni.kit.stagerecorder.ui-107.0.1] startup
+[13.036s] [ext: isaacsim.storage.native-1.5.1] startup
+[13.045s] [ext: omni.physics.stageupdate-107.3.26] startup
+[13.049s] [ext: omni.kit.manipulator.prim.usd-107.0.3] startup
+[13.052s] [ext: omni.kit.manipulator.prim.fabric-107.0.4] startup
+[13.058s] [ext: omni.kit.stagerecorder.bundle-105.0.2] startup
+[13.058s] [ext: omni.kvdb-107.3.26] startup
+[13.060s] [ext: omni.kit.viewport.actions-107.0.2] startup
+[13.070s] [ext: omni.kit.manipulator.prim-107.0.0] startup
+[13.070s] [ext: omni.debugdraw-0.1.4] startup
+[13.082s] [ext: omni.localcache-107.3.26] startup
+[13.085s] [ext: omni.kit.property.adapter.core-1.0.2] startup
+[13.088s] [ext: omni.usdphysics-107.3.26] startup
+[13.093s] [ext: omni.physx.foundation-107.3.26] startup
+[13.096s] [ext: omni.convexdecomposition-107.3.26] startup
+[13.106s] [ext: omni.kit.widget.highlight_label-1.0.3] startup
+[13.108s] [ext: omni.kit.property.adapter.usd-1.0.2] startup
+[13.111s] [ext: omni.physx.cooking-107.3.26] startup
+[13.118s] [ext: omni.kit.window.property-1.12.1] startup
+[13.128s] [ext: omni.kit.property.adapter.fabric-1.0.3] startup
+[13.133s] [ext: omni.kit.viewport.menubar.core-107.2.1] startup
+[13.181s] [ext: omni.physx-107.3.26] startup
+[13.206s] [ext: omni.kit.property.usd-4.5.12] startup
+[13.285s] [ext: omni.kit.viewport.menubar.display-107.0.3] startup
+[13.289s] [ext: omni.kit.manipulator.selection-106.0.1] startup
+[13.293s] [ext: omni.rtx.window.settings-0.6.19] startup
+[13.305s] [ext: omni.ocio-0.1.1] startup
+[13.307s] [ext: omni.usdphysics.ui-107.3.26] startup
+[13.381s] [ext: omni.physx.commands-107.3.26] startup
+[13.417s] [ext: semantics.schema.editor-2.0.2] startup
+[13.439s] [ext: omni.rtx.settings.core-0.6.5] startup
+[13.464s] [ext: omni.graph.tools-1.79.2] startup
+DEBUG:AutoNode:Defining data type 'any' as 'Any'
+DEBUG:AutoNode:Defining data type 'bool' as 'Bool' and array 'BoolArray
+DEBUG:AutoNode:Defining data type 'bundle' as 'Bundle'
+DEBUG:AutoNode:Defining data type 'colord[3]' as 'Color3d' and array 'Color3dArray
+DEBUG:AutoNode:Defining data type 'colorf[3]' as 'Color3f' and array 'Color3fArray
+DEBUG:AutoNode:Defining data type 'colorh[3]' as 'Color3h' and array 'Color3hArray
+DEBUG:AutoNode:Defining data type 'colord[4]' as 'Color4d' and array 'Color4dArray
+DEBUG:AutoNode:Defining data type 'colorf[4]' as 'Color4f' and array 'Color4fArray
+DEBUG:AutoNode:Defining data type 'colorh[4]' as 'Color4h' and array 'Color4hArray
+DEBUG:AutoNode:Defining data type 'double' as 'Double' and array 'DoubleArray
+DEBUG:AutoNode:Defining data type 'double[2]' as 'Double2' and array 'Double2Array
+DEBUG:AutoNode:Defining data type 'double[3]' as 'Double3' and array 'Double3Array
+DEBUG:AutoNode:Defining data type 'double[4]' as 'Double4' and array 'Double4Array
+DEBUG:AutoNode:Defining data type 'execution' as 'Execution'
+DEBUG:AutoNode:Defining data type 'float' as 'Float' and array 'FloatArray
+DEBUG:AutoNode:Defining data type 'float[2]' as 'Float2' and array 'Float2Array
+DEBUG:AutoNode:Defining data type 'float[3]' as 'Float3' and array 'Float3Array
+DEBUG:AutoNode:Defining data type 'float[4]' as 'Float4' and array 'Float4Array
+DEBUG:AutoNode:Defining data type 'frame[4]' as 'Frame' and array 'FrameArray
+DEBUG:AutoNode:Defining data type 'half' as 'Half' and array 'HalfArray
+DEBUG:AutoNode:Defining data type 'half[2]' as 'Half2' and array 'Half2Array
+DEBUG:AutoNode:Defining data type 'half[3]' as 'Half3' and array 'Half3Array
+DEBUG:AutoNode:Defining data type 'half[4]' as 'Half4' and array 'Half4Array
+DEBUG:AutoNode:Defining data type 'int' as 'Int' and array 'IntArray
+DEBUG:AutoNode:Defining data type 'int[2]' as 'Int2' and array 'Int2Array
+DEBUG:AutoNode:Defining data type 'int[3]' as 'Int3' and array 'Int3Array
+DEBUG:AutoNode:Defining data type 'int[4]' as 'Int4' and array 'Int4Array
+DEBUG:AutoNode:Defining data type 'int64' as 'Int64' and array 'Int64Array
+DEBUG:AutoNode:Defining data type 'matrixd[2]' as 'Matrix2d' and array 'Matrix2dArray
+DEBUG:AutoNode:Defining data type 'matrixd[3]' as 'Matrix3d' and array 'Matrix3dArray
+DEBUG:AutoNode:Defining data type 'matrixd[4]' as 'Matrix4d' and array 'Matrix4dArray
+DEBUG:AutoNode:Defining data type 'normald[3]' as 'Normal3d' and array 'Normal3dArray
+DEBUG:AutoNode:Defining data type 'normalf[3]' as 'Normal3f' and array 'Normal3fArray
+DEBUG:AutoNode:Defining data type 'normalh[3]' as 'Normal3h' and array 'Normal3hArray
+DEBUG:AutoNode:Defining data type 'objectId' as 'ObjectId' and array 'ObjectIdArray
+DEBUG:AutoNode:Defining data type 'path' as 'Path'
+DEBUG:AutoNode:Defining data type 'pointd[3]' as 'Point3d' and array 'Point3dArray
+DEBUG:AutoNode:Defining data type 'pointf[3]' as 'Point3f' and array 'Point3fArray
+DEBUG:AutoNode:Defining data type 'pointh[3]' as 'Point3h' and array 'Point3hArray
+DEBUG:AutoNode:Defining data type 'quatd[4]' as 'Quatd' and array 'QuatdArray
+DEBUG:AutoNode:Defining data type 'quatf[4]' as 'Quatf' and array 'QuatfArray
+DEBUG:AutoNode:Defining data type 'quath[4]' as 'Quath' and array 'QuathArray
+DEBUG:AutoNode:Defining data type 'string' as 'String'
+DEBUG:AutoNode:Defining data type 'target' as 'Target'
+DEBUG:AutoNode:Defining data type 'texcoordd[2]' as 'TexCoord2d' and array 'TexCoord2dArray
+DEBUG:AutoNode:Defining data type 'texcoordf[2]' as 'TexCoord2f' and array 'TexCoord2fArray
+DEBUG:AutoNode:Defining data type 'texcoordh[2]' as 'TexCoord2h' and array 'TexCoord2hArray
+DEBUG:AutoNode:Defining data type 'texcoordd[3]' as 'TexCoord3d' and array 'TexCoord3dArray
+DEBUG:AutoNode:Defining data type 'texcoordf[3]' as 'TexCoord3f' and array 'TexCoord3fArray
+DEBUG:AutoNode:Defining data type 'texcoordh[3]' as 'TexCoord3h' and array 'TexCoord3hArray
+DEBUG:AutoNode:Defining data type 'timecode' as 'Timecode' and array 'TimecodeArray
+DEBUG:AutoNode:Defining data type 'token' as 'Token' and array 'TokenArray
+DEBUG:AutoNode:Defining data type 'uchar' as 'UChar' and array 'UCharArray
+DEBUG:AutoNode:Defining data type 'uint' as 'UInt' and array 'UIntArray
+DEBUG:AutoNode:Defining data type 'uint64' as 'UInt64' and array 'UInt64Array
+DEBUG:AutoNode:Defining data type 'vectord[3]' as 'Vector3d' and array 'Vector3dArray
+DEBUG:AutoNode:Defining data type 'vectorf[3]' as 'Vector3f' and array 'Vector3fArray
+DEBUG:AutoNode:Defining data type 'vectorh[3]' as 'Vector3h' and array 'Vector3hArray
+[13.613s] [ext: omni.warp.core-1.8.2] startup
+[13.615s] [ext: omni.physx.ui-107.3.26] startup
+[13.724s] [ext: omni.usd.metrics.assembler-107.3.1] startup
+[13.735s] [ext: omni.kit.numpy.common-0.1.3] startup
+[13.737s] [ext: omni.physics.physx-107.3.26] startup
+[13.742s] [ext: omni.usd.metrics.assembler.physics-107.3.26] startup
+[13.753s] [ext: omni.physics.tensors-107.3.26] startup
+[13.774s] [ext: omni.isaac.dynamic_control-2.0.7] startup
+[13.796s] [ext: omni.kit.stage_templates-2.0.0] startup
+[13.803s] [ext: isaacsim.core.utils-3.5.1] startup
+[13.815s] [ext: omni.physx.tensors-107.3.26] startup
+[13.825s] [ext: omni.graph-1.141.2] startup
+[13.999s] [ext: isaacsim.test.docstring-1.1.0] startup
+[14.019s] [ext: isaacsim.core.experimental.utils-0.3.0] startup
+[14.025s] [ext: omni.graph.image.core-0.6.1] startup
+[14.030s] [ext: isaacsim.core.simulation_manager-1.4.4] startup
+[14.242s] [ext: omni.kit.widget.graph-2.0.0] startup
+[14.287s] [ext: omni.kit.widget.text_editor-1.1.1] startup
+[14.291s] [ext: omni.graph.action_core-1.1.7] startup
+[14.298s] [ext: omni.graph.image.nodes-1.3.1] startup
+[14.303s] [ext: isaacsim.core.experimental.prims-0.8.1] startup
+[14.470s] [ext: omni.kit.graph.delegate.default-1.2.3] startup
+[14.483s] [ext: omni.graph.scriptnode-1.50.0] startup
+[14.488s] [ext: omni.graph.action_nodes-1.50.4] startup
+[14.507s] [ext: omni.syntheticdata-0.6.13] startup
+[14.596s] [ext: omni.kit.window.console-1.1.4] startup
+[14.639s] [ext: omni.kit.graph.editor.core-1.5.3] startup
+[14.786s] [ext: omni.kit.property.material-1.11.9] startup
+[15.081s] [ext: omni.graph.action-1.130.0] startup
+[15.088s] [ext: omni.kit.widget.material_preview-1.0.16] startup
+[15.131s] [ext: omni.kit.graph.usd.commands-1.3.1] startup
+[15.143s] [ext: omni.videoencoding-0.1.2] startup
+[15.152s] [ext: omni.kit.property.physx-107.3.26] startup
+[15.456s] [ext: omni.graph.nodes-1.170.10] startup
+[15.553s] [ext: omni.graph.ui_nodes-1.50.5] startup
+[15.573s] [ext: isaacsim.core.prims-0.6.1] startup
+[15.800s] [ext: omni.warp-1.8.2] startup
+[15.937s] [ext: omni.kit.window.material_graph-1.9.1] startup
+[16.270s] [ext: omni.ui_query-1.1.8] startup
+[16.284s] [ext: omni.physx.demos-107.3.26] startup
+[16.856s] [ext: omni.asset_validator.core-1.1.6] startup
+[17.073s] [ext: omni.physx.vehicle-107.3.26] startup
+[17.157s] [ext: isaacsim.core.api-4.8.0] startup
+[17.236s] [ext: omni.replicator.core-1.12.27] startup
+[17.535s] [ext: omni.kit.ui_test-1.3.7] startup
+[17.554s] [ext: omni.physx.asset_validator-107.3.26] startup
+[17.602s] [ext: omni.physx.camera-107.3.26] startup
+[17.655s] [ext: isaacsim.robot.surface_gripper-3.3.1] startup
+[17.694s] [ext: isaacsim.core.nodes-3.4.3] startup
+[17.741s] [ext: omni.physx.cct-107.3.26] startup
+[17.843s] [ext: omni.kit.window.toolbar-2.0.0] startup
+[17.869s] [ext: omni.kit.viewport.menubar.lighting-107.3.1] startup
+[17.907s] [ext: omni.kit.viewport.menubar.render-107.0.10] startup
+[17.972s] [ext: isaacsim.robot.manipulators-3.3.6] startup
+[18.048s] [ext: omni.physx.graph-107.3.26] startup
+[18.134s] [ext: omni.physx.supportui-107.3.26] startup
+[18.360s] [ext: omni.physx.telemetry-107.3.26] startup
+[18.418s] [ext: isaacsim.gui.property-1.1.3] startup
+[18.511s] [ext: isaacsim.app.about-2.0.11] startup
+[18.638s] [ext: omni.anim.curve.core-1.3.1] startup
+[18.961s] [ext: omni.physx.bundle-107.3.26] startup
+[18.962s] [ext: omni.kit.menu.create-2.0.1] startup
+[19.054s] [ext: omni.kit.widget.stage_icons-1.0.8] startup
+[19.141s] [ext: omni.kit.window.extensions-1.4.27] startup
+[19.366s] [ext: omni.graph.visualization.nodes-2.1.3] startup
+[19.683s] [ext: omni.kit.viewport.menubar.settings-107.0.3] startup
+[20.285s] [ext: omni.kit.window.stage-2.6.1] startup
+[20.362s] [ext: isaacsim.core.cloner-1.4.10] startup
+[20.399s] [ext: isaacsim.gui.components-1.2.1] startup
+[20.515s] [ext: isaacsim.robot.wheeled_robots-4.0.24] startup
+[20.583s] [ext: omni.kit.ui.actions-1.0.5] startup
+[20.603s] [ext: omni.kit.scripting-107.3.2] startup
+[20.657s] [ext: isaacsim.core.throttling-2.2.2] startup
+[20.669s] [ext: omni.usd.metrics.assembler.ui-107.3.1] startup
+[20.789s] [ext: omni.kit.window.script_editor-2.0.1] startup
+[20.835s] [ext: omni.kit.property.camera-1.0.10] startup
+[20.847s] [ext: omni.kit.property.audio-1.0.16] startup
+[20.869s] [ext: isaacsim.replicator.behavior-1.1.16] startup
+[20.876s] [ext: omni.hydra.scene_api-0.1.2] startup
+[20.900s] [ext: omni.kit.property.light-1.0.12] startup
+[20.910s] [ext: isaacsim.util.debug_draw-3.1.0] startup
+[20.933s] [ext: omni.kit.property.transform-1.5.13] startup
+[20.980s] [ext: omni.kit.property.render-1.2.1] startup
+[20.987s] [ext: omni.kit.property.geometry-2.0.4] startup
+[21.000s] [ext: isaacsim.sensors.physx-2.3.2] startup
+[21.023s] [ext: omni.kit.window.status_bar-0.1.9] startup
+[21.034s] [ext: omni.kit.property.bundle-1.4.1] startup
+[21.049s] [ext: omni.kit.widget.zoombar-1.0.6] startup
+[21.056s] [ext: isaacsim.simulation_app-2.12.2] startup
+[21.057s] [ext: omni.sensors.nv.common-3.0.0] startup
+[21.089s] [ext: omni.kit.usd.collect-2.4.5] startup
+[21.107s] [ext: omni.kit.browser.core-2.3.13] startup
+[21.127s] [ext: omni.sensors.net-1.0.0] startup
+[21.142s] [ext: omni.sensors.nv.materials-2.0.0] startup
+[21.153s] [ext: omni.kit.usdz_export-1.0.9] startup
+[21.162s] [ext: omni.kit.browser.folder.core-1.10.9] startup
+[21.191s] [ext: omni.kit.menu.stage-1.2.7] startup
+[21.198s] [ext: omni.kit.tool.collect-2.2.18] startup
+[21.213s] [ext: omni.sensors.nv.lidar-3.0.0] startup
+[21.243s] [ext: omni.sensors.nv.wpm-3.0.0] startup
+[21.249s] [ext: omni.kit.tool.asset_importer-4.3.2] startup
+[21.271s] [ext: isaacsim.asset.browser-1.3.23] startup
+[21.289s] [ext: omni.replicator.replicator_yaml-2.0.11] startup
+[21.311s] [ext: omni.sensors.nv.radar-3.0.0] startup
+[21.320s] [ext: omni.sensors.nv.ids-2.0.0] startup
+[21.325s] [ext: isaacsim.sensors.physics-0.4.3] startup
+[21.364s] [ext: isaacsim.asset.importer.mjcf-2.5.13] startup
+[21.420s] [ext: semantics.schema.property-2.0.1] startup
+[21.446s] [ext: isaacsim.sensors.camera-1.3.6] startup
+[21.491s] [ext: isaacsim.sensors.rtx-15.8.4] startup
+[21.532s] [ext: omni.kit.selection-0.1.6] startup
+[21.546s] [ext: isaacsim.robot.policy.examples-4.1.11] startup
+[21.563s] [ext: isaacsim.examples.browser-0.2.1] startup
+[21.603s] [ext: isaacsim.asset.importer.urdf-2.4.31] startup
+[21.684s] [ext: omni.kit.manipulator.camera-106.0.4] startup
+[21.726s] [ext: omni.kit.viewport.menubar.camera-107.0.6] startup
+[21.748s] [ext: isaacsim.gui.menu-2.4.4] startup
+[21.781s] [ext: isaaclab-0.53.1] startup
+[21.816s] [ext: isaaclab_assets-0.2.4] startup
+[22.426s] [ext: isaaclab_tasks-0.11.12] startup
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:matplotlib:matplotlib data path: /data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/matplotlib/mpl-data
+DEBUG:matplotlib:CONFIGDIR=/root/.config/matplotlib
+DEBUG:matplotlib:interactive is False
+DEBUG:matplotlib:platform is linux
+[23.093s] [ext: isaaclab_rl-0.4.7] startup
+[23.097s] [ext: isaaclab_mimic-1.0.16] startup
+[23.100s] [ext: omni.kit.menu.common-2.0.1] startup
+[23.105s] [ext: isaaclab.python-2.3.0] startup
+[23.112s] Simulation App Starting
+[23.434s] app ready
+[101.998s] Simulation App Startup Complete
+[PolicyRegistry] Registered policy: 'lerobot' -> LeRobotPolicy
+[PolicyRegistry] Registered policy: 'custom' -> CustomPolicy
+[PolicyRegistry] Registered policy: 'classifier_router' -> ClassifierRouterPolicy
+DEBUG:git.cmd:Popen(['git', 'version'], cwd=/data/lehome_workspace/lehome-challenge, stdin=None, shell=False, universal_newlines=False)
+DEBUG:git.cmd:Popen(['git', 'version'], cwd=/data/lehome_workspace/lehome-challenge, stdin=None, shell=False, universal_newlines=False)
+DEBUG:git.util:sys.platform='linux', git_executable='git'
+[INFO]: Parsing configuration from: lehome.tasks.bedroom.garment_bi_cfg_v2:GarmentEnvCfg
+2026-05-07 17:58:34 - scripts.utils.evaluation - INFO - Initializing Policy Type: lerobot
+2026-05-07 17:58:34 - scripts.eval_policy.lerobot_policy - INFO - Loading LeRobot policy from: /data/lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model
+DEBUG:filelock:Attempting to acquire lock 124400627940368 on /data/huggingface_cache/datasets/_data_huggingface_cache_datasets_parquet_default-82a38f90c0d917f9_0.0.0_9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.lock
+DEBUG:filelock:Lock 124400627940368 acquired on /data/huggingface_cache/datasets/_data_huggingface_cache_datasets_parquet_default-82a38f90c0d917f9_0.0.0_9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.lock
+DEBUG:filelock:Attempting to release lock 124400627940368 on /data/huggingface_cache/datasets/_data_huggingface_cache_datasets_parquet_default-82a38f90c0d917f9_0.0.0_9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.lock
+DEBUG:filelock:Lock 124400627940368 released on /data/huggingface_cache/datasets/_data_huggingface_cache_datasets_parquet_default-82a38f90c0d917f9_0.0.0_9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.lock
+DEBUG:filelock:Attempting to acquire lock 124400627682704 on /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d_builder.lock
+DEBUG:filelock:Lock 124400627682704 acquired on /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d_builder.lock
+DEBUG:fsspec.local:open file: /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete/parquet-train-00000-00000-of-NNNNN.arrow
+DEBUG:filelock:Attempting to acquire lock 124400626535248 on /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete_info.lock
+DEBUG:filelock:Lock 124400626535248 acquired on /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete_info.lock
+DEBUG:fsspec.local:open file: /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete/dataset_info.json
+DEBUG:filelock:Attempting to release lock 124400626535248 on /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete_info.lock
+DEBUG:filelock:Lock 124400626535248 released on /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete_info.lock
+DEBUG:filelock:Attempting to release lock 124400627682704 on /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d_builder.lock
+DEBUG:filelock:Lock 124400627682704 released on /data/huggingface_cache/datasets/parquet/default-82a38f90c0d917f9/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d_builder.lock
+DEBUG:draccus.wrappers.field_metavar:Metavar for type None: None
+DEBUG:draccus.help_formatter:action type: None, Result: , nargs: 0, default metavar: None
+DEBUG:draccus.wrappers.field_metavar:Metavar for type <class 'str'>: str
+DEBUG:draccus.help_formatter:action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at n_obs_steps has a default value of 1
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at input_features has a default value of {}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at output_features has a default value of {}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at device has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_amp has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_peft has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at push_to_hub has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at repo_id has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at private has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at tags has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at license has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at pretrained_path has a default value of None
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': '`input_features` can be set to None/null in order to infer those values from the dataset.', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+DEBUG:draccus.argparsing:
+POST PROCESSING
+
+DEBUG:draccus.argparsing:(raw) parsed args: Namespace()
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot_policy_dino.configuration_dino_diffusion.DinoDiffusionConfig'>
+DEBUG:draccus.parsers.decoding:Decode name = n_obs_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:Decoding a Dict field: dict[str, lerobot.configs.types.PolicyFeature]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decoding a Tuple field: tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = device, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = use_amp, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = use_peft, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = push_to_hub, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = repo_id, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = private, type = typing.Optional[bool]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[bool]
+DEBUG:draccus.parsers.decoding:Decode name = tags, type = typing.Optional[list[str]]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[list[str]]
+DEBUG:draccus.parsers.decoding:Decoding a List field: list[str]
+DEBUG:draccus.parsers.decoding:Decode name = license, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[pathlib.Path]
+DEBUG:draccus.parsers.decoding:Decode name = horizon, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = n_action_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+DEBUG:draccus.parsers.decoding:Decoding a Dict field: dict[str, lerobot.configs.types.NormalizationMode]
+DEBUG:draccus.parsers.decoding:Decode name = drop_n_last_frames, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = vision_backbone, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = crop_shape, type = typing.Optional[tuple[int, int]]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[tuple[int, int]]
+DEBUG:draccus.parsers.decoding:Decoding a Tuple field: tuple[int, int]
+DEBUG:draccus.parsers.decoding:Decode name = crop_is_random, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = use_group_norm, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = spatial_softmax_num_keypoints, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_separate_rgb_encoder_per_camera, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = down_dims, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = kernel_size, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = n_groups, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = diffusion_step_embed_dim, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_film_scale_modulation, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = noise_scheduler_type, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = num_train_timesteps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_schedule, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_start, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_end, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = prediction_type, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = clip_sample, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = clip_sample_range, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = num_inference_steps, type = typing.Optional[int]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[int]
+DEBUG:draccus.parsers.decoding:Decode name = do_mask_loss_for_padding, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_lr, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_betas, type = <class 'tuple'>
+DEBUG:draccus.parsers.decoding:Decoding a Tuple field: <class 'tuple'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_eps, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_weight_decay, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = scheduler_name, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = scheduler_warmup_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_cls_token, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = spatial_pooling, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = map_num_queries, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_registers, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = num_register_tokens, type = <class 'int'>
+DEBUG:draccus.wrappers.field_metavar:Metavar for type None: None
+DEBUG:draccus.help_formatter:action type: None, Result: , nargs: 0, default metavar: None
+DEBUG:draccus.wrappers.field_metavar:Metavar for type <class 'str'>: str
+DEBUG:draccus.help_formatter:action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at n_obs_steps has a default value of 2
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at input_features has a default value of {}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at output_features has a default value of {}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at device has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_amp has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_peft has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at push_to_hub has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at repo_id has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at private has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at tags has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at license has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at pretrained_path has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at horizon has a default value of 16
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at n_action_steps has a default value of 8
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at normalization_mapping has a default value of {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at drop_n_last_frames has a default value of 7
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at vision_backbone has a default value of facebook/dinov2-small
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at crop_shape has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at crop_is_random has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at pretrained_backbone_weights has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_group_norm has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at spatial_softmax_num_keypoints has a default value of 32
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_separate_rgb_encoder_per_camera has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at down_dims has a default value of (512, 1024, 2048)
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at kernel_size has a default value of 5
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at n_groups has a default value of 8
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at diffusion_step_embed_dim has a default value of 128
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_film_scale_modulation has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at noise_scheduler_type has a default value of DDPM
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at num_train_timesteps has a default value of 100
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at beta_schedule has a default value of squaredcos_cap_v2
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at beta_start has a default value of 0.0001
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at beta_end has a default value of 0.02
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at prediction_type has a default value of epsilon
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at clip_sample has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at clip_sample_range has a default value of 1.0
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at num_inference_steps has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at do_mask_loss_for_padding has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at optimizer_lr has a default value of 0.0001
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at optimizer_betas has a default value of (0.95, 0.999)
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at optimizer_eps has a default value of 1e-08
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at optimizer_weight_decay has a default value of 1e-06
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at scheduler_name has a default value of cosine
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at scheduler_warmup_steps has a default value of 500
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_cls_token has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at spatial_pooling has a default value of baseline
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at map_num_queries has a default value of 8
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_registers has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at num_register_tokens has a default value of 4
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 2, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': '`input_features` can be set to None/null in order to infer those values from the dataset.', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'horizon': {'required': False, 'dest': 'horizon', 'default': 16, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             See `DiffusionPolicy.select_action` for more details.
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'n_action_steps': {'required': False, 'dest': 'n_action_steps', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:         default_factory=lambda: {
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'normalization_mapping': {'required': False, 'dest': 'normalization_mapping', 'default': {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>}, 'help': ' ', 'type': typing.Dict[str, lerobot.configs.types.NormalizationMode]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'drop_n_last_frames': {'required': False, 'dest': 'drop_n_last_frames', 'default': 7, 'help': 'horizon - n_action_steps - n_obs_steps + 1', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'vision_backbone': {'required': False, 'dest': 'vision_backbone', 'default': 'facebook/dinov2-small', 'help': ' ', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'crop_shape': {'required': False, 'dest': 'crop_shape', 'default': None, 'help': 'Disable the crop pipeline — DINOv2 handles its own resize internally', 'type': typing.Optional[typing.Tuple[int, int]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'crop_is_random': {'required': False, 'dest': 'crop_is_random', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'pretrained_backbone_weights': {'required': False, 'dest': 'pretrained_backbone_weights', 'default': None, 'help': 'Unused — HF weights loaded directly', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             The group sizes are set to be about 16 (to be precise, feature_dim // 16).
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_group_norm': {'required': False, 'dest': 'use_group_norm', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'spatial_softmax_num_keypoints': {'required': False, 'dest': 'spatial_softmax_num_keypoints', 'default': 32, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_separate_rgb_encoder_per_camera': {'required': False, 'dest': 'use_separate_rgb_encoder_per_camera', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             You may provide a variable number of dimensions, therefore also controlling the degree of
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'down_dims': {'required': False, 'dest': 'down_dims', 'default': (512, 1024, 2048), 'help': ' ', 'type': typing.Tuple[int, ...]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'kernel_size': {'required': False, 'dest': 'kernel_size', 'default': 5, 'help': '\n', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'n_groups': {'required': False, 'dest': 'n_groups', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             network. This is the output dimension of that network, i.e., the embedding dimension.
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'diffusion_step_embed_dim': {'required': False, 'dest': 'diffusion_step_embed_dim', 'default': 128, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_film_scale_modulation': {'required': False, 'dest': 'use_film_scale_modulation', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'noise_scheduler_type': {'required': False, 'dest': 'noise_scheduler_type', 'default': 'DDPM', 'help': 'Noise scheduler.', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'num_train_timesteps': {'required': False, 'dest': 'num_train_timesteps', 'default': 100, 'help': '\n\n\n\n', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'beta_schedule': {'required': False, 'dest': 'beta_schedule', 'default': 'squaredcos_cap_v2', 'help': ' ', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'beta_start': {'required': False, 'dest': 'beta_start', 'default': 0.0001, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'beta_end': {'required': False, 'dest': 'beta_end', 'default': 0.02, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             or "sample". These have equivalent outcomes from a latent variable modeling perspective, but
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'prediction_type': {'required': False, 'dest': 'prediction_type', 'default': 'epsilon', 'help': ' ', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'clip_sample': {'required': False, 'dest': 'clip_sample', 'default': True, 'help': '\n', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'clip_sample_range': {'required': False, 'dest': 'clip_sample_range', 'default': 1.0, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             spaced). If not provided, this defaults to be the same as `num_train_timesteps`.
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'num_inference_steps': {'required': False, 'dest': 'num_inference_steps', 'default': None, 'type': typing.Optional[int]}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             `LeRobotDataset` and `load_previous_and_future_frames` for more information. Note, this defaults
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'do_mask_loss_for_padding': {'required': False, 'dest': 'do_mask_loss_for_padding', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'optimizer_lr': {'required': False, 'dest': 'optimizer_lr', 'default': 0.0001, 'help': 'Training presets', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'optimizer_betas': {'required': False, 'dest': 'optimizer_betas', 'default': (0.95, 0.999), 'help': ' ', 'type': <class 'tuple'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'optimizer_eps': {'required': False, 'dest': 'optimizer_eps', 'default': 1e-08, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'optimizer_weight_decay': {'required': False, 'dest': 'optimizer_weight_decay', 'default': 1e-06, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'scheduler_name': {'required': False, 'dest': 'scheduler_name', 'default': 'cosine', 'help': ' ', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'scheduler_warmup_steps': {'required': False, 'dest': 'scheduler_warmup_steps', 'default': 500, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:                        If False, use mean-pooled patch tokens.
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_cls_token': {'required': False, 'dest': 'use_cls_token', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'spatial_pooling': {'required': False, 'dest': 'spatial_pooling', 'default': 'baseline', 'help': 'Spatial readout: "baseline" = CLS or mean-pool (use_cls_token); "map" = MAP head on patches.', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'map_num_queries': {'required': False, 'dest': 'map_num_queries', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_registers': {'required': False, 'dest': 'use_registers', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'num_register_tokens': {'required': False, 'dest': 'num_register_tokens', 'default': 4, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.argparsing:
+POST PROCESSING
+
+DEBUG:draccus.argparsing:(raw) parsed args: Namespace()
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot_policy_dino.configuration_dino_diffusion.DinoDiffusionConfig'>
+DEBUG:draccus.parsers.decoding:Decode name = n_obs_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = device, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = use_amp, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = use_peft, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = push_to_hub, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = repo_id, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = private, type = typing.Optional[bool]
+DEBUG:draccus.parsers.decoding:Decode name = tags, type = typing.Optional[list[str]]
+DEBUG:draccus.parsers.decoding:Decode name = license, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+DEBUG:draccus.parsers.decoding:Decode name = horizon, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = n_action_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+DEBUG:draccus.parsers.decoding:Decode name = drop_n_last_frames, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = vision_backbone, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = crop_shape, type = typing.Optional[tuple[int, int]]
+DEBUG:draccus.parsers.decoding:Decode name = crop_is_random, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = use_group_norm, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = spatial_softmax_num_keypoints, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_separate_rgb_encoder_per_camera, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = down_dims, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = kernel_size, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = n_groups, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = diffusion_step_embed_dim, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_film_scale_modulation, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = noise_scheduler_type, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = num_train_timesteps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_schedule, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_start, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_end, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = prediction_type, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = clip_sample, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = clip_sample_range, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = num_inference_steps, type = typing.Optional[int]
+DEBUG:draccus.parsers.decoding:Decode name = do_mask_loss_for_padding, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_lr, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_betas, type = <class 'tuple'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_eps, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_weight_decay, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = scheduler_name, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = scheduler_warmup_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_cls_token, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = spatial_pooling, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = map_num_queries, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_registers, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = num_register_tokens, type = <class 'int'>
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): huggingface.co:443
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /facebook/dinov2-with-registers-small/resolve/main/config.json HTTP/1.1" 307 0
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /api/resolve-cache/models/facebook/dinov2-with-registers-small/0d9846e56b43a21fa46d7f3f5070f0506a5795a9/config.json HTTP/1.1" 200 0
+DEBUG:filelock:Attempting to acquire lock 124400627249744 on /data/huggingface_cache/hub/.locks/models--facebook--dinov2-with-registers-small/666c3e636d86d379ce67d669354a0e5d43212c7f.lock
+DEBUG:filelock:Lock 124400627249744 acquired on /data/huggingface_cache/hub/.locks/models--facebook--dinov2-with-registers-small/666c3e636d86d379ce67d669354a0e5d43212c7f.lock
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "GET /api/resolve-cache/models/facebook/dinov2-with-registers-small/0d9846e56b43a21fa46d7f3f5070f0506a5795a9/config.json HTTP/1.1" 200 None
+DEBUG:filelock:Attempting to release lock 124400627249744 on /data/huggingface_cache/hub/.locks/models--facebook--dinov2-with-registers-small/666c3e636d86d379ce67d669354a0e5d43212c7f.lock
+DEBUG:filelock:Lock 124400627249744 released on /data/huggingface_cache/hub/.locks/models--facebook--dinov2-with-registers-small/666c3e636d86d379ce67d669354a0e5d43212c7f.lock
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /facebook/dinov2-with-registers-small/resolve/main/config.json HTTP/1.1" 307 0
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /api/resolve-cache/models/facebook/dinov2-with-registers-small/0d9846e56b43a21fa46d7f3f5070f0506a5795a9/config.json HTTP/1.1" 200 0
+You are using a model of type dinov2_with_registers to instantiate a model of type dinov2. This is not supported for all configurations of models and can yield errors.
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /facebook/dinov2-with-registers-small/resolve/main/model.safetensors HTTP/1.1" 302 0
+DEBUG:filelock:Attempting to acquire lock 124400627291664 on /data/huggingface_cache/hub/.locks/models--facebook--dinov2-with-registers-small/78e7f952c5af83cf6da38f08ff52b062bbe00c1adf39c4c7e0361969f27abae7.lock
+DEBUG:filelock:Lock 124400627291664 acquired on /data/huggingface_cache/hub/.locks/models--facebook--dinov2-with-registers-small/78e7f952c5af83cf6da38f08ff52b062bbe00c1adf39c4c7e0361969f27abae7.lock
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "GET /api/models/facebook/dinov2-with-registers-small/xet-read-token/0d9846e56b43a21fa46d7f3f5070f0506a5795a9 HTTP/1.1" 200 451
+DEBUG:filelock:Attempting to release lock 124400627291664 on /data/huggingface_cache/hub/.locks/models--facebook--dinov2-with-registers-small/78e7f952c5af83cf6da38f08ff52b062bbe00c1adf39c4c7e0361969f27abae7.lock
+DEBUG:filelock:Lock 124400627291664 released on /data/huggingface_cache/hub/.locks/models--facebook--dinov2-with-registers-small/78e7f952c5af83cf6da38f08ff52b062bbe00c1adf39c4c7e0361969f27abae7.lock
+Loading weights from local directory
+2026-05-07 17:58:43 - scripts.eval_policy.lerobot_policy - INFO - LeRobotPolicy initialized. Action dim: 12
+2026-05-07 17:58:43 - scripts.utils.evaluation - INFO - Policy 'lerobot' loaded successfully
+2026-05-07 17:58:43 - scripts.utils.evaluation - INFO - Loading evaluation list for category 'top_long' from: Assets/objects/Challenge_Garment/Release/Top_Long/Top_Long.txt
+2026-05-07 17:58:43 - scripts.utils.evaluation - INFO - Loaded 12 garments for category: top_long
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-05-07_17-58-43.log[0m
+[36m======================================================================================[0m
+
+[33m17:58:43 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cpu
+	Environment seed      : 42
+	Physics step-size     : 0.011111111111111112
+	Rendering step-size   : 0.011111111111111112
+	Environment step-size : 0.011111111111111112
+2026-05-07 17:58:44 - lehome.assets.object.Garment - WARNING - [GarmentObject] No visual materials specified
+2026-05-07 17:58:44 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+[INFO]: Time taken for scene creation : 0.546051 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1
+	Environment spacing   : 4.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+2026-05-07T17:58:55Z [0ms] [Error] [omni.physx.plugin] PhysX error: attachShape: non-SDF triangle mesh, tetrahedron mesh, heightfield or plane geometry shapes configured as eSIMULATION_SHAPE are not supported for non-kinematic PxRigidDynamic instances., FILE /builds/omniverse/physics/physx/source/physx/src/NpRigidBodyTemplate.h, LINE 390
+Warning: Possible version incompatibility. Attempting to load omni::fabric::IStageReaderWriter with version v0.14 against v0.13.
+[INFO]: Time taken for simulation start : 58.659832 seconds
+[INFO]: Completed setting up the environment...
+2026-05-07 17:59:43 - scripts.utils.evaluation - INFO - Evaluating: Top_Long_Seen_0 (Release) (1/12)
+2026-05-07 17:59:43 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 17:59:43 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.07302996653981607, 0.031970568746496106, 0.73], ori: [8.322903111841818, -21.09428225098469, 0.0]
+Warp DeprecationWarning: The symbol `warp.types.warp_type_to_np_dtype` will soon be removed from the public API. It can still be accessed from `warp._src.types.warp_type_to_np_dtype` but might be changed or removed without notice.
+2026-05-07 17:59:49 - scripts.eval - ERROR - Error during evaluation: 'observation.images.top_rgb'
+Traceback (most recent call last):
+  File "/data/lehome_workspace/lehome-challenge/scripts/eval.py", line 30, in main
+    eval(args, simulation_app)
+  File "/data/lehome_workspace/lehome-challenge/scripts/utils/evaluation.py", line 406, in eval
+    metrics = run_evaluation_loop(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/scripts/utils/evaluation.py", line 133, in run_evaluation_loop
+    action_np = policy.select_action(observation_dict)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/scripts/eval_policy/lerobot_policy.py", line 139, in select_action
+    batch_action = self.policy.select_action(batch_obs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/lerobot/policies/diffusion/modeling_diffusion.py", line 135, in select_action
+    actions = self.predict_action_chunk(batch, noise=noise)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/lerobot/policies/diffusion/modeling_diffusion.py", line 98, in predict_action_chunk
+    actions = self.diffusion.generate_actions(batch, noise=noise)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lerobot_policy_dino/src/lerobot_policy_dino/modeling_dino_diffusion.py", line 215, in generate_actions
+    global_cond = self._prepare_global_conditioning(batch)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/lehome_workspace/lerobot_policy_dino/src/lerobot_policy_dino/modeling_dino_diffusion.py", line 180, in _prepare_global_conditioning
+    img = batch[img_key]        # (B, N_obs, C, H, W)
+          ~~~~~^^^^^^^^^
+KeyError: 'observation.images.top_rgb'
+[179.473s] Simulation App Shutting Down
+/root/.local/share/uv/python/cpython-3.11.14-linux-x86_64-gnu/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

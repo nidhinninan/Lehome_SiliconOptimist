@@ -25,6 +25,9 @@
 
 # Docker/Singularity
 **/*.sif
+**/*.tar
+**/*.tar.gz
+**/*.img
 docker/cluster/exports/
 docker/.container.cfg
 

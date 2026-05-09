@@ -13,7 +13,7 @@ sudo chown -R principia:principia /data/lehome_workspace
 ______
 # clone files manually
 cd /data/lehome_workspace
-git clone -b vastai_instance --single-branch https://nidhinninan:xxxx@github.com/nidhinninan/Lehome_SiliconOptimist.git
+git clone -b VM_update --single-branch https://nidhinninan:xxxx@github.com/nidhinninan/Lehome_SiliconOptimist.git
 ______
 # need this to use the rsynce between the private clone (adapted) repo and the fresh repo downloaded form the hackathon official repo
 sudo apt update
@@ -88,9 +88,76 @@ chmod +x /data/lehome_workspace/setup_lehome.sh
 uv pip install toml
 /data/lehome_workspace/setup_lehome.sh
 
+# fix the cuda mismatch issue with newer architectures
+
+```bash
+uv pip install warp-lang==1.11.1
+
+# === Blackwell (RTX 50xx / sm_120) torch preflight ===
+cd /data/lehome_workspace/lehome-challenge
+
+# 1) Check current torch + CUDA behavior
+.venv/bin/python - <<'PY'
+import torch, warnings
+print("torch:", torch.__version__)
+print("cuda available:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("device:", torch.cuda.get_device_name(0))
+    print("capability:", torch.cuda.get_device_capability(0))
+    try:
+        x = torch.randn(8, device="cuda")
+        print("cuda tensor OK:", x.mean().item())
+    except Exception as e:
+        print("cuda tensor FAILED:", e)
+else:
+    print("CUDA not available to torch")
+PY
+
+# 2) If capability is (12, 0) and CUDA tensor fails or warns unsupported arch:
+#    install a newer torch build with Blackwell support
+uv pip install --upgrade --prerelease=allow \
+  --index-url https://download.pytorch.org/whl/nightly/cu128 \
+  torch torchvision torchaudio
+
+# 3) Re-check after upgrade
+.venv/bin/python - <<'PY'
+import torch
+print("torch:", torch.__version__)
+print("cuda available:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("device:", torch.cuda.get_device_name(0))
+    print("capability:", torch.cuda.get_device_capability(0))
+    x = torch.randn(8, device="cuda")
+    print("cuda tensor OK:", x.mean().item())
+PY
+
+```
+**NOTE**: DO NOT RUN "uv Sync" after this manual chanch
+
+# copy complete pre-trained modesl from both wandb and google drive
+
+```bash
+
+## do from within the lehome-challenge repo
+
+cd dummy_docker_policy/
+   
+python3 download_wandb_model.py --project lehome_challenge --artifact "nidhinninan_ucmo_schoolid/lehome_challenge/policy_dino_diffusion-seed_1000-dataset_repo_dp-125000:v0" --out pretrained_model
+
+rclone copy "gdrive:LeHome/models/lehome_challenge/DINOv2_MAP8_Registers_merged_A100/DINOv2_MAP8_Registers_merged_A100__20260429_223013__11d24394bc70/checkpoints/last/pretrained_model" "/data/lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model" --progress
+
+## INSTALL XVFB FOR HEADLESS RENDINING AND SUCH
+sudo apt-get update && sudo apt-get install -y xvfb
+
+```
+
 docker login
 
 python download_wandb_model.py --project lehome_challenge --artifact "nidhinninan_ucmo_schoolid/lehome_challenge/policy_dino_diffusion-seed_1000-dataset_repo_dp-125000:v0" --out pretrained_model
+
+rclone copy "gdrive:LeHome/models/lehome_challenge/DINOv2_MAP8_Registers_merged_A100/DINOv2_MAP8_Registers_merged_A100__20260429_223013__11d24394bc70/checkpoints/last/pretrained_model" "/data/lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model" --progress 
+
+sudo apt-get update && sudo apt-get install -y xvfb
 
 # WandB login
 pip install -U wandb
@@ -272,3 +339,46 @@ Build + push the same tag to your registry (Docker Hub in this example):
   --skip-download \
   --image-tag "nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_fixed-queues" \
   --push-image-tag
+
+  ## Eval
+
+  uv pip install warp-lang==1.11.1
+  uv sync 
+
+  # common locations (use whichever file actually exists on your machine)
+  export VK_ICD_FILENAMES=/etc/vulkan/icd.d/nvidia_icd.json
+  # or
+  export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
+
+  mkdir -p /data/warp_cache
+
+  cd /data/lehome_workspace/lehome-challenge
+
+  WARP_CACHE_PATH=/data/warp_cache OMNI_KIT_ACCEPT_EULA=yes PYTHONUNBUFFERED=1 xvfb-run -a .venv/bin/python -u lerobot_eval_with_plugins.py --policy_type lerobot --policy_path /data/lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model --dataset_root /data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged --garment_type top_long --step_hz 0 --device cpu --headless --enable_cameras --num_episodes 1 2>&1 | tee eval_top_long_fast.log
+(lehome) root@ubuntu:/data/lehome_workspace/lehome-challenge# WARP_CACHE_PATH=/data/warp_cache OMNI_KIT_ACCEPT_EULA=yes PYTHONUNBUFFERED=1 xvfb-run -a .venv/bin/python -u lerobot_eval_with_plugins.py   --policy_type lerobot   --policy_path /data/lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model   --dataset_root /data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged   --garment_type top_long   --step_hz 0   --device cpu   --headless   --enable_cameras   --num_episodes 1 2>&1 | tee eval_top_long_fast.log
+
+# Eval run (short)
+
+```bash 
+source /data/lehome_workspace/lehome-challenge/.venv/bin/activate
+
+WARP_CACHE_PATH=/data/warp_cache OMNI_KIT_ACCEPT_EULA=yes PYTHONUNBUFFERED=1 xvfb-run -a .venv/bin/python -u lerobot_eval_with_plugins.py   --policy_type lerobot   --policy_path /data/lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model   --dataset_root /data/lehome_workspace/lehome-challenge/Datasets/example/top_long_merged   --garment_type top_long   --step_hz 0   --device cpu   --headless   --enable_cameras   --num_episodes 1 2>&1 | tee eval_top_long_fast_7-5_v3_cpu_device.log
+```
+
+# Eval Run (default)
+
+```bash
+source /data/lehome_workspace/lehome-challenge/.venv/bin/activate
+
+WARP_CACHE_PATH=/data/warp_cache OMNI_KIT_ACCEPT_EULA=yes PYTHONUNBUFFERED=1 \
+xvfb-run -a .venv/bin/python -u lerobot_eval_with_plugins.py \
+  --policy_type lerobot \
+  --policy_path /data/lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model \
+  --dataset_root /data/lehome_workspace/lehome-challenge/Datasets/example/pant_long_merged \
+  --garment_type pant_long \
+  --step_hz 0 \
+  --device cpu \
+  --headless \
+  --enable_cameras \
+  2>&1 | tee eval_pant_long_default.log
+```

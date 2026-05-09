@@ -9,6 +9,40 @@ This document and the `updated_files` folder track all manual and agentic modifi
 ---
 <!-- LOG_START -->
 
+### 2026-05-08 10:20:00 UTC — Docker micro-rebuild patch layer for submitted image
+
+**Why**: Preserve original submitted checkpoint while fixing Docker-mode inference mismatch caused by missing LeRobot pre/post processing inside the container wrapper.
+
+**Files**:
+
+1. **`lehome_workspace/lehome-challenge/dummy_docker_policy/policy.py`**
+   - Replaced direct raw `DinoDiffusionPolicy` wrapper logic with LeRobot factory-based loading:
+     - `PreTrainedConfig.from_pretrained(..., cli_overrides=[])`
+     - `make_policy(...)`
+     - `make_pre_post_processors(...)`
+     - `LeRobotDatasetMetadata(...)` lookup via `meta_path`.
+   - Inference now:
+     - Converts observations to tensor batch format.
+     - Runs preprocessor normalization path before `select_action`.
+     - Runs postprocessor un-normalization before returning actions.
+   - Keeps checkpoint path semantics unchanged (`/app/pretrained_model`).
+
+2. **`lehome_workspace/lehome-challenge/dummy_docker_policy/Dockerfile.patch`** (new)
+   - Adds a micro-layer on top of original submitted image:
+     - `FROM nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell`
+     - `COPY policy.py /app/policy.py`
+     - `COPY meta /app/meta`
+   - Purpose: targeted runtime fix without changing model weights.
+
+3. **`lehome_workspace/lehome-challenge/dummy_docker_policy/meta/`** (new directory)
+   - Added as expected location for dataset normalization metadata used by `policy.py`.
+
+**Notes**:
+- Build tag used locally: `nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched`.
+- Docker push with provided token failed due insufficient write scope (`unauthorized: access token has insufficient scopes`).
+
+---
+
 ### 2026-05-07 18:05:00 UTC — `lerobot_eval_with_plugins.py`: DINO-only plugin requirement
 
 **Why**: Eval runs using DINO diffusion checkpoints should not require `lerobot_policy_clip` on disk or on `sys.path`.

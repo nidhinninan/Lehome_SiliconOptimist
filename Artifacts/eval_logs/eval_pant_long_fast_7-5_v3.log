@@ -1,0 +1,1664 @@
+✅ Registered plugin: lerobot_policy_dino
+[INFO][AppLauncher]: Using device: cpu
+[INFO][AppLauncher]: Loading experience file: /data/lehome_workspace/lehome-challenge/third_party/IsaacLab/apps/isaaclab.python.kit
+Loading user config located at: '/data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[0.092s] [ext: omni.kit.async_engine-0.0.3] startup
+DEBUG:asyncio:Using selector: EpollSelector
+[0.297s] [ext: omni.metrics.core-0.0.3] startup
+[0.297s] [ext: omni.client.lib-1.1.0] startup
+[0.317s] [ext: omni.blobkey-1.1.2] startup
+[0.317s] [ext: omni.stats-1.0.1] startup
+[0.319s] [ext: omni.datastore-0.0.0] startup
+[0.327s] [ext: omni.client-1.3.0] startup
+[0.334s] [ext: omni.ujitso.default-1.0.0] startup
+[0.337s] [ext: omni.hsscclient-1.1.2] startup
+[0.343s] [ext: omni.gpu_foundation.shadercache.vulkan-1.0.0] startup
+[0.345s] [ext: omni.assets.plugins-0.0.0] startup
+[0.347s] [ext: omni.gpu_foundation-0.0.0] startup
+[0.515s] [ext: carb.windowing.plugins-1.0.0] startup
+[0.626s] [ext: omni.kit.renderer.init-0.0.0] startup
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.105.08    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4070 Ti SUPER | Yes: 0 |     | 16622   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2705      | 880d53ae.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-87-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101004 (1.21.1.4)
+| Processor: AMD EPYC 7702P 64-Core Processor
+| Cores: 15 | Logical Cores: 15
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 50538 | Free Memory: 45826
+| Total Page/Swap (MB): 0 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+cat: '/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor': No such file or directory
+[1.749s] [ext: omni.materialx.libs-1.0.7] startup
+[1.760s] [ext: omni.kit.pipapi-0.0.0] startup
+[1.761s] [ext: omni.usd.config-1.0.6] startup
+[1.766s] [ext: omni.gpucompute.plugins-0.0.0] startup
+[1.767s] [ext: omni.usd.libs-1.0.1] startup
+[1.996s] [ext: omni.kit.telemetry-0.5.2] startup
+[2.065s] [ext: omni.mdl-56.0.3] startup
+[2.100s] [ext: omni.iray.libs-0.0.0] startup
+[2.109s] [ext: omni.mdl.neuraylib-0.2.12] startup
+[2.112s] [ext: omni.kit.usd.mdl-1.1.5] startup
+[2.267s] [ext: omni.kit.pip_archive-0.0.0] startup
+[2.268s] [ext: omni.kit.loop-isaac-1.3.7] startup
+[2.270s] [ext: omni.kit.test-2.0.1] startup
+[2.308s] [ext: omni.appwindow-1.1.10] startup
+[2.311s] [ext: omni.kit.renderer.core-1.1.0] startup
+[2.340s] [ext: omni.kit.renderer.capture-0.0.0] startup
+[2.344s] [ext: omni.kit.renderer.imgui-2.0.5] startup
+[2.444s] [ext: omni.ui-2.27.1] startup
+[2.459s] [ext: omni.kit.mainwindow-1.0.3] startup
+[2.460s] [ext: carb.audio-0.1.0] startup
+[2.475s] [ext: omni.uiaudio-1.0.0] startup
+[2.476s] [ext: omni.kit.uiapp-0.0.0] startup
+[2.476s] [ext: omni.usd.schema.metrics.assembler-107.3.1] startup
+[2.480s] [ext: omni.usd.schema.geospatial-0.0.0] startup
+[2.486s] [ext: omni.usd.schema.anim-0.0.0] startup
+[2.526s] [ext: isaacsim.robot.schema-3.6.0] startup
+[2.540s] [ext: omni.usd.schema.physx-107.3.26] startup
+[2.590s] [ext: omni.usd.schema.semantics-0.0.0] startup
+[2.595s] [ext: omni.usd.schema.audio-0.0.0] startup
+[2.600s] [ext: omni.usd.schema.omnigraph-1.0.0] startup
+[2.610s] [ext: omni.usd_resolver-1.0.0] startup
+[2.618s] [ext: omni.usd.core-1.5.3] startup
+[2.624s] [ext: omni.usd.schema.omni_lens_distortion-0.0.0] startup
+[2.657s] [ext: omni.usd.schema.omni_sensors-0.0.0] startup
+[2.658s] [ext: omni.usd.schema.omniscripting-1.0.0] startup
+[2.667s] [ext: omni.kit.window.popup_dialog-2.0.24] startup
+[2.671s] [ext: omni.graph.exec-0.9.6] startup
+[2.672s] [ext: omni.kit.widget.nucleus_connector-2.0.1] startup
+[2.674s] [ext: omni.kit.usd_undo-0.1.8] startup
+[2.674s] [ext: omni.kit.exec.core-0.13.4] startup
+[2.677s] [ext: omni.kit.actions.core-1.0.0] startup
+[2.680s] [ext: omni.resourcemonitor-107.0.1] startup
+[2.683s] [ext: omni.activity.core-1.0.3] startup
+[2.685s] [ext: omni.timeline-1.0.14] startup
+[2.687s] [ext: omni.kit.commands-1.4.10] startup
+[2.692s] [ext: usdrt.scenegraph-7.6.1] startup
+[2.745s] [ext: omni.kit.audiodeviceenum-1.0.2] startup
+[2.747s] [ext: omni.hydra.usdrt_delegate-7.5.1] startup
+[2.763s] [ext: omni.hydra.scene_delegate-0.3.4] startup
+[2.775s] [ext: omni.usd-1.13.10] startup
+[2.878s] [ext: omni.kit.asset_converter-5.0.17] startup
+[2.900s] [ext: omni.usd.schema.render_settings.rtx-0.0.0] startup
+[2.901s] [ext: omni.index.libs-380600.8087.0] startup
+[2.901s] [ext: omni.volume-0.5.2] startup
+[2.905s] [ext: omni.ujitso.client-0.0.0] startup
+[2.906s] [ext: omni.index-1.0.1] startup
+[2.907s] [ext: omni.hydra.rtx.shadercache.vulkan-1.0.0] startup
+[2.908s] [ext: omni.hydra.rtx-1.0.0] startup
+[2.983s] [ext: omni.kit.viewport.legacy_gizmos-1.0.19] startup
+[2.990s] [ext: omni.kit.raycast.query-1.1.0] startup
+[3.002s] [ext: omni.kit.widget.path_field-2.0.11] startup
+[3.003s] [ext: omni.kit.clipboard-1.0.5] startup
+[3.007s] [ext: omni.kit.widget.options_menu-1.1.6] startup
+[3.012s] [ext: omni.kit.helper.file_utils-0.1.9] startup
+[3.014s] [ext: omni.kit.widget.browser_bar-2.0.10] startup
+[3.015s] [ext: omni.kit.notification_manager-1.0.10] startup
+[3.017s] [ext: omni.kit.menu.core-1.1.2] startup
+[3.018s] [ext: omni.kit.widget.options_button-1.0.3] startup
+[3.019s] [ext: omni.kit.widget.filebrowser-2.12.3] startup
+[3.024s] [ext: omni.kit.viewport.registry-104.0.6] startup
+[3.025s] [ext: omni.kit.menu.utils-2.0.5] startup
+[3.036s] [ext: omni.kit.widget.context_menu-1.2.5] startup
+[3.038s] [ext: omni.kit.usd.layers-2.2.11] startup
+[3.056s] [ext: omni.ui.scene-1.11.5] startup
+[3.062s] [ext: omni.kit.context_menu-1.8.6] startup
+[3.064s] [ext: omni.kit.window.filepicker-2.13.4] startup
+[3.078s] [ext: omni.kit.widget.searchable_combobox-1.0.6] startup
+[3.079s] [ext: omni.kit.viewport.scene_camera_model-1.0.6] startup
+[3.091s] [ext: omni.kit.hydra_texture-1.4.6] startup
+[3.099s] [ext: omni.kit.window.file_importer-1.1.18] startup
+[3.102s] [ext: omni.kit.widget.settings-1.2.6] startup
+[3.104s] [ext: omni.kit.window.drop_support-1.0.5] startup
+[3.105s] [ext: omni.kit.widget.viewport-107.1.3] startup
+[3.110s] [ext: omni.kit.material.library-2.0.7] startup
+[3.115s] [ext: omni.hydra.engine.stats-1.0.3] startup
+[3.121s] [ext: omni.kit.window.preferences-1.8.0] startup
+[3.127s] [ext: omni.kit.viewport.window-107.2.0] startup
+[3.147s] [ext: omni.kit.manipulator.transform-107.0.0] startup
+[3.152s] [ext: omni.kvdb-107.3.26] startup
+[3.154s] [ext: omni.kit.widget.toolbar-2.0.1] startup
+[3.160s] [ext: omni.kit.viewport.utility-1.1.2] startup
+[3.161s] [ext: omni.usdphysics-107.3.26] startup
+[3.165s] [ext: omni.physx.foundation-107.3.26] startup
+[3.168s] [ext: omni.localcache-107.3.26] startup
+[3.170s] [ext: omni.convexdecomposition-107.3.26] startup
+[3.175s] [ext: omni.kit.manipulator.tool.snap-1.5.13] startup
+[3.180s] [ext: omni.kit.manipulator.selector-1.1.3] startup
+[3.181s] [ext: omni.physx.cooking-107.3.26] startup
+[3.188s] [ext: omni.kit.viewport.manipulator.transform-107.0.4] startup
+[3.190s] [ext: omni.physx-107.3.26] startup
+[3.207s] [ext: omni.kit.manipulator.viewport-107.0.1] startup
+[3.208s] [ext: omni.kit.primitive.mesh-1.0.17] startup
+[3.212s] [ext: omni.kit.manipulator.prim.core-107.0.8] startup
+[3.219s] [ext: omni.fabric.commands-1.1.6] startup
+[3.223s] [ext: omni.kit.manipulator.prim.usd-107.0.3] startup
+[3.224s] [ext: omni.kit.manipulator.prim.fabric-107.0.4] startup
+[3.225s] [ext: omni.debugdraw-0.1.4] startup
+[3.233s] [ext: omni.physx.commands-107.3.26] startup
+[3.238s] [ext: omni.kit.manipulator.selection-106.0.1] startup
+[3.239s] [ext: omni.kit.manipulator.prim-107.0.0] startup
+[3.239s] [ext: omni.physics.tensors-107.3.26] startup
+[3.246s] [ext: omni.kit.property.adapter.core-1.0.2] startup
+[3.248s] [ext: omni.kit.widget.highlight_label-1.0.3] startup
+[3.249s] [ext: omni.kit.widget.searchfield-1.1.8] startup
+[3.251s] [ext: omni.kit.property.adapter.fabric-1.0.3] startup
+[3.252s] [ext: omni.kit.widget.filter-1.1.4] startup
+[3.253s] [ext: omni.kit.widget.prompt-1.0.7] startup
+[3.253s] [ext: omni.kit.window.property-1.12.1] startup
+[3.256s] [ext: omni.kit.property.adapter.usd-1.0.2] startup
+[3.257s] [ext: omni.kit.hotkeys.core-1.3.10] startup
+[3.260s] [ext: omni.kit.window.file_exporter-1.0.33] startup
+[3.261s] [ext: omni.kit.stage_template.core-1.1.22] startup
+[3.262s] [ext: omni.kit.viewport.menubar.core-107.2.1] startup
+[3.279s] [ext: omni.kit.viewport.actions-107.0.2] startup
+[3.285s] [ext: omni.kit.window.file-2.0.5] startup
+[3.288s] [ext: omni.kit.window.content_browser_registry-0.0.6] startup
+[3.289s] [ext: omni.kit.viewport.menubar.display-107.0.3] startup
+[3.290s] [ext: omni.kit.window.content_browser-3.1.3] startup
+[3.305s] [ext: omni.kit.widget.stage-3.1.4] startup
+[3.319s] [ext: omni.inspect-1.0.2] startup
+[3.321s] [ext: omni.kit.widget.layers-1.8.6] startup
+[3.336s] [ext: omni.kit.property.usd-4.5.12] startup
+[3.348s] [ext: omni.kit.numpy.common-0.1.3] startup
+[3.351s] [ext: omni.physics-107.3.26] startup
+[3.355s] [ext: omni.graph.core-2.184.5] startup
+[3.361s] [ext: omni.usdphysics.ui-107.3.26] startup
+[3.397s] [ext: omni.physics.stageupdate-107.3.26] startup
+[3.400s] [ext: isaacsim.core.deprecation_manager-0.2.7] startup
+[3.401s] [ext: omni.physx.ui-107.3.26] startup
+[3.445s] [ext: isaacsim.core.version-2.0.6] startup
+[3.446s] [ext: omni.usd.metrics.assembler-107.3.1] startup
+[3.457s] [ext: omni.warp.core-1.8.2] startup
+[3.458s] [ext: omni.ui_query-1.1.8] startup
+[3.459s] [ext: omni.physics.physx-107.3.26] startup
+[3.463s] [ext: isaacsim.storage.native-1.5.1] startup
+[3.465s] [ext: omni.usd.metrics.assembler.physics-107.3.26] startup
+[3.467s] [ext: omni.isaac.dynamic_control-2.0.7] startup
+[3.477s] [ext: omni.graph.tools-1.79.2] startup
+DEBUG:AutoNode:Defining data type 'any' as 'Any'
+DEBUG:AutoNode:Defining data type 'bool' as 'Bool' and array 'BoolArray
+DEBUG:AutoNode:Defining data type 'bundle' as 'Bundle'
+DEBUG:AutoNode:Defining data type 'colord[3]' as 'Color3d' and array 'Color3dArray
+DEBUG:AutoNode:Defining data type 'colorf[3]' as 'Color3f' and array 'Color3fArray
+DEBUG:AutoNode:Defining data type 'colorh[3]' as 'Color3h' and array 'Color3hArray
+DEBUG:AutoNode:Defining data type 'colord[4]' as 'Color4d' and array 'Color4dArray
+DEBUG:AutoNode:Defining data type 'colorf[4]' as 'Color4f' and array 'Color4fArray
+DEBUG:AutoNode:Defining data type 'colorh[4]' as 'Color4h' and array 'Color4hArray
+DEBUG:AutoNode:Defining data type 'double' as 'Double' and array 'DoubleArray
+DEBUG:AutoNode:Defining data type 'double[2]' as 'Double2' and array 'Double2Array
+DEBUG:AutoNode:Defining data type 'double[3]' as 'Double3' and array 'Double3Array
+DEBUG:AutoNode:Defining data type 'double[4]' as 'Double4' and array 'Double4Array
+DEBUG:AutoNode:Defining data type 'execution' as 'Execution'
+DEBUG:AutoNode:Defining data type 'float' as 'Float' and array 'FloatArray
+DEBUG:AutoNode:Defining data type 'float[2]' as 'Float2' and array 'Float2Array
+DEBUG:AutoNode:Defining data type 'float[3]' as 'Float3' and array 'Float3Array
+DEBUG:AutoNode:Defining data type 'float[4]' as 'Float4' and array 'Float4Array
+DEBUG:AutoNode:Defining data type 'frame[4]' as 'Frame' and array 'FrameArray
+DEBUG:AutoNode:Defining data type 'half' as 'Half' and array 'HalfArray
+DEBUG:AutoNode:Defining data type 'half[2]' as 'Half2' and array 'Half2Array
+DEBUG:AutoNode:Defining data type 'half[3]' as 'Half3' and array 'Half3Array
+DEBUG:AutoNode:Defining data type 'half[4]' as 'Half4' and array 'Half4Array
+DEBUG:AutoNode:Defining data type 'int' as 'Int' and array 'IntArray
+DEBUG:AutoNode:Defining data type 'int[2]' as 'Int2' and array 'Int2Array
+DEBUG:AutoNode:Defining data type 'int[3]' as 'Int3' and array 'Int3Array
+DEBUG:AutoNode:Defining data type 'int[4]' as 'Int4' and array 'Int4Array
+DEBUG:AutoNode:Defining data type 'int64' as 'Int64' and array 'Int64Array
+DEBUG:AutoNode:Defining data type 'matrixd[2]' as 'Matrix2d' and array 'Matrix2dArray
+DEBUG:AutoNode:Defining data type 'matrixd[3]' as 'Matrix3d' and array 'Matrix3dArray
+DEBUG:AutoNode:Defining data type 'matrixd[4]' as 'Matrix4d' and array 'Matrix4dArray
+DEBUG:AutoNode:Defining data type 'normald[3]' as 'Normal3d' and array 'Normal3dArray
+DEBUG:AutoNode:Defining data type 'normalf[3]' as 'Normal3f' and array 'Normal3fArray
+DEBUG:AutoNode:Defining data type 'normalh[3]' as 'Normal3h' and array 'Normal3hArray
+DEBUG:AutoNode:Defining data type 'objectId' as 'ObjectId' and array 'ObjectIdArray
+DEBUG:AutoNode:Defining data type 'path' as 'Path'
+DEBUG:AutoNode:Defining data type 'pointd[3]' as 'Point3d' and array 'Point3dArray
+DEBUG:AutoNode:Defining data type 'pointf[3]' as 'Point3f' and array 'Point3fArray
+DEBUG:AutoNode:Defining data type 'pointh[3]' as 'Point3h' and array 'Point3hArray
+DEBUG:AutoNode:Defining data type 'quatd[4]' as 'Quatd' and array 'QuatdArray
+DEBUG:AutoNode:Defining data type 'quatf[4]' as 'Quatf' and array 'QuatfArray
+DEBUG:AutoNode:Defining data type 'quath[4]' as 'Quath' and array 'QuathArray
+DEBUG:AutoNode:Defining data type 'string' as 'String'
+DEBUG:AutoNode:Defining data type 'target' as 'Target'
+DEBUG:AutoNode:Defining data type 'texcoordd[2]' as 'TexCoord2d' and array 'TexCoord2dArray
+DEBUG:AutoNode:Defining data type 'texcoordf[2]' as 'TexCoord2f' and array 'TexCoord2fArray
+DEBUG:AutoNode:Defining data type 'texcoordh[2]' as 'TexCoord2h' and array 'TexCoord2hArray
+DEBUG:AutoNode:Defining data type 'texcoordd[3]' as 'TexCoord3d' and array 'TexCoord3dArray
+DEBUG:AutoNode:Defining data type 'texcoordf[3]' as 'TexCoord3f' and array 'TexCoord3fArray
+DEBUG:AutoNode:Defining data type 'texcoordh[3]' as 'TexCoord3h' and array 'TexCoord3hArray
+DEBUG:AutoNode:Defining data type 'timecode' as 'Timecode' and array 'TimecodeArray
+DEBUG:AutoNode:Defining data type 'token' as 'Token' and array 'TokenArray
+DEBUG:AutoNode:Defining data type 'uchar' as 'UChar' and array 'UCharArray
+DEBUG:AutoNode:Defining data type 'uint' as 'UInt' and array 'UIntArray
+DEBUG:AutoNode:Defining data type 'uint64' as 'UInt64' and array 'UInt64Array
+DEBUG:AutoNode:Defining data type 'vectord[3]' as 'Vector3d' and array 'Vector3dArray
+DEBUG:AutoNode:Defining data type 'vectorf[3]' as 'Vector3f' and array 'Vector3fArray
+DEBUG:AutoNode:Defining data type 'vectorh[3]' as 'Vector3h' and array 'Vector3hArray
+[3.506s] [ext: omni.physx.tensors-107.3.26] startup
+[3.516s] [ext: isaacsim.core.utils-3.5.1] startup
+[3.521s] [ext: omni.graph-1.141.2] startup
+[3.576s] [ext: isaacsim.core.simulation_manager-1.4.4] startup
+[3.758s] [ext: omni.graph.action_core-1.1.7] startup
+[3.768s] [ext: omni.kit.stage_templates-2.0.0] startup
+[3.772s] [ext: isaacsim.core.prims-0.6.1] startup
+[3.807s] [ext: omni.graph.action_nodes-1.50.4] startup
+[3.815s] [ext: isaacsim.core.api-4.8.0] startup
+[3.839s] [ext: omni.graph.action-1.130.0] startup
+[3.843s] [ext: omni.kit.widget.stage_icons-1.0.8] startup
+[3.850s] [ext: omni.kit.selection-0.1.6] startup
+[3.855s] [ext: omni.kit.window.stage-2.6.1] startup
+[3.864s] [ext: omni.kit.menu.create-2.0.1] startup
+[3.868s] [ext: omni.kit.widget.text_editor-1.1.1] startup
+[3.872s] [ext: omni.kit.ui_test-1.3.7] startup
+[3.876s] [ext: omni.kit.scripting-107.3.2] startup
+[3.883s] [ext: omni.kit.window.extensions-1.4.27] startup
+[3.894s] [ext: omni.graph.visualization.nodes-2.1.3] startup
+[3.913s] [ext: isaacsim.replicator.behavior-1.1.16] startup
+[3.917s] [ext: isaacsim.gui.components-1.2.1] startup
+[3.927s] [ext: isaacsim.gui.menu-2.4.4] startup
+[3.957s] [ext: isaacsim.core.cloner-1.4.10] startup
+[3.978s] [ext: semantics.schema.editor-2.0.2] startup
+[4.063s] [ext: omni.kit.widget.zoombar-1.0.6] startup
+[4.070s] [ext: omni.kit.usd.collect-2.4.5] startup
+[4.075s] [ext: omni.kit.browser.core-2.3.13] startup
+[4.089s] [ext: omni.kit.menu.stage-1.2.7] startup
+[4.094s] [ext: omni.kit.tool.collect-2.2.18] startup
+[4.100s] [ext: omni.kit.browser.folder.core-1.10.9] startup
+[4.114s] [ext: isaacsim.core.experimental.utils-0.3.0] startup
+[4.118s] [ext: isaacsim.asset.browser-1.3.23] startup
+[4.126s] [ext: omni.kit.widget.graph-2.0.0] startup
+[4.142s] [ext: omni.graph.image.core-0.6.1] startup
+[4.146s] [ext: omni.kit.graph.delegate.default-1.2.3] startup
+[4.148s] [ext: omni.graph.image.nodes-1.3.1] startup
+[4.150s] [ext: omni.kit.graph.editor.core-1.5.3] startup
+[4.156s] [ext: omni.graph.nodes-1.170.10] startup
+[4.176s] [ext: omni.graph.ui_nodes-1.50.5] startup
+[4.183s] [ext: omni.kit.graph.usd.commands-1.3.1] startup
+[4.186s] [ext: omni.kit.widget.material_preview-1.0.16] startup
+[4.191s] [ext: omni.videoencoding-0.1.2] startup
+[4.195s] [ext: omni.kit.stagerecorder.core-107.0.3] startup
+[4.202s] [ext: omni.warp-1.8.2] startup
+[4.221s] [ext: omni.syntheticdata-0.6.13] startup
+[4.245s] [ext: omni.kit.window.material_graph-1.9.1] startup
+[4.273s] [ext: omni.graph.scriptnode-1.50.0] startup
+[4.282s] [ext: omni.kit.stagerecorder.ui-107.0.1] startup
+[4.319s] [ext: omni.replicator.core-1.12.27] startup
+[4.564s] [ext: omni.kit.stagerecorder.bundle-105.0.2] startup
+[4.570s] [ext: isaacsim.core.nodes-3.4.3] startup
+[4.600s] [ext: isaacsim.test.docstring-1.1.0] startup
+[4.689s] [ext: isaacsim.sensors.camera-1.3.6] startup
+[4.761s] [ext: isaacsim.core.experimental.prims-0.8.1] startup
+[4.963s] [ext: omni.kit.usdz_export-1.0.9] startup
+[4.976s] [ext: isaacsim.robot.surface_gripper-3.3.1] startup
+[5.016s] [ext: isaacsim.sensors.physics-0.4.3] startup
+[5.064s] [ext: omni.kit.tool.asset_importer-4.3.2] startup
+[5.150s] [ext: isaacsim.robot.manipulators-3.3.6] startup
+[5.227s] [ext: isaacsim.robot.policy.examples-4.1.11] startup
+[5.258s] [ext: omni.sensors.nv.common-3.0.0] startup
+[5.315s] [ext: isaacsim.asset.importer.mjcf-2.5.13] startup
+[5.552s] [ext: isaacsim.util.debug_draw-3.1.0] startup
+[5.562s] [ext: omni.sensors.nv.materials-2.0.0] startup
+[5.572s] [ext: omni.sensors.net-1.0.0] startup
+[5.578s] [ext: isaacsim.sensors.physx-2.3.2] startup
+[5.589s] [ext: isaacsim.examples.browser-0.2.1] startup
+[5.599s] [ext: isaacsim.asset.importer.urdf-2.4.31] startup
+[5.659s] [ext: isaacsim.simulation_app-2.12.2] startup
+[5.674s] [ext: omni.sensors.nv.ids-2.0.0] startup
+[5.704s] [ext: omni.sensors.nv.lidar-3.0.0] startup
+[5.745s] [ext: omni.kit.property.audio-1.0.16] startup
+[5.814s] [ext: omni.kit.property.camera-1.0.10] startup
+[5.933s] [ext: omni.kit.property.geometry-2.0.4] startup
+[6.178s] [ext: omni.hydra.scene_api-0.1.2] startup
+[6.251s] [ext: omni.sensors.nv.wpm-3.0.0] startup
+[6.294s] [ext: omni.kit.property.light-1.0.12] startup
+[6.409s] [ext: omni.kit.property.material-1.11.9] startup
+[6.445s] [ext: omni.kit.property.render-1.2.1] startup
+[6.451s] [ext: omni.kit.property.transform-1.5.13] startup
+[6.461s] [ext: omni.sensors.nv.radar-3.0.0] startup
+[6.478s] [ext: omni.anim.curve.core-1.3.1] startup
+[6.503s] [ext: omni.kit.manipulator.camera-106.0.4] startup
+[6.520s] [ext: isaacsim.gui.property-1.1.3] startup
+[6.523s] [ext: omni.kit.property.bundle-1.4.1] startup
+[6.527s] [ext: isaacsim.sensors.rtx-15.8.4] startup
+[6.542s] [ext: omni.kit.viewport.menubar.camera-107.0.6] startup
+[6.555s] [ext: omni.kit.viewport.menubar.lighting-107.3.1] startup
+[6.566s] [ext: omni.kit.viewport.menubar.render-107.0.10] startup
+[6.578s] [ext: omni.kit.viewport.menubar.settings-107.0.3] startup
+[6.585s] [ext: omni.kit.window.script_editor-2.0.1] startup
+[6.590s] [ext: omni.kit.window.console-1.1.4] startup
+[6.596s] [ext: isaacsim.robot.wheeled_robots-4.0.24] startup
+[6.604s] [ext: omni.physx.demos-107.3.26] startup
+[6.671s] [ext: omni.kit.property.physx-107.3.26] startup
+[6.707s] [ext: omni.rtx.window.settings-0.6.19] startup
+[6.720s] [ext: omni.ocio-0.1.1] startup
+[6.726s] [ext: omni.asset_validator.core-1.1.6] startup
+[6.784s] [ext: omni.physx.vehicle-107.3.26] startup
+[6.811s] [ext: omni.replicator.replicator_yaml-2.0.11] startup
+[6.820s] [ext: omni.rtx.settings.core-0.6.5] startup
+[6.831s] [ext: omni.kit.window.toolbar-2.0.0] startup
+[6.838s] [ext: omni.kit.window.status_bar-0.1.9] startup
+[6.847s] [ext: omni.physx.asset_validator-107.3.26] startup
+[6.864s] [ext: omni.physx.camera-107.3.26] startup
+[6.880s] [ext: omni.physx.cct-107.3.26] startup
+[6.898s] [ext: omni.physx.graph-107.3.26] startup
+[6.924s] [ext: omni.physx.supportui-107.3.26] startup
+[6.954s] [ext: omni.physx.telemetry-107.3.26] startup
+[6.963s] [ext: omni.usd.metrics.assembler.ui-107.3.1] startup
+[6.993s] [ext: isaacsim.app.about-2.0.11] startup
+[6.999s] [ext: isaacsim.core.throttling-2.2.2] startup
+[7.003s] [ext: omni.kit.ui.actions-1.0.5] startup
+[7.009s] [ext: semantics.schema.property-2.0.1] startup
+[7.013s] [ext: omni.physx.bundle-107.3.26] startup
+[7.017s] [ext: isaaclab-0.53.1] startup
+[7.034s] [ext: isaaclab_assets-0.2.4] startup
+[7.446s] [ext: isaaclab_tasks-0.11.12] startup
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:h5py._conv:Creating converter from 7 to 5
+DEBUG:h5py._conv:Creating converter from 5 to 7
+DEBUG:matplotlib:matplotlib data path: /data/lehome_workspace/lehome-challenge/.venv/lib/python3.11/site-packages/matplotlib/mpl-data
+DEBUG:matplotlib:CONFIGDIR=/root/.config/matplotlib
+DEBUG:matplotlib:interactive is False
+DEBUG:matplotlib:platform is linux
+[7.771s] [ext: omni.kit.menu.common-2.0.1] startup
+[7.774s] [ext: isaaclab_rl-0.4.7] startup
+[7.776s] [ext: isaaclab_mimic-1.0.16] startup
+[7.778s] [ext: isaaclab.python-2.3.0] startup
+[7.782s] Simulation App Starting
+[8.029s] app ready
+[11.987s] Simulation App Startup Complete
+[PolicyRegistry] Registered policy: 'lerobot' -> LeRobotPolicy
+[PolicyRegistry] Registered policy: 'custom' -> CustomPolicy
+[PolicyRegistry] Registered policy: 'classifier_router' -> ClassifierRouterPolicy
+DEBUG:git.cmd:Popen(['git', 'version'], cwd=/data/lehome_workspace/lehome-challenge, stdin=None, shell=False, universal_newlines=False)
+DEBUG:git.cmd:Popen(['git', 'version'], cwd=/data/lehome_workspace/lehome-challenge, stdin=None, shell=False, universal_newlines=False)
+DEBUG:git.util:sys.platform='linux', git_executable='git'
+[INFO]: Parsing configuration from: lehome.tasks.bedroom.garment_bi_cfg_v2:GarmentEnvCfg
+2026-05-07 20:12:03 - scripts.utils.evaluation - INFO - Initializing Policy Type: lerobot
+2026-05-07 20:12:03 - scripts.eval_policy.lerobot_policy - INFO - Loading LeRobot policy from: /data/lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model
+DEBUG:filelock:Attempting to acquire lock 134276093149648 on /data/huggingface_cache/datasets/_data_huggingface_cache_datasets_parquet_default-872715d377823ea1_0.0.0_9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.lock
+DEBUG:filelock:Lock 134276093149648 acquired on /data/huggingface_cache/datasets/_data_huggingface_cache_datasets_parquet_default-872715d377823ea1_0.0.0_9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.lock
+DEBUG:filelock:Attempting to release lock 134276093149648 on /data/huggingface_cache/datasets/_data_huggingface_cache_datasets_parquet_default-872715d377823ea1_0.0.0_9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.lock
+DEBUG:filelock:Lock 134276093149648 released on /data/huggingface_cache/datasets/_data_huggingface_cache_datasets_parquet_default-872715d377823ea1_0.0.0_9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.lock
+DEBUG:filelock:Attempting to acquire lock 134276065677072 on /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d_builder.lock
+DEBUG:filelock:Lock 134276065677072 acquired on /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d_builder.lock
+DEBUG:fsspec.local:open file: /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete/parquet-train-00000-00000-of-NNNNN.arrow
+DEBUG:filelock:Attempting to acquire lock 134276065964560 on /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete_info.lock
+DEBUG:filelock:Lock 134276065964560 acquired on /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete_info.lock
+DEBUG:fsspec.local:open file: /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete/dataset_info.json
+DEBUG:filelock:Attempting to release lock 134276065964560 on /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete_info.lock
+DEBUG:filelock:Lock 134276065964560 released on /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d.incomplete_info.lock
+DEBUG:filelock:Attempting to release lock 134276065677072 on /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d_builder.lock
+DEBUG:filelock:Lock 134276065677072 released on /data/huggingface_cache/datasets/parquet/default-872715d377823ea1/0.0.0/9c460aabd2aa27d1496e5e38d2060760561f0ac2cd6a110134eefa5b3f153b8d_builder.lock
+DEBUG:draccus.wrappers.field_metavar:Metavar for type None: None
+DEBUG:draccus.help_formatter:action type: None, Result: , nargs: 0, default metavar: None
+DEBUG:draccus.wrappers.field_metavar:Metavar for type <class 'str'>: str
+DEBUG:draccus.help_formatter:action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at n_obs_steps has a default value of 1
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at input_features has a default value of {}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at output_features has a default value of {}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at device has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_amp has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_peft has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at push_to_hub has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at repo_id has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at private has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at tags has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at license has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at pretrained_path has a default value of None
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 1, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': '`input_features` can be set to None/null in order to infer those values from the dataset.', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+DEBUG:draccus.argparsing:
+POST PROCESSING
+
+DEBUG:draccus.argparsing:(raw) parsed args: Namespace()
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot_policy_dino.configuration_dino_diffusion.DinoDiffusionConfig'>
+DEBUG:draccus.parsers.decoding:Decode name = n_obs_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:Decoding a Dict field: dict[str, lerobot.configs.types.PolicyFeature]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decoding a Tuple field: tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = device, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = use_amp, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = use_peft, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = push_to_hub, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = repo_id, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = private, type = typing.Optional[bool]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[bool]
+DEBUG:draccus.parsers.decoding:Decode name = tags, type = typing.Optional[list[str]]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[list[str]]
+DEBUG:draccus.parsers.decoding:Decoding a List field: list[str]
+DEBUG:draccus.parsers.decoding:Decode name = license, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[pathlib.Path]
+DEBUG:draccus.parsers.decoding:Decode name = horizon, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = n_action_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+DEBUG:draccus.parsers.decoding:Decoding a Dict field: dict[str, lerobot.configs.types.NormalizationMode]
+DEBUG:draccus.parsers.decoding:Decode name = drop_n_last_frames, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = vision_backbone, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = crop_shape, type = typing.Optional[tuple[int, int]]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[tuple[int, int]]
+DEBUG:draccus.parsers.decoding:Decoding a Tuple field: tuple[int, int]
+DEBUG:draccus.parsers.decoding:Decode name = crop_is_random, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = use_group_norm, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = spatial_softmax_num_keypoints, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_separate_rgb_encoder_per_camera, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = down_dims, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = kernel_size, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = n_groups, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = diffusion_step_embed_dim, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_film_scale_modulation, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = noise_scheduler_type, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = num_train_timesteps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_schedule, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_start, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_end, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = prediction_type, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = clip_sample, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = clip_sample_range, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = num_inference_steps, type = typing.Optional[int]
+DEBUG:draccus.parsers.decoding:Decoding a Union field: typing.Optional[int]
+DEBUG:draccus.parsers.decoding:Decode name = do_mask_loss_for_padding, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_lr, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_betas, type = <class 'tuple'>
+DEBUG:draccus.parsers.decoding:Decoding a Tuple field: <class 'tuple'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_eps, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_weight_decay, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = scheduler_name, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = scheduler_warmup_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_cls_token, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = spatial_pooling, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = map_num_queries, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_registers, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = num_register_tokens, type = <class 'int'>
+DEBUG:draccus.wrappers.field_metavar:Metavar for type None: None
+DEBUG:draccus.help_formatter:action type: None, Result: , nargs: 0, default metavar: None
+DEBUG:draccus.wrappers.field_metavar:Metavar for type <class 'str'>: str
+DEBUG:draccus.help_formatter:action type: <class 'str'>, Result: str, nargs: None, default metavar: None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at n_obs_steps has a default value of 2
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at input_features has a default value of {}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at output_features has a default value of {}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at device has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_amp has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_peft has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at push_to_hub has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at repo_id has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at private has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at tags has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at license has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at pretrained_path has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at horizon has a default value of 16
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at n_action_steps has a default value of 8
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at normalization_mapping has a default value of {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>}
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at drop_n_last_frames has a default value of 7
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at vision_backbone has a default value of facebook/dinov2-small
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at crop_shape has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at crop_is_random has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at pretrained_backbone_weights has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_group_norm has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at spatial_softmax_num_keypoints has a default value of 32
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_separate_rgb_encoder_per_camera has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at down_dims has a default value of (512, 1024, 2048)
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at kernel_size has a default value of 5
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at n_groups has a default value of 8
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at diffusion_step_embed_dim has a default value of 128
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_film_scale_modulation has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at noise_scheduler_type has a default value of DDPM
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at num_train_timesteps has a default value of 100
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at beta_schedule has a default value of squaredcos_cap_v2
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at beta_start has a default value of 0.0001
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at beta_end has a default value of 0.02
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at prediction_type has a default value of epsilon
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at clip_sample has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at clip_sample_range has a default value of 1.0
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at num_inference_steps has a default value of None
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at do_mask_loss_for_padding has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at optimizer_lr has a default value of 0.0001
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at optimizer_betas has a default value of (0.95, 0.999)
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at optimizer_eps has a default value of 1e-08
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at optimizer_weight_decay has a default value of 1e-06
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at scheduler_name has a default value of cosine
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at scheduler_warmup_steps has a default value of 500
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_cls_token has a default value of True
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at spatial_pooling has a default value of baseline
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at map_num_queries has a default value of 8
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at use_registers has a default value of False
+DEBUG:draccus.wrappers.dataclass_wrapper:wrapped field at num_register_tokens has a default value of 4
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             current step and additional steps going back).
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'n_obs_steps': {'required': False, 'dest': 'n_obs_steps', 'default': 2, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'input_features': {'required': False, 'dest': 'input_features', 'default': {}, 'help': '`input_features` can be set to None/null in order to infer those values from the dataset.', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'output_features': {'required': False, 'dest': 'output_features', 'default': {}, 'help': ' ', 'type': typing.Optional[typing.Dict[str, lerobot.configs.types.PolicyFeature]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'device': {'required': False, 'dest': 'device', 'default': None, 'help': 'e.g. "cuda", "cuda:0", "cpu", or "mps"', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_amp': {'required': False, 'dest': 'use_amp', 'default': False, 'help': '`use_amp` determines whether to use Automatic Mixed Precision (AMP) for training and evaluation. With AMP,\nautomatic gradient scaling is used.', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_peft': {'required': False, 'dest': 'use_peft', 'default': False, 'help': 'Whether the policy employed PEFT for training.', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'push_to_hub': {'required': False, 'dest': 'push_to_hub', 'default': True, 'help': 'type: ignore[assignment] # TODO: use a different name to avoid override', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'repo_id': {'required': False, 'dest': 'repo_id', 'default': None, 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'private': {'required': False, 'dest': 'private', 'default': None, 'help': 'Upload on private repository on the Hugging Face hub.', 'type': typing.Optional[bool]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'tags': {'required': False, 'dest': 'tags', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[typing.List[str]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'license': {'required': False, 'dest': 'license', 'default': None, 'help': 'Add tags to your policy on the hub.', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'pretrained_path': {'required': False, 'dest': 'pretrained_path', 'default': None, 'help': 'Either the repo ID of a model hosted on the Hub or a path to a directory containing weights\nsaved using `Policy.save_pretrained`. If not provided, the policy is initialized from scratch.', 'type': typing.Optional[pathlib.Path]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'horizon': {'required': False, 'dest': 'horizon', 'default': 16, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             See `DiffusionPolicy.select_action` for more details.
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'n_action_steps': {'required': False, 'dest': 'n_action_steps', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:         default_factory=lambda: {
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'normalization_mapping': {'required': False, 'dest': 'normalization_mapping', 'default': {'VISUAL': <NormalizationMode.MEAN_STD: 'MEAN_STD'>, 'STATE': <NormalizationMode.MIN_MAX: 'MIN_MAX'>, 'ACTION': <NormalizationMode.MIN_MAX: 'MIN_MAX'>}, 'help': ' ', 'type': typing.Dict[str, lerobot.configs.types.NormalizationMode]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'drop_n_last_frames': {'required': False, 'dest': 'drop_n_last_frames', 'default': 7, 'help': 'horizon - n_action_steps - n_obs_steps + 1', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'vision_backbone': {'required': False, 'dest': 'vision_backbone', 'default': 'facebook/dinov2-small', 'help': ' ', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'crop_shape': {'required': False, 'dest': 'crop_shape', 'default': None, 'help': 'Disable the crop pipeline — DINOv2 handles its own resize internally', 'type': typing.Optional[typing.Tuple[int, int]]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'crop_is_random': {'required': False, 'dest': 'crop_is_random', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'pretrained_backbone_weights': {'required': False, 'dest': 'pretrained_backbone_weights', 'default': None, 'help': 'Unused — HF weights loaded directly', 'type': typing.Optional[str]}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             The group sizes are set to be about 16 (to be precise, feature_dim // 16).
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_group_norm': {'required': False, 'dest': 'use_group_norm', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'spatial_softmax_num_keypoints': {'required': False, 'dest': 'spatial_softmax_num_keypoints', 'default': 32, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_separate_rgb_encoder_per_camera': {'required': False, 'dest': 'use_separate_rgb_encoder_per_camera', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             You may provide a variable number of dimensions, therefore also controlling the degree of
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'down_dims': {'required': False, 'dest': 'down_dims', 'default': (512, 1024, 2048), 'help': ' ', 'type': typing.Tuple[int, ...]}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'kernel_size': {'required': False, 'dest': 'kernel_size', 'default': 5, 'help': '\n', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'n_groups': {'required': False, 'dest': 'n_groups', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             network. This is the output dimension of that network, i.e., the embedding dimension.
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'diffusion_step_embed_dim': {'required': False, 'dest': 'diffusion_step_embed_dim', 'default': 128, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_film_scale_modulation': {'required': False, 'dest': 'use_film_scale_modulation', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'noise_scheduler_type': {'required': False, 'dest': 'noise_scheduler_type', 'default': 'DDPM', 'help': 'Noise scheduler.', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'num_train_timesteps': {'required': False, 'dest': 'num_train_timesteps', 'default': 100, 'help': '\n\n\n\n', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'beta_schedule': {'required': False, 'dest': 'beta_schedule', 'default': 'squaredcos_cap_v2', 'help': ' ', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'beta_start': {'required': False, 'dest': 'beta_start', 'default': 0.0001, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'beta_end': {'required': False, 'dest': 'beta_end', 'default': 0.02, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             or "sample". These have equivalent outcomes from a latent variable modeling perspective, but
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'prediction_type': {'required': False, 'dest': 'prediction_type', 'default': 'epsilon', 'help': ' ', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'clip_sample': {'required': False, 'dest': 'clip_sample', 'default': True, 'help': '\n', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'clip_sample_range': {'required': False, 'dest': 'clip_sample_range', 'default': 1.0, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             spaced). If not provided, this defaults to be the same as `num_train_timesteps`.
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'num_inference_steps': {'required': False, 'dest': 'num_inference_steps', 'default': None, 'type': typing.Optional[int]}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:             `LeRobotDataset` and `load_previous_and_future_frames` for more information. Note, this defaults
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'do_mask_loss_for_padding': {'required': False, 'dest': 'do_mask_loss_for_padding', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'optimizer_lr': {'required': False, 'dest': 'optimizer_lr', 'default': 0.0001, 'help': 'Training presets', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'optimizer_betas': {'required': False, 'dest': 'optimizer_betas', 'default': (0.95, 0.999), 'help': ' ', 'type': <class 'tuple'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'optimizer_eps': {'required': False, 'dest': 'optimizer_eps', 'default': 1e-08, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'optimizer_weight_decay': {'required': False, 'dest': 'optimizer_weight_decay', 'default': 1e-06, 'help': ' ', 'type': <class 'float'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'scheduler_name': {'required': False, 'dest': 'scheduler_name', 'default': 'cosine', 'help': ' ', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'scheduler_warmup_steps': {'required': False, 'dest': 'scheduler_warmup_steps', 'default': 500, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.docstring:Warning: Unable to parse attribute docstring:                        If False, use mean-pooled patch tokens.
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_cls_token': {'required': False, 'dest': 'use_cls_token', 'default': True, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'spatial_pooling': {'required': False, 'dest': 'spatial_pooling', 'default': 'baseline', 'help': 'Spatial readout: "baseline" = CLS or mean-pool (use_cls_token); "map" = MAP head on patches.', 'type': <class 'str'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'map_num_queries': {'required': False, 'dest': 'map_num_queries', 'default': 8, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'use_registers': {'required': False, 'dest': 'use_registers', 'default': False, 'help': ' ', 'type': <class 'bool'>}
+DEBUG:draccus.wrappers.field_wrapper:Arg options for field 'num_register_tokens': {'required': False, 'dest': 'num_register_tokens', 'default': 4, 'help': ' ', 'type': <class 'int'>}
+DEBUG:draccus.argparsing:
+POST PROCESSING
+
+DEBUG:draccus.argparsing:(raw) parsed args: Namespace()
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot_policy_dino.configuration_dino_diffusion.DinoDiffusionConfig'>
+DEBUG:draccus.parsers.decoding:Decode name = n_obs_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = input_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = output_features, type = typing.Optional[dict[str, lerobot.configs.types.PolicyFeature]]
+DEBUG:draccus.parsers.decoding:from_dict for <class 'lerobot.configs.types.PolicyFeature'>
+DEBUG:draccus.parsers.decoding:Decode name = type, type = <enum 'FeatureType'>
+DEBUG:draccus.parsers.decoding:Decode name = shape, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = device, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = use_amp, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = use_peft, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = push_to_hub, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = repo_id, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = private, type = typing.Optional[bool]
+DEBUG:draccus.parsers.decoding:Decode name = tags, type = typing.Optional[list[str]]
+DEBUG:draccus.parsers.decoding:Decode name = license, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = pretrained_path, type = typing.Optional[pathlib.Path]
+DEBUG:draccus.parsers.decoding:Decode name = horizon, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = n_action_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = normalization_mapping, type = dict[str, lerobot.configs.types.NormalizationMode]
+DEBUG:draccus.parsers.decoding:Decode name = drop_n_last_frames, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = vision_backbone, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = crop_shape, type = typing.Optional[tuple[int, int]]
+DEBUG:draccus.parsers.decoding:Decode name = crop_is_random, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = pretrained_backbone_weights, type = typing.Optional[str]
+DEBUG:draccus.parsers.decoding:Decode name = use_group_norm, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = spatial_softmax_num_keypoints, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_separate_rgb_encoder_per_camera, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = down_dims, type = tuple[int, ...]
+DEBUG:draccus.parsers.decoding:Decode name = kernel_size, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = n_groups, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = diffusion_step_embed_dim, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_film_scale_modulation, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = noise_scheduler_type, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = num_train_timesteps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_schedule, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_start, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = beta_end, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = prediction_type, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = clip_sample, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = clip_sample_range, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = num_inference_steps, type = typing.Optional[int]
+DEBUG:draccus.parsers.decoding:Decode name = do_mask_loss_for_padding, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_lr, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_betas, type = <class 'tuple'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_eps, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = optimizer_weight_decay, type = <class 'float'>
+DEBUG:draccus.parsers.decoding:Decode name = scheduler_name, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = scheduler_warmup_steps, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_cls_token, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = spatial_pooling, type = <class 'str'>
+DEBUG:draccus.parsers.decoding:Decode name = map_num_queries, type = <class 'int'>
+DEBUG:draccus.parsers.decoding:Decode name = use_registers, type = <class 'bool'>
+DEBUG:draccus.parsers.decoding:Decode name = num_register_tokens, type = <class 'int'>
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): huggingface.co:443
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /facebook/dinov2-with-registers-small/resolve/main/config.json HTTP/1.1" 307 0
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /api/resolve-cache/models/facebook/dinov2-with-registers-small/0d9846e56b43a21fa46d7f3f5070f0506a5795a9/config.json HTTP/1.1" 200 0
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /facebook/dinov2-with-registers-small/resolve/main/config.json HTTP/1.1" 307 0
+DEBUG:urllib3.connectionpool:https://huggingface.co:443 "HEAD /api/resolve-cache/models/facebook/dinov2-with-registers-small/0d9846e56b43a21fa46d7f3f5070f0506a5795a9/config.json HTTP/1.1" 200 0
+You are using a model of type dinov2_with_registers to instantiate a model of type dinov2. This is not supported for all configurations of models and can yield errors.
+Loading weights from local directory
+2026-05-07 20:12:10 - scripts.eval_policy.lerobot_policy - INFO - LeRobotPolicy initialized. Action dim: 12
+2026-05-07 20:12:10 - scripts.utils.evaluation - INFO - Policy 'lerobot' loaded successfully
+2026-05-07 20:12:10 - scripts.utils.evaluation - INFO - Loading evaluation list for category 'pant_long' from: Assets/objects/Challenge_Garment/Release/Pant_Long/Pant_Long.txt
+2026-05-07 20:12:10 - scripts.utils.evaluation - INFO - Loaded 12 garments for category: pant_long
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-05-07_20-12-11.log[0m
+[36m======================================================================================[0m
+
+[33m20:12:11 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+[INFO]: Base environment:
+	Environment device    : cpu
+	Environment seed      : 42
+	Physics step-size     : 0.011111111111111112
+	Rendering step-size   : 0.011111111111111112
+	Environment step-size : 0.011111111111111112
+2026-05-07 20:12:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+[INFO]: Time taken for scene creation : 0.570093 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 1
+	Environment spacing   : 4.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+2026-05-07T20:12:12Z [0ms] [Error] [omni.physx.plugin] PhysX error: attachShape: non-SDF triangle mesh, tetrahedron mesh, heightfield or plane geometry shapes configured as eSIMULATION_SHAPE are not supported for non-kinematic PxRigidDynamic instances., FILE /builds/omniverse/physics/physx/source/physx/src/NpRigidBodyTemplate.h, LINE 390
+Warning: Possible version incompatibility. Attempting to load omni::fabric::IStageReaderWriter with version v0.14 against v0.13.
+[INFO]: Time taken for simulation start : 26.568442 seconds
+[INFO]: Completed setting up the environment...
+2026-05-07 20:12:38 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_0 (Release) (1/12)
+2026-05-07 20:12:38 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:12:38 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.03535331102654404, -0.035352954169002596, 0.7], ori: [8.322903111841818, -24.929606296618275, 90.0]
+Warp DeprecationWarning: The symbol `warp.types.warp_type_to_np_dtype` will soon be removed from the public API. It can still be accessed from `warp._src.types.warp_type_to_np_dtype` but might be changed or removed without notice.
+2026-05-07 20:12:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:12:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 34.54 <= 11.1 -> ✗
+2026-05-07 20:12:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 17.46 >= 12.58 -> ✓
+2026-05-07 20:12:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.70 >= 12.58 -> ✓
+2026-05-07 20:12:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 35.53 <= 8.879999999999999 -> ✗
+2026-05-07 20:12:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:12:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:12:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 35.28 <= 11.1 -> ✗
+2026-05-07 20:12:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.22 >= 12.58 -> ✓
+2026-05-07 20:12:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.55 >= 12.58 -> ✓
+2026-05-07 20:12:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 35.80 <= 8.879999999999999 -> ✗
+2026-05-07 20:12:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:13:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:13:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 33.69 <= 11.1 -> ✗
+2026-05-07 20:13:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.47 >= 12.58 -> ✓
+2026-05-07 20:13:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.44 >= 12.58 -> ✓
+2026-05-07 20:13:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 34.04 <= 8.879999999999999 -> ✗
+2026-05-07 20:13:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:13:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:13:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 34.10 <= 11.1 -> ✗
+2026-05-07 20:13:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.26 >= 12.58 -> ✓
+2026-05-07 20:13:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.46 >= 12.58 -> ✓
+2026-05-07 20:13:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 22.69 <= 8.879999999999999 -> ✗
+2026-05-07 20:13:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:13:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:13:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 34.56 <= 11.1 -> ✗
+2026-05-07 20:13:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.39 >= 12.58 -> ✓
+2026-05-07 20:13:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.61 >= 12.58 -> ✓
+2026-05-07 20:13:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 23.17 <= 8.879999999999999 -> ✗
+2026-05-07 20:13:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:13:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:13:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 34.96 <= 11.1 -> ✗
+2026-05-07 20:13:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.45 >= 12.58 -> ✓
+2026-05-07 20:13:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.99 >= 12.58 -> ✓
+2026-05-07 20:13:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 23.84 <= 8.879999999999999 -> ✗
+2026-05-07 20:13:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:13:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:13:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 35.12 <= 11.1 -> ✗
+2026-05-07 20:13:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.45 >= 12.58 -> ✓
+2026-05-07 20:13:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.15 >= 12.58 -> ✓
+2026-05-07 20:13:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 24.11 <= 8.879999999999999 -> ✗
+2026-05-07 20:13:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:14:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:14:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 35.30 <= 11.1 -> ✗
+2026-05-07 20:14:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.49 >= 12.58 -> ✓
+2026-05-07 20:14:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.67 >= 12.58 -> ✓
+2026-05-07 20:14:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 24.77 <= 8.879999999999999 -> ✗
+2026-05-07 20:14:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:14:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:14:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 35.56 <= 11.1 -> ✗
+2026-05-07 20:14:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.58 >= 12.58 -> ✓
+2026-05-07 20:14:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.78 >= 12.58 -> ✓
+2026-05-07 20:14:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 25.18 <= 8.879999999999999 -> ✗
+2026-05-07 20:14:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:14:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:14:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 35.70 <= 11.1 -> ✗
+2026-05-07 20:14:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.63 >= 12.58 -> ✓
+2026-05-07 20:14:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.79 >= 12.58 -> ✓
+2026-05-07 20:14:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 25.70 <= 8.879999999999999 -> ✗
+2026-05-07 20:14:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:14:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:14:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 35.96 <= 11.1 -> ✗
+2026-05-07 20:14:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.68 >= 12.58 -> ✓
+2026-05-07 20:14:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.90 >= 12.58 -> ✓
+2026-05-07 20:14:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 26.34 <= 8.879999999999999 -> ✗
+2026-05-07 20:14:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:14:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 12.58, 12.58, 8.879999999999999]
+2026-05-07 20:14:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 36.07 <= 11.1 -> ✗
+2026-05-07 20:14:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.70 >= 12.58 -> ✓
+2026-05-07 20:14:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.95 >= 12.58 -> ✓
+2026-05-07 20:14:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 26.61 <= 8.879999999999999 -> ✗
+2026-05-07 20:14:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:14:50 - scripts.utils.evaluation - INFO - Episode 1/1: Return=107.39, Length=600, Success=False
+2026-05-07 20:14:50 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_1 (Release) (2/12)
+2026-05-07 20:14:50 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_1 (version: Release)
+2026-05-07 20:14:50 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:14:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:14:53 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.005444398508630738, -0.058350834392078325, 0.7], ori: [-14.420245573918326, -10.808478276168657, 90.0]
+2026-05-07 20:14:53 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:14:53 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.0035144012626371277, -0.03859296154427946, 0.7], ori: [0.5693775365444651, 4.805557580826207, 90.0]
+2026-05-07 20:15:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:15:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 33.03 <= 11.1 -> ✗
+2026-05-07 20:15:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.00 >= 15.54 -> ✓
+2026-05-07 20:15:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 19.23 >= 12.58 -> ✓
+2026-05-07 20:15:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 36.49 <= 9.25 -> ✗
+2026-05-07 20:15:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:15:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:15:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.84 <= 11.1 -> ✗
+2026-05-07 20:15:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 17.98 >= 15.54 -> ✓
+2026-05-07 20:15:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.11 >= 12.58 -> ✓
+2026-05-07 20:15:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.41 <= 9.25 -> ✗
+2026-05-07 20:15:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:15:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:15:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.47 <= 11.1 -> ✗
+2026-05-07 20:15:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.35 >= 15.54 -> ✓
+2026-05-07 20:15:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.05 >= 12.58 -> ✓
+2026-05-07 20:15:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 28.65 <= 9.25 -> ✗
+2026-05-07 20:15:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:15:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:15:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.91 <= 11.1 -> ✗
+2026-05-07 20:15:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.11 >= 15.54 -> ✓
+2026-05-07 20:15:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.60 >= 12.58 -> ✓
+2026-05-07 20:15:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.41 <= 9.25 -> ✗
+2026-05-07 20:15:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:15:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:15:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.87 <= 11.1 -> ✗
+2026-05-07 20:15:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.36 >= 15.54 -> ✓
+2026-05-07 20:15:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.60 >= 12.58 -> ✓
+2026-05-07 20:15:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.61 <= 9.25 -> ✗
+2026-05-07 20:15:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:15:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:15:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.91 <= 11.1 -> ✗
+2026-05-07 20:15:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.58 >= 15.54 -> ✓
+2026-05-07 20:15:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.67 >= 12.58 -> ✓
+2026-05-07 20:15:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.75 <= 9.25 -> ✗
+2026-05-07 20:15:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:16:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:16:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.79 <= 11.1 -> ✗
+2026-05-07 20:16:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.74 >= 15.54 -> ✓
+2026-05-07 20:16:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.76 >= 12.58 -> ✓
+2026-05-07 20:16:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.97 <= 9.25 -> ✗
+2026-05-07 20:16:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:16:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:16:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.64 <= 11.1 -> ✗
+2026-05-07 20:16:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.71 >= 15.54 -> ✓
+2026-05-07 20:16:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.83 >= 12.58 -> ✓
+2026-05-07 20:16:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.20 <= 9.25 -> ✗
+2026-05-07 20:16:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:16:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:16:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.64 <= 11.1 -> ✗
+2026-05-07 20:16:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.65 >= 15.54 -> ✓
+2026-05-07 20:16:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.85 >= 12.58 -> ✓
+2026-05-07 20:16:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.40 <= 9.25 -> ✗
+2026-05-07 20:16:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:16:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:16:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.65 <= 11.1 -> ✗
+2026-05-07 20:16:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.61 >= 15.54 -> ✓
+2026-05-07 20:16:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.81 >= 12.58 -> ✓
+2026-05-07 20:16:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.63 <= 9.25 -> ✗
+2026-05-07 20:16:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:16:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:16:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.61 <= 11.1 -> ✗
+2026-05-07 20:16:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.54 >= 15.54 -> ✓
+2026-05-07 20:16:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.70 >= 12.58 -> ✓
+2026-05-07 20:16:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.86 <= 9.25 -> ✗
+2026-05-07 20:16:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:17:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [11.1, 15.54, 12.58, 9.25]
+2026-05-07 20:17:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.43 <= 11.1 -> ✗
+2026-05-07 20:17:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.37 >= 15.54 -> ✓
+2026-05-07 20:17:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.63 >= 12.58 -> ✓
+2026-05-07 20:17:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.41 <= 9.25 -> ✗
+2026-05-07 20:17:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:17:05 - scripts.utils.evaluation - INFO - Episode 1/1: Return=129.88, Length=600, Success=False
+2026-05-07 20:17:05 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_2 (Release) (3/12)
+2026-05-07 20:17:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_2 (version: Release)
+2026-05-07 20:17:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:17:06 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:17:07 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.015630898466130347, -0.06609311543974465, 0.7], ori: [-2.393900250415946, -19.6540117880715, 90.0]
+2026-05-07 20:17:07 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:17:07 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.03724891831078253, -0.03362718391684872, 0.7], ori: [6.500891374159281, -9.791024043350632, 90.0]
+2026-05-07 20:17:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:17:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 34.66 <= 8.51 -> ✗
+2026-05-07 20:17:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 17.84 >= 14.43 -> ✓
+2026-05-07 20:17:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.92 >= 11.1 -> ✓
+2026-05-07 20:17:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 34.87 <= 8.879999999999999 -> ✗
+2026-05-07 20:17:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:17:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:17:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 35.20 <= 8.51 -> ✗
+2026-05-07 20:17:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.25 >= 14.43 -> ✓
+2026-05-07 20:17:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.04 >= 11.1 -> ✓
+2026-05-07 20:17:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 31.57 <= 8.879999999999999 -> ✗
+2026-05-07 20:17:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:17:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:17:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 10.16 <= 8.51 -> ✗
+2026-05-07 20:17:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.08 >= 14.43 -> ✓
+2026-05-07 20:17:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.54 >= 11.1 -> ✓
+2026-05-07 20:17:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 7.31 <= 8.879999999999999 -> ✓
+2026-05-07 20:17:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:17:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:17:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 8.91 <= 8.51 -> ✗
+2026-05-07 20:17:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.62 >= 14.43 -> ✓
+2026-05-07 20:17:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.83 >= 11.1 -> ✓
+2026-05-07 20:17:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 4.37 <= 8.879999999999999 -> ✓
+2026-05-07 20:17:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:18:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:18:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 10.97 <= 8.51 -> ✗
+2026-05-07 20:18:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.67 >= 14.43 -> ✓
+2026-05-07 20:18:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.11 >= 11.1 -> ✓
+2026-05-07 20:18:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 4.58 <= 8.879999999999999 -> ✓
+2026-05-07 20:18:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:18:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:18:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 11.74 <= 8.51 -> ✗
+2026-05-07 20:18:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.65 >= 14.43 -> ✓
+2026-05-07 20:18:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.21 >= 11.1 -> ✓
+2026-05-07 20:18:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 4.81 <= 8.879999999999999 -> ✓
+2026-05-07 20:18:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:18:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:18:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 12.30 <= 8.51 -> ✗
+2026-05-07 20:18:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.70 >= 14.43 -> ✓
+2026-05-07 20:18:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.32 >= 11.1 -> ✓
+2026-05-07 20:18:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 4.96 <= 8.879999999999999 -> ✓
+2026-05-07 20:18:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:18:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:18:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 12.82 <= 8.51 -> ✗
+2026-05-07 20:18:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.73 >= 14.43 -> ✓
+2026-05-07 20:18:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.53 >= 11.1 -> ✓
+2026-05-07 20:18:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 5.16 <= 8.879999999999999 -> ✓
+2026-05-07 20:18:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:18:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:18:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.18 <= 8.51 -> ✗
+2026-05-07 20:18:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.76 >= 14.43 -> ✓
+2026-05-07 20:18:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.74 >= 11.1 -> ✓
+2026-05-07 20:18:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 5.35 <= 8.879999999999999 -> ✓
+2026-05-07 20:18:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:18:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:18:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.50 <= 8.51 -> ✗
+2026-05-07 20:18:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.77 >= 14.43 -> ✓
+2026-05-07 20:18:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.27 >= 11.1 -> ✓
+2026-05-07 20:18:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 6.20 <= 8.879999999999999 -> ✓
+2026-05-07 20:18:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:19:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:19:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.64 <= 8.51 -> ✗
+2026-05-07 20:19:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.79 >= 14.43 -> ✓
+2026-05-07 20:19:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.34 >= 11.1 -> ✓
+2026-05-07 20:19:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 6.33 <= 8.879999999999999 -> ✓
+2026-05-07 20:19:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:19:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.51, 14.43, 11.1, 8.879999999999999]
+2026-05-07 20:19:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.72 <= 8.51 -> ✗
+2026-05-07 20:19:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 18.81 >= 14.43 -> ✓
+2026-05-07 20:19:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.39 >= 11.1 -> ✓
+2026-05-07 20:19:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 6.41 <= 8.879999999999999 -> ✓
+2026-05-07 20:19:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:19:19 - scripts.utils.evaluation - INFO - Episode 1/1: Return=281.15, Length=600, Success=False
+2026-05-07 20:19:19 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_3 (Release) (4/12)
+2026-05-07 20:19:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_3 (version: Release)
+2026-05-07 20:19:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:19:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:19:22 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.00783199830488681, -0.033125030599075324, 0.7], ori: [-12.160685503234191, -23.64818097665202, 90.0]
+2026-05-07 20:19:22 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:19:22 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.008905816824841439, -0.05914603872904417, 0.7], ori: [-5.729866932256428, -11.391405496256201, 90.0]
+2026-05-07 20:19:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:19:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 30.26 <= 10.36 -> ✗
+2026-05-07 20:19:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.63 >= 11.47 -> ✓
+2026-05-07 20:19:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.87 >= 11.47 -> ✓
+2026-05-07 20:19:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 32.05 <= 9.99 -> ✗
+2026-05-07 20:19:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:19:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:19:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.59 <= 10.36 -> ✗
+2026-05-07 20:19:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.10 >= 11.47 -> ✓
+2026-05-07 20:19:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 18.86 >= 11.47 -> ✓
+2026-05-07 20:19:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.88 <= 9.99 -> ✗
+2026-05-07 20:19:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:19:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:19:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 24.18 <= 10.36 -> ✗
+2026-05-07 20:19:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.93 >= 11.47 -> ✓
+2026-05-07 20:19:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.03 >= 11.47 -> ✓
+2026-05-07 20:19:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 22.23 <= 9.99 -> ✗
+2026-05-07 20:19:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:20:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:20:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 12.62 <= 10.36 -> ✗
+2026-05-07 20:20:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.61 >= 11.47 -> ✓
+2026-05-07 20:20:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.60 >= 11.47 -> ✓
+2026-05-07 20:20:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 14.38 <= 9.99 -> ✗
+2026-05-07 20:20:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:20:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:20:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.41 <= 10.36 -> ✗
+2026-05-07 20:20:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.32 >= 11.47 -> ✓
+2026-05-07 20:20:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.84 >= 11.47 -> ✓
+2026-05-07 20:20:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 14.24 <= 9.99 -> ✗
+2026-05-07 20:20:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:20:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:20:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.35 <= 10.36 -> ✗
+2026-05-07 20:20:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.06 >= 11.47 -> ✓
+2026-05-07 20:20:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.64 >= 11.47 -> ✓
+2026-05-07 20:20:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.54 <= 9.99 -> ✗
+2026-05-07 20:20:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:20:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:20:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.72 <= 10.36 -> ✗
+2026-05-07 20:20:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.85 >= 11.47 -> ✓
+2026-05-07 20:20:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.54 >= 11.47 -> ✓
+2026-05-07 20:20:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.84 <= 9.99 -> ✗
+2026-05-07 20:20:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:20:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:20:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 15.38 <= 10.36 -> ✗
+2026-05-07 20:20:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 13.29 >= 11.47 -> ✓
+2026-05-07 20:20:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 12.79 >= 11.47 -> ✓
+2026-05-07 20:20:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 14.08 <= 9.99 -> ✗
+2026-05-07 20:20:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:20:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:20:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.77 <= 10.36 -> ✓
+2026-05-07 20:20:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 11.36 >= 11.47 -> ✗
+2026-05-07 20:20:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.80 >= 11.47 -> ✓
+2026-05-07 20:20:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.05 <= 9.99 -> ✗
+2026-05-07 20:20:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:21:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:21:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.47 <= 10.36 -> ✓
+2026-05-07 20:21:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 10.00 >= 11.47 -> ✗
+2026-05-07 20:21:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.02 >= 11.47 -> ✓
+2026-05-07 20:21:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.77 <= 9.99 -> ✗
+2026-05-07 20:21:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:21:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:21:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.37 <= 10.36 -> ✓
+2026-05-07 20:21:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 9.56 >= 11.47 -> ✗
+2026-05-07 20:21:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.00 >= 11.47 -> ✓
+2026-05-07 20:21:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.32 <= 9.99 -> ✗
+2026-05-07 20:21:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:21:33 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [10.36, 11.47, 11.47, 9.99]
+2026-05-07 20:21:33 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.30 <= 10.36 -> ✓
+2026-05-07 20:21:33 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 9.45 >= 11.47 -> ✗
+2026-05-07 20:21:33 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.93 >= 11.47 -> ✓
+2026-05-07 20:21:33 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.71 <= 9.99 -> ✗
+2026-05-07 20:21:33 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:21:42 - scripts.utils.evaluation - INFO - Episode 1/1: Return=289.42, Length=600, Success=False
+2026-05-07 20:21:42 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_4 (Release) (5/12)
+2026-05-07 20:21:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_4 (version: Release)
+2026-05-07 20:21:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:21:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:21:45 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.03955823063011181, -0.03738154286180664, 0.7], ori: [9.160286721639494, 14.106058027669178, 90.0]
+2026-05-07 20:21:45 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:21:45 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.011322741716458192, -0.06536523761899482, 0.7], ori: [4.931925073102317, -8.793302707662242, 90.0]
+2026-05-07 20:21:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:21:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 31.00 <= 9.25 -> ✗
+2026-05-07 20:21:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.48 >= 12.209999999999999 -> ✓
+2026-05-07 20:21:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.09 >= 11.47 -> ✓
+2026-05-07 20:21:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 31.69 <= 8.51 -> ✗
+2026-05-07 20:21:51 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:22:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:22:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 31.02 <= 9.25 -> ✗
+2026-05-07 20:22:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.48 >= 12.209999999999999 -> ✓
+2026-05-07 20:22:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.76 >= 11.47 -> ✓
+2026-05-07 20:22:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 27.95 <= 8.51 -> ✗
+2026-05-07 20:22:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:22:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:22:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 17.96 <= 9.25 -> ✗
+2026-05-07 20:22:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.71 >= 12.209999999999999 -> ✓
+2026-05-07 20:22:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.51 >= 11.47 -> ✓
+2026-05-07 20:22:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 18.94 <= 8.51 -> ✗
+2026-05-07 20:22:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:22:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:22:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 5.76 <= 9.25 -> ✓
+2026-05-07 20:22:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.70 >= 12.209999999999999 -> ✓
+2026-05-07 20:22:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.37 >= 11.47 -> ✓
+2026-05-07 20:22:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.02 <= 8.51 -> ✗
+2026-05-07 20:22:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:22:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:22:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 5.80 <= 9.25 -> ✓
+2026-05-07 20:22:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.81 >= 12.209999999999999 -> ✓
+2026-05-07 20:22:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.52 >= 11.47 -> ✓
+2026-05-07 20:22:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.70 <= 8.51 -> ✗
+2026-05-07 20:22:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:22:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:22:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 6.69 <= 9.25 -> ✓
+2026-05-07 20:22:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.84 >= 12.209999999999999 -> ✓
+2026-05-07 20:22:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.48 >= 11.47 -> ✓
+2026-05-07 20:22:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.17 <= 8.51 -> ✗
+2026-05-07 20:22:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:22:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:22:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 7.23 <= 9.25 -> ✓
+2026-05-07 20:22:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.88 >= 12.209999999999999 -> ✓
+2026-05-07 20:22:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.46 >= 11.47 -> ✓
+2026-05-07 20:22:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.57 <= 8.51 -> ✗
+2026-05-07 20:22:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:23:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:23:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 8.15 <= 9.25 -> ✓
+2026-05-07 20:23:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.95 >= 12.209999999999999 -> ✓
+2026-05-07 20:23:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.62 >= 11.47 -> ✓
+2026-05-07 20:23:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.16 <= 8.51 -> ✗
+2026-05-07 20:23:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:23:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:23:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 8.58 <= 9.25 -> ✓
+2026-05-07 20:23:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.96 >= 12.209999999999999 -> ✓
+2026-05-07 20:23:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.65 >= 11.47 -> ✓
+2026-05-07 20:23:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.44 <= 8.51 -> ✗
+2026-05-07 20:23:18 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:23:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:23:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 8.96 <= 9.25 -> ✓
+2026-05-07 20:23:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.97 >= 12.209999999999999 -> ✓
+2026-05-07 20:23:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.64 >= 11.47 -> ✓
+2026-05-07 20:23:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.68 <= 8.51 -> ✗
+2026-05-07 20:23:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:23:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:23:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.49 <= 9.25 -> ✗
+2026-05-07 20:23:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.02 >= 12.209999999999999 -> ✓
+2026-05-07 20:23:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.59 >= 11.47 -> ✓
+2026-05-07 20:23:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.97 <= 8.51 -> ✗
+2026-05-07 20:23:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:23:50 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.47, 8.51]
+2026-05-07 20:23:50 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 10.10 <= 9.25 -> ✗
+2026-05-07 20:23:50 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.01 >= 12.209999999999999 -> ✓
+2026-05-07 20:23:50 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.56 >= 11.47 -> ✓
+2026-05-07 20:23:50 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.23 <= 8.51 -> ✗
+2026-05-07 20:23:50 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:23:57 - scripts.utils.evaluation - INFO - Episode 1/1: Return=289.54, Length=600, Success=False
+2026-05-07 20:23:57 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_5 (Release) (6/12)
+2026-05-07 20:23:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_5 (version: Release)
+2026-05-07 20:23:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:23:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:24:00 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.030432460324935864, -0.0414702085110802, 0.7], ori: [2.4510879027798502, 14.090293357637172, 90.0]
+2026-05-07 20:24:00 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:24:00 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.0018186263505595227, -0.052898359265658015, 0.7], ori: [-15.684342920267822, -24.36568234428982, 90.0]
+2026-05-07 20:24:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:24:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 30.70 <= 8.14 -> ✗
+2026-05-07 20:24:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.99 >= 12.95 -> ✓
+2026-05-07 20:24:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.64 >= 12.95 -> ✓
+2026-05-07 20:24:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 32.46 <= 7.03 -> ✗
+2026-05-07 20:24:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:24:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:24:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 30.94 <= 8.14 -> ✗
+2026-05-07 20:24:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.09 >= 12.95 -> ✓
+2026-05-07 20:24:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.87 >= 12.95 -> ✓
+2026-05-07 20:24:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 31.67 <= 7.03 -> ✗
+2026-05-07 20:24:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:24:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:24:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 24.61 <= 8.14 -> ✗
+2026-05-07 20:24:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.62 >= 12.95 -> ✓
+2026-05-07 20:24:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.33 >= 12.95 -> ✓
+2026-05-07 20:24:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 23.20 <= 7.03 -> ✗
+2026-05-07 20:24:30 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:24:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:24:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 11.21 <= 8.14 -> ✗
+2026-05-07 20:24:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 13.73 >= 12.95 -> ✓
+2026-05-07 20:24:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.89 >= 12.95 -> ✗
+2026-05-07 20:24:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 8.34 <= 7.03 -> ✗
+2026-05-07 20:24:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:24:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:24:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 12.64 <= 8.14 -> ✗
+2026-05-07 20:24:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.49 >= 12.95 -> ✓
+2026-05-07 20:24:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 12.62 >= 12.95 -> ✗
+2026-05-07 20:24:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 9.89 <= 7.03 -> ✗
+2026-05-07 20:24:52 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:25:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:25:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.60 <= 8.14 -> ✗
+2026-05-07 20:25:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.93 >= 12.95 -> ✓
+2026-05-07 20:25:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.22 >= 12.95 -> ✓
+2026-05-07 20:25:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.01 <= 7.03 -> ✗
+2026-05-07 20:25:02 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:25:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:25:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 14.74 <= 8.14 -> ✗
+2026-05-07 20:25:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.31 >= 12.95 -> ✓
+2026-05-07 20:25:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.67 >= 12.95 -> ✓
+2026-05-07 20:25:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.09 <= 7.03 -> ✗
+2026-05-07 20:25:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:25:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:25:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 15.92 <= 8.14 -> ✗
+2026-05-07 20:25:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.51 >= 12.95 -> ✓
+2026-05-07 20:25:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.02 >= 12.95 -> ✓
+2026-05-07 20:25:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.86 <= 7.03 -> ✗
+2026-05-07 20:25:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:25:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:25:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 17.68 <= 8.14 -> ✗
+2026-05-07 20:25:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.64 >= 12.95 -> ✓
+2026-05-07 20:25:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.23 >= 12.95 -> ✓
+2026-05-07 20:25:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.49 <= 7.03 -> ✗
+2026-05-07 20:25:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:25:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:25:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 19.71 <= 8.14 -> ✗
+2026-05-07 20:25:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.80 >= 12.95 -> ✓
+2026-05-07 20:25:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.43 >= 12.95 -> ✓
+2026-05-07 20:25:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.99 <= 7.03 -> ✗
+2026-05-07 20:25:45 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:25:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:25:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 21.17 <= 8.14 -> ✗
+2026-05-07 20:25:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.94 >= 12.95 -> ✓
+2026-05-07 20:25:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.61 >= 12.95 -> ✓
+2026-05-07 20:25:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 14.56 <= 7.03 -> ✗
+2026-05-07 20:25:56 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:26:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 12.95, 12.95, 7.03]
+2026-05-07 20:26:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 21.92 <= 8.14 -> ✗
+2026-05-07 20:26:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.03 >= 12.95 -> ✓
+2026-05-07 20:26:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.82 >= 12.95 -> ✓
+2026-05-07 20:26:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 15.43 <= 7.03 -> ✗
+2026-05-07 20:26:07 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:26:11 - scripts.utils.evaluation - INFO - Episode 1/1: Return=140.89, Length=600, Success=False
+2026-05-07 20:26:11 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_6 (Release) (7/12)
+2026-05-07 20:26:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_6 (version: Release)
+2026-05-07 20:26:12 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:26:13 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:26:14 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.021696146760670203, -0.06692080360684828, 0.7], ori: [-13.551148509839823, 22.3442779218138, 90.0]
+2026-05-07 20:26:14 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:26:14 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.010672300520833879, -0.03514157639249129, 0.7], ori: [-12.537197644558567, 20.41306792147884, 90.0]
+2026-05-07 20:26:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:26:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 27.61 <= 8.879999999999999 -> ✗
+2026-05-07 20:26:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 13.47 >= 11.47 -> ✓
+2026-05-07 20:26:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.36 >= 10.73 -> ✓
+2026-05-07 20:26:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 29.22 <= 7.03 -> ✗
+2026-05-07 20:26:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:26:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:26:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 28.52 <= 8.879999999999999 -> ✗
+2026-05-07 20:26:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 13.33 >= 11.47 -> ✓
+2026-05-07 20:26:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 12.27 >= 10.73 -> ✓
+2026-05-07 20:26:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 29.29 <= 7.03 -> ✗
+2026-05-07 20:26:35 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:26:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:26:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 11.71 <= 8.879999999999999 -> ✗
+2026-05-07 20:26:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 13.61 >= 11.47 -> ✓
+2026-05-07 20:26:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.67 >= 10.73 -> ✓
+2026-05-07 20:26:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.13 <= 7.03 -> ✗
+2026-05-07 20:26:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:26:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:26:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 16.85 <= 8.879999999999999 -> ✗
+2026-05-07 20:26:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 13.84 >= 11.47 -> ✓
+2026-05-07 20:26:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.00 >= 10.73 -> ✓
+2026-05-07 20:26:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.11 <= 7.03 -> ✗
+2026-05-07 20:26:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:27:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:27:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 18.04 <= 8.879999999999999 -> ✗
+2026-05-07 20:27:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 13.95 >= 11.47 -> ✓
+2026-05-07 20:27:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.87 >= 10.73 -> ✓
+2026-05-07 20:27:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.24 <= 7.03 -> ✗
+2026-05-07 20:27:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:27:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:27:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 19.80 <= 8.879999999999999 -> ✗
+2026-05-07 20:27:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.00 >= 11.47 -> ✓
+2026-05-07 20:27:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.75 >= 10.73 -> ✓
+2026-05-07 20:27:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.50 <= 7.03 -> ✗
+2026-05-07 20:27:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:27:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:27:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 21.97 <= 8.879999999999999 -> ✗
+2026-05-07 20:27:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.02 >= 11.47 -> ✓
+2026-05-07 20:27:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.71 >= 10.73 -> ✓
+2026-05-07 20:27:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.52 <= 7.03 -> ✗
+2026-05-07 20:27:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:27:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:27:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 23.96 <= 8.879999999999999 -> ✗
+2026-05-07 20:27:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.03 >= 11.47 -> ✓
+2026-05-07 20:27:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.67 >= 10.73 -> ✓
+2026-05-07 20:27:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.56 <= 7.03 -> ✗
+2026-05-07 20:27:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:27:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:27:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 25.46 <= 8.879999999999999 -> ✗
+2026-05-07 20:27:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.03 >= 11.47 -> ✓
+2026-05-07 20:27:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.62 >= 10.73 -> ✓
+2026-05-07 20:27:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.65 <= 7.03 -> ✗
+2026-05-07 20:27:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:28:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:28:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 28.54 <= 8.879999999999999 -> ✗
+2026-05-07 20:28:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.03 >= 11.47 -> ✓
+2026-05-07 20:28:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.60 >= 10.73 -> ✓
+2026-05-07 20:28:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.69 <= 7.03 -> ✗
+2026-05-07 20:28:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:28:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:28:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 29.10 <= 8.879999999999999 -> ✗
+2026-05-07 20:28:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.05 >= 11.47 -> ✓
+2026-05-07 20:28:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.56 >= 10.73 -> ✓
+2026-05-07 20:28:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.78 <= 7.03 -> ✗
+2026-05-07 20:28:15 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:28:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 11.47, 10.73, 7.03]
+2026-05-07 20:28:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 29.08 <= 8.879999999999999 -> ✗
+2026-05-07 20:28:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.05 >= 11.47 -> ✓
+2026-05-07 20:28:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.51 >= 10.73 -> ✓
+2026-05-07 20:28:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.89 <= 7.03 -> ✗
+2026-05-07 20:28:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:28:28 - scripts.utils.evaluation - INFO - Episode 1/1: Return=118.00, Length=600, Success=False
+2026-05-07 20:28:28 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_7 (Release) (8/12)
+2026-05-07 20:28:28 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_7 (version: Release)
+2026-05-07 20:28:28 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:28:29 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:28:31 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.025441181273799456, -0.035570776669746264, 0.7], ori: [0.42989210310263104, -4.294627836263494, 90.0]
+2026-05-07 20:28:31 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:28:31 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.030410770613305375, -0.056495393143854884, 0.7], ori: [-7.071882719169791, 0.9771123306550358, 90.0]
+2026-05-07 20:28:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:28:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 23.49 <= 8.879999999999999 -> ✗
+2026-05-07 20:28:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.37 >= 7.4 -> ✓
+2026-05-07 20:28:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 12.55 >= 7.77 -> ✓
+2026-05-07 20:28:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 24.11 <= 7.4 -> ✗
+2026-05-07 20:28:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:28:54 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:28:54 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 23.37 <= 8.879999999999999 -> ✗
+2026-05-07 20:28:54 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.28 >= 7.4 -> ✓
+2026-05-07 20:28:54 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.11 >= 7.77 -> ✓
+2026-05-07 20:28:54 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 22.66 <= 7.4 -> ✗
+2026-05-07 20:28:54 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:29:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:29:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 14.62 <= 8.879999999999999 -> ✗
+2026-05-07 20:29:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.50 >= 7.4 -> ✓
+2026-05-07 20:29:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.38 >= 7.77 -> ✓
+2026-05-07 20:29:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 9.15 <= 7.4 -> ✗
+2026-05-07 20:29:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:29:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:29:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 15.32 <= 8.879999999999999 -> ✗
+2026-05-07 20:29:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.50 >= 7.4 -> ✓
+2026-05-07 20:29:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.45 >= 7.77 -> ✓
+2026-05-07 20:29:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 9.43 <= 7.4 -> ✗
+2026-05-07 20:29:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:29:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:29:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 15.76 <= 8.879999999999999 -> ✗
+2026-05-07 20:29:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.45 >= 7.4 -> ✓
+2026-05-07 20:29:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.55 >= 7.77 -> ✓
+2026-05-07 20:29:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 9.64 <= 7.4 -> ✗
+2026-05-07 20:29:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:29:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:29:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 16.17 <= 8.879999999999999 -> ✗
+2026-05-07 20:29:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.45 >= 7.4 -> ✓
+2026-05-07 20:29:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.60 >= 7.77 -> ✓
+2026-05-07 20:29:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 9.90 <= 7.4 -> ✗
+2026-05-07 20:29:38 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:29:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:29:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 16.41 <= 8.879999999999999 -> ✗
+2026-05-07 20:29:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.45 >= 7.4 -> ✓
+2026-05-07 20:29:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.65 >= 7.77 -> ✓
+2026-05-07 20:29:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.16 <= 7.4 -> ✗
+2026-05-07 20:29:48 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:29:59 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:29:59 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 16.76 <= 8.879999999999999 -> ✗
+2026-05-07 20:29:59 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.47 >= 7.4 -> ✓
+2026-05-07 20:29:59 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.68 >= 7.77 -> ✓
+2026-05-07 20:29:59 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.38 <= 7.4 -> ✗
+2026-05-07 20:29:59 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:30:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:30:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 16.94 <= 8.879999999999999 -> ✗
+2026-05-07 20:30:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.44 >= 7.4 -> ✓
+2026-05-07 20:30:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.71 >= 7.77 -> ✓
+2026-05-07 20:30:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.58 <= 7.4 -> ✗
+2026-05-07 20:30:10 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:30:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:30:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 17.22 <= 8.879999999999999 -> ✗
+2026-05-07 20:30:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.45 >= 7.4 -> ✓
+2026-05-07 20:30:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.78 >= 7.77 -> ✓
+2026-05-07 20:30:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 10.91 <= 7.4 -> ✗
+2026-05-07 20:30:21 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:30:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:30:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 17.46 <= 8.879999999999999 -> ✗
+2026-05-07 20:30:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.48 >= 7.4 -> ✓
+2026-05-07 20:30:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.80 >= 7.77 -> ✓
+2026-05-07 20:30:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.20 <= 7.4 -> ✗
+2026-05-07 20:30:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:30:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.879999999999999, 7.4, 7.77, 7.4]
+2026-05-07 20:30:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 17.65 <= 8.879999999999999 -> ✗
+2026-05-07 20:30:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.46 >= 7.4 -> ✓
+2026-05-07 20:30:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.83 >= 7.77 -> ✓
+2026-05-07 20:30:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.49 <= 7.4 -> ✗
+2026-05-07 20:30:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:30:42 - scripts.utils.evaluation - INFO - Episode 1/1: Return=166.09, Length=600, Success=False
+2026-05-07 20:30:42 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_8 (Release) (9/12)
+2026-05-07 20:30:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_8 (version: Release)
+2026-05-07 20:30:42 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:30:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:30:45 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.01721276044980259, -0.06852452210581869, 0.7], ori: [0.1071609291544604, -23.323104935000554, 90.0]
+2026-05-07 20:30:45 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:30:45 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.0326612708773323, -0.06041752437332111, 0.7], ori: [-0.4218895888974785, 25.253823613751237, 90.0]
+2026-05-07 20:30:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:30:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 29.11 <= 9.25 -> ✗
+2026-05-07 20:30:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.37 >= 12.58 -> ✓
+2026-05-07 20:30:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 12.11 >= 12.58 -> ✗
+2026-05-07 20:30:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 28.63 <= 8.14 -> ✗
+2026-05-07 20:30:49 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:31:01 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:31:01 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 26.78 <= 9.25 -> ✗
+2026-05-07 20:31:01 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.14 >= 12.58 -> ✓
+2026-05-07 20:31:01 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 11.78 >= 12.58 -> ✗
+2026-05-07 20:31:01 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 28.34 <= 8.14 -> ✗
+2026-05-07 20:31:01 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:31:12 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:31:12 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 18.07 <= 9.25 -> ✗
+2026-05-07 20:31:12 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.30 >= 12.58 -> ✓
+2026-05-07 20:31:12 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 10.32 >= 12.58 -> ✗
+2026-05-07 20:31:12 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 14.17 <= 8.14 -> ✗
+2026-05-07 20:31:12 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:31:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:31:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 17.69 <= 9.25 -> ✗
+2026-05-07 20:31:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.52 >= 12.58 -> ✓
+2026-05-07 20:31:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 10.35 >= 12.58 -> ✗
+2026-05-07 20:31:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.61 <= 8.14 -> ✗
+2026-05-07 20:31:23 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:31:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:31:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.81 <= 9.25 -> ✗
+2026-05-07 20:31:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 3.15 >= 12.58 -> ✗
+2026-05-07 20:31:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 7.62 >= 12.58 -> ✗
+2026-05-07 20:31:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 4.37 <= 8.14 -> ✓
+2026-05-07 20:31:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:31:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:31:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.68 <= 9.25 -> ✗
+2026-05-07 20:31:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 3.27 >= 12.58 -> ✗
+2026-05-07 20:31:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 7.31 >= 12.58 -> ✗
+2026-05-07 20:31:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 4.96 <= 8.14 -> ✓
+2026-05-07 20:31:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:31:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:31:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 14.11 <= 9.25 -> ✗
+2026-05-07 20:31:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 3.34 >= 12.58 -> ✗
+2026-05-07 20:31:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 7.18 >= 12.58 -> ✗
+2026-05-07 20:31:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 6.60 <= 8.14 -> ✓
+2026-05-07 20:31:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:32:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:32:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.88 <= 9.25 -> ✗
+2026-05-07 20:32:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 3.55 >= 12.58 -> ✗
+2026-05-07 20:32:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 7.04 >= 12.58 -> ✗
+2026-05-07 20:32:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 6.69 <= 8.14 -> ✓
+2026-05-07 20:32:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:32:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:32:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.77 <= 9.25 -> ✗
+2026-05-07 20:32:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 3.73 >= 12.58 -> ✗
+2026-05-07 20:32:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 6.83 >= 12.58 -> ✗
+2026-05-07 20:32:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 7.32 <= 8.14 -> ✓
+2026-05-07 20:32:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:32:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:32:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.67 <= 9.25 -> ✗
+2026-05-07 20:32:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 3.90 >= 12.58 -> ✗
+2026-05-07 20:32:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 6.74 >= 12.58 -> ✗
+2026-05-07 20:32:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 7.86 <= 8.14 -> ✓
+2026-05-07 20:32:32 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:32:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:32:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.59 <= 9.25 -> ✗
+2026-05-07 20:32:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 4.02 >= 12.58 -> ✗
+2026-05-07 20:32:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 6.70 >= 12.58 -> ✗
+2026-05-07 20:32:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 8.59 <= 8.14 -> ✗
+2026-05-07 20:32:43 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:32:55 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.58, 8.14]
+2026-05-07 20:32:55 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.48 <= 9.25 -> ✗
+2026-05-07 20:32:55 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 4.12 >= 12.58 -> ✗
+2026-05-07 20:32:55 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 6.73 >= 12.58 -> ✗
+2026-05-07 20:32:55 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 9.84 <= 8.14 -> ✗
+2026-05-07 20:32:55 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:33:04 - scripts.utils.evaluation - INFO - Episode 1/1: Return=198.03, Length=600, Success=False
+2026-05-07 20:33:04 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Seen_9 (Release) (10/12)
+2026-05-07 20:33:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Seen_9 (version: Release)
+2026-05-07 20:33:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:33:05 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:33:07 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.010682376860871576, -0.04856901263700966, 0.7], ori: [13.41209982356952, -9.319436621469738, 90.0]
+2026-05-07 20:33:07 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:33:07 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.036737988675618886, -0.04636428227247033, 0.7], ori: [-19.336486842885755, 0.6288390315626096, 90.0]
+2026-05-07 20:33:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:33:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.34 <= 9.25 -> ✗
+2026-05-07 20:33:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 17.18 >= 12.209999999999999 -> ✓
+2026-05-07 20:33:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.70 >= 11.1 -> ✓
+2026-05-07 20:33:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 34.26 <= 9.25 -> ✗
+2026-05-07 20:33:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:33:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:33:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 29.93 <= 9.25 -> ✗
+2026-05-07 20:33:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 14.33 >= 12.209999999999999 -> ✓
+2026-05-07 20:33:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.16 >= 11.1 -> ✓
+2026-05-07 20:33:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.07 <= 9.25 -> ✗
+2026-05-07 20:33:25 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:33:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:33:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 15.21 <= 9.25 -> ✗
+2026-05-07 20:33:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.29 >= 12.209999999999999 -> ✓
+2026-05-07 20:33:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.52 >= 11.1 -> ✓
+2026-05-07 20:33:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 15.15 <= 9.25 -> ✗
+2026-05-07 20:33:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:33:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:33:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 7.51 <= 9.25 -> ✓
+2026-05-07 20:33:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.54 >= 12.209999999999999 -> ✓
+2026-05-07 20:33:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.08 >= 11.1 -> ✓
+2026-05-07 20:33:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 11.67 <= 9.25 -> ✗
+2026-05-07 20:33:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:34:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:34:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 8.97 <= 9.25 -> ✓
+2026-05-07 20:34:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.76 >= 12.209999999999999 -> ✓
+2026-05-07 20:34:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.54 >= 11.1 -> ✓
+2026-05-07 20:34:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.32 <= 9.25 -> ✗
+2026-05-07 20:34:00 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:34:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:34:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 11.21 <= 9.25 -> ✗
+2026-05-07 20:34:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.95 >= 12.209999999999999 -> ✓
+2026-05-07 20:34:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.83 >= 11.1 -> ✓
+2026-05-07 20:34:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.69 <= 9.25 -> ✗
+2026-05-07 20:34:11 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:34:22 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:34:22 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 13.39 <= 9.25 -> ✗
+2026-05-07 20:34:22 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.05 >= 12.209999999999999 -> ✓
+2026-05-07 20:34:22 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.92 >= 11.1 -> ✓
+2026-05-07 20:34:22 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.82 <= 9.25 -> ✗
+2026-05-07 20:34:22 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:34:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:34:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 15.10 <= 9.25 -> ✗
+2026-05-07 20:34:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.12 >= 12.209999999999999 -> ✓
+2026-05-07 20:34:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.84 >= 11.1 -> ✓
+2026-05-07 20:34:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 12.94 <= 9.25 -> ✗
+2026-05-07 20:34:34 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:34:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:34:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 15.81 <= 9.25 -> ✗
+2026-05-07 20:34:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.19 >= 12.209999999999999 -> ✓
+2026-05-07 20:34:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.78 >= 11.1 -> ✓
+2026-05-07 20:34:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.04 <= 9.25 -> ✗
+2026-05-07 20:34:46 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:34:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:34:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 16.28 <= 9.25 -> ✗
+2026-05-07 20:34:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.32 >= 12.209999999999999 -> ✓
+2026-05-07 20:34:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.72 >= 11.1 -> ✓
+2026-05-07 20:34:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.11 <= 9.25 -> ✗
+2026-05-07 20:34:57 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:35:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:35:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 16.68 <= 9.25 -> ✗
+2026-05-07 20:35:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.44 >= 12.209999999999999 -> ✓
+2026-05-07 20:35:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.78 >= 11.1 -> ✓
+2026-05-07 20:35:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.23 <= 9.25 -> ✗
+2026-05-07 20:35:08 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:35:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.209999999999999, 11.1, 9.25]
+2026-05-07 20:35:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 16.93 <= 9.25 -> ✗
+2026-05-07 20:35:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.51 >= 12.209999999999999 -> ✓
+2026-05-07 20:35:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.74 >= 11.1 -> ✓
+2026-05-07 20:35:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 13.32 <= 9.25 -> ✗
+2026-05-07 20:35:19 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:35:26 - scripts.utils.evaluation - INFO - Episode 1/1: Return=217.09, Length=600, Success=False
+2026-05-07 20:35:26 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Unseen_0 (Release) (11/12)
+2026-05-07 20:35:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Unseen_0 (version: Release)
+2026-05-07 20:35:26 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:35:27 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:35:29 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [-0.01271469191597932, -0.06546105915037645, 0.7], ori: [15.093574135239237, -12.587035358811908, 90.0]
+2026-05-07 20:35:29 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:35:29 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.02537777601609726, -0.04779196753602151, 0.7], ori: [-10.325908363981933, -21.15865607409324, 90.0]
+2026-05-07 20:35:37 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:35:37 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 31.75 <= 8.14 -> ✗
+2026-05-07 20:35:37 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.53 >= 13.69 -> ✓
+2026-05-07 20:35:37 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 16.40 >= 12.58 -> ✓
+2026-05-07 20:35:37 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 35.78 <= 9.99 -> ✗
+2026-05-07 20:35:37 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:35:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:35:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 33.07 <= 8.14 -> ✗
+2026-05-07 20:35:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 17.01 >= 13.69 -> ✓
+2026-05-07 20:35:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.96 >= 12.58 -> ✓
+2026-05-07 20:35:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.25 <= 9.99 -> ✗
+2026-05-07 20:35:47 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:35:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:35:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 33.17 <= 8.14 -> ✗
+2026-05-07 20:35:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.96 >= 13.69 -> ✓
+2026-05-07 20:35:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.70 >= 12.58 -> ✓
+2026-05-07 20:35:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 34.34 <= 9.99 -> ✗
+2026-05-07 20:35:58 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:36:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:36:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 33.02 <= 8.14 -> ✗
+2026-05-07 20:36:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.73 >= 13.69 -> ✓
+2026-05-07 20:36:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 13.74 >= 12.58 -> ✓
+2026-05-07 20:36:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 32.23 <= 9.99 -> ✗
+2026-05-07 20:36:09 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:36:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:36:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 32.75 <= 8.14 -> ✗
+2026-05-07 20:36:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 15.60 >= 13.69 -> ✓
+2026-05-07 20:36:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.39 >= 12.58 -> ✓
+2026-05-07 20:36:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.33 <= 9.99 -> ✗
+2026-05-07 20:36:20 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:36:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:36:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 34.18 <= 8.14 -> ✗
+2026-05-07 20:36:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.25 >= 13.69 -> ✓
+2026-05-07 20:36:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 14.96 >= 12.58 -> ✓
+2026-05-07 20:36:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.68 <= 9.99 -> ✗
+2026-05-07 20:36:31 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:36:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:36:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.40 <= 8.14 -> ✗
+2026-05-07 20:36:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.17 >= 13.69 -> ✓
+2026-05-07 20:36:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.26 >= 12.58 -> ✓
+2026-05-07 20:36:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.72 <= 9.99 -> ✗
+2026-05-07 20:36:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:36:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:36:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.51 <= 8.14 -> ✗
+2026-05-07 20:36:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.25 >= 13.69 -> ✓
+2026-05-07 20:36:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.69 >= 12.58 -> ✓
+2026-05-07 20:36:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.92 <= 9.99 -> ✗
+2026-05-07 20:36:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:37:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:37:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.54 <= 8.14 -> ✗
+2026-05-07 20:37:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.27 >= 13.69 -> ✓
+2026-05-07 20:37:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.68 >= 12.58 -> ✓
+2026-05-07 20:37:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 16.95 <= 9.99 -> ✗
+2026-05-07 20:37:03 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:37:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:37:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.56 <= 8.14 -> ✗
+2026-05-07 20:37:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.27 >= 13.69 -> ✓
+2026-05-07 20:37:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.72 >= 12.58 -> ✓
+2026-05-07 20:37:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 18.23 <= 9.99 -> ✗
+2026-05-07 20:37:14 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:37:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:37:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 9.54 <= 8.14 -> ✗
+2026-05-07 20:37:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.22 >= 13.69 -> ✓
+2026-05-07 20:37:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.72 >= 12.58 -> ✓
+2026-05-07 20:37:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 18.39 <= 9.99 -> ✗
+2026-05-07 20:37:24 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:37:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [8.14, 13.69, 12.58, 9.99]
+2026-05-07 20:37:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 5.50 <= 8.14 -> ✓
+2026-05-07 20:37:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 12.25 >= 13.69 -> ✗
+2026-05-07 20:37:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 10.39 >= 12.58 -> ✗
+2026-05-07 20:37:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 9.10 <= 9.99 -> ✓
+2026-05-07 20:37:36 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:37:40 - scripts.utils.evaluation - INFO - Episode 1/1: Return=147.30, Length=600, Success=False
+2026-05-07 20:37:40 - scripts.utils.evaluation - INFO - Evaluating: Pant_Long_Unseen_1 (Release) (12/12)
+2026-05-07 20:37:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Switching garment to: Pant_Long_Unseen_1 (version: Release)
+2026-05-07 20:37:40 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] Old garment object deleted
+2026-05-07 20:37:41 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [GarmentEnv] GarmentObject created successfully
+2026-05-07 20:37:43 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.03096691394120938, -0.038804978165695045, 0.7], ori: [-16.634401400198048, -17.595306867080083, 90.0]
+2026-05-07 20:37:43 - scripts.utils.evaluation - INFO - Starting evaluation: 1 episodes
+2026-05-07 20:37:43 - lehome.assets.object.Garment - INFO - [GarmentObject] Reset complete - pos: [0.008514324772767194, -0.06963211793533482, 0.7], ori: [6.5400707643222304, -25.736797639996627, 90.0]
+2026-05-07 20:37:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.209999999999999, 6.66]
+2026-05-07 20:37:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 31.74 <= 9.25 -> ✗
+2026-05-07 20:37:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.22 >= 12.58 -> ✓
+2026-05-07 20:37:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.26 >= 12.209999999999999 -> ✓
+2026-05-07 20:37:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 27.33 <= 6.66 -> ✗
+2026-05-07 20:37:53 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:38:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.209999999999999, 6.66]
+2026-05-07 20:38:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 31.95 <= 9.25 -> ✗
+2026-05-07 20:38:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.34 >= 12.58 -> ✓
+2026-05-07 20:38:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 17.43 >= 12.209999999999999 -> ✓
+2026-05-07 20:38:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 33.38 <= 6.66 -> ✗
+2026-05-07 20:38:04 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Failed ✗
+2026-05-07 20:38:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Garment type: long-pant, Thresholds: [9.25, 12.58, 12.209999999999999, 6.66]
+2026-05-07 20:38:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[4]) = 6.71 <= 9.25 -> ✓
+2026-05-07 20:38:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[0], p[2]) = 16.08 >= 12.58 -> ✓
+2026-05-07 20:38:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[3]) = 15.90 >= 12.209999999999999 -> ✓
+2026-05-07 20:38:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO -   dist(p[1], p[5]) = 2.99 <= 6.66 -> ✓
+2026-05-07 20:38:16 - lehome.tasks.bedroom.garment_bi_v2 - INFO - [Success Check] Final result: Success ✓
+2026-05-07 20:38:26 - scripts.utils.evaluation - INFO - Episode 1/1: Return=87.96, Length=136, Success=True
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - ============================================================
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - Overall Summary
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - ============================================================
+2026-05-07 20:38:27 - scripts.utils.eval_utils - INFO - ==================================================
+2026-05-07 20:38:27 - scripts.utils.eval_utils - INFO - Evaluation Results Summary
+2026-05-07 20:38:27 - scripts.utils.eval_utils - INFO - ==================================================
+2026-05-07 20:38:27 - scripts.utils.eval_utils - INFO - Total Episodes: 12
+2026-05-07 20:38:27 - scripts.utils.eval_utils - INFO - Average Return: 181.06 ± 73.10
+2026-05-07 20:38:27 - scripts.utils.eval_utils - INFO - Success Rate: 8.33%
+2026-05-07 20:38:27 - scripts.utils.eval_utils - INFO - ==================================================
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - ============================================================
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - Per-Garment Summary
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - ============================================================
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_0: Success Rate = 0.00%, Avg Return = 107.39
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_1: Success Rate = 0.00%, Avg Return = 129.88
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_2: Success Rate = 0.00%, Avg Return = 281.15
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_3: Success Rate = 0.00%, Avg Return = 289.42
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_4: Success Rate = 0.00%, Avg Return = 289.54
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_5: Success Rate = 0.00%, Avg Return = 140.89
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_6: Success Rate = 0.00%, Avg Return = 118.00
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_7: Success Rate = 0.00%, Avg Return = 166.09
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_8: Success Rate = 0.00%, Avg Return = 198.03
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Seen_9: Success Rate = 0.00%, Avg Return = 217.09
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Unseen_0: Success Rate = 0.00%, Avg Return = 147.30
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO -   Pant_Long_Unseen_1: Success Rate = 100.00%, Avg Return = 87.96
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - ============================================================
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - Evaluation completed successfully
+2026-05-07 20:38:27 - scripts.utils.evaluation - INFO - ============================================================
+[1598.401s] Simulation App Shutting Down
+/root/.local/share/uv/python/cpython-3.11.14-linux-x86_64-gnu/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
