@@ -25,3 +25,6 @@ __pycache__/
 
 # Large checkpoints synced outside git (e.g. rclone)
 lehome_workspace/lehome-challenge/dummy_docker_policy/pretrained_model/
+
+# README V2 — local copy with credentials (tracked README_SUBMISSION_V2.md stays redacted)
+Artifacts/Artifacts_eval_lehomeChallenge/v2_submission.md
