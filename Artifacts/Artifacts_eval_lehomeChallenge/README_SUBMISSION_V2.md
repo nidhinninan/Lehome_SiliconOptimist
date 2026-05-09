@@ -33,7 +33,7 @@ The Micro Docker build layers on top of the original submitted image and replace
 | Tag | Contents |
 |-----|----------|
 | `nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell` | Original submitted image (base for the rebuild) |
-| `nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched` | Micro-rebuilt image — **use this one for evaluation** |
+| `nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated` | Micro-rebuilt image — **use this one for evaluation** |
 
 ---
 
@@ -44,12 +44,12 @@ The Micro Docker build layers on top of the original submitted image and replace
 | Field | Value |
 |-------|-------|
 | Username | `nninspaceexp` |
-| Access token | `<REDACTED_DOCKER_PAT>` |
+| Access token | `<TOKEN-REDACTED>` |
 | Scope | Read-only (pull only) |
 | Expires | Jul 30, 2026 |
 
 ```bash
-docker login -u nninspaceexp --password-stdin <<< "<REDACTED_DOCKER_PAT>"
+docker login -u nninspaceexp --password-stdin <<< "<TOKEN-REDACTED>"
 ```
 
 ### Hugging Face (gated `lehome/asset_challenge` dataset)
@@ -72,6 +72,15 @@ huggingface-cli login --token <USE_OWN_HF_TOKEN>
 - `uv` — `pip install uv`
 - Docker with NVIDIA Container Toolkit (`--gpus all`)
 - `sudo apt-get install -y xvfb` (headless X11 for Isaac Sim)
+- **No `zenity` on the host.** Omniverse Kit's hang-detector spawns a `zenity` modal ("Kit appears to be hanging — terminate?") under `xvfb` if early Warp / PhysX initialization is slow. Because no human can click it, the eval freezes indefinitely. Either purge or shadow zenity:
+
+  ```bash
+  # Option A: remove (preferred on a dedicated eval VM)
+  sudo apt-get remove -y zenity
+
+  # Option B: shadow with a no-op (keeps zenity installed but auto-cancels Kit's hang dialog)
+  sudo ln -sf /bin/true /usr/local/bin/zenity
+  ```
 
 ---
 
@@ -97,7 +106,10 @@ source .venv/bin/activate
 cd third_party
 git clone https://github.com/lehome-official/IsaacLab.git
 cd ..
-./third_party/IsaacLab/isaaclab.sh -i none   # accept NVIDIA EULA when prompted
+echo "yes" | ./third_party/IsaacLab/isaaclab.sh -i none   # accept NVIDIA EULA when prompted
+
+# Fix IsaacLab 5.1.0 warp-lang dependency issue
+uv pip install warp-lang==1.11.1
 ```
 
 ### Step 4 — Install the LeHome package (standard)
@@ -118,45 +130,46 @@ hf download lehome/asset_challenge --repo-type dataset --local-dir Assets
 
 This is the **only step that differs** from the original submission README.
 
-You need three files in the same directory: `Dockerfile.patch`, `policy.py`, and `meta/`. These are provided in the submission artifact bundle (`dummy_docker_policy/` in our workspace). Navigate to that directory and run:
+You need four files/folders in the same directory: `Dockerfile.patch`, `policy.py`, `meta/`, and `pretrained_model/`. These are provided in the submission artifact bundle (`dummy_docker_policy/` in our workspace). Navigate to that directory and run:
 
 ```bash
 # Authenticate to pull the base image
-docker login -u nninspaceexp --password-stdin <<< "<REDACTED_DOCKER_PAT>"
+docker login -u nninspaceexp --password-stdin <<< "<TOKEN-REDACTED>"
 
 # Build the patched image
-docker build -t nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched \
+docker build -t nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated \
     -f Dockerfile.patch .
 ```
 
-The build pulls `FullDP-v2_Blackwell` as the base layer (model weights intact), then overlays only `policy.py` and `meta/`.
+The build pulls `FullDP-v2_Blackwell` as the base layer, then overlays `policy.py`, `meta/`, and `pretrained_model/` (which contains the required `config.json` and pre/post processors).
 
-### Step 7 — Start two policy servers
+### Step 7 — Start two policy servers (NEED MINIMUM 24GB+ VRAM)
 
 **Terminal A — port 8081**
 
 ```bash
-docker run --rm --gpus all -p 8081:8080 \
-    nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched
+docker run --rm --gpus all -e HF_HOME=/tmp -p 8081:8080 \
+    nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated
 ```
 
 **Terminal B — port 8082**
 
 ```bash
-docker run --rm --gpus all -p 8082:8080 \
-    nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched
+docker run --rm --gpus all -e HF_HOME=/tmp -p 8082:8080 \
+    nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated
 ```
 
 Wait until both terminals print: `Policy server listening on 0.0.0.0:8080`
 
 ### Step 8 — Run evaluation (standard `scripts.eval` command)
 
-Back in the `lehome-challenge` directory with the venv active:
+Back in the `lehome-challenge` directory with the venv active.
 
 **`top_long` (port 8081)**
 
 ```bash
-xvfb-run -a python -m scripts.eval \
+WARP_CACHE_PATH=/data/warp_cache OMNI_KIT_ACCEPT_EULA=yes PYTHONUNBUFFERED=1 \
+xvfb-run -a python -u -m scripts.eval \
     --policy_type docker \
     --docker_url http://localhost:8081 \
     --garment_type top_long \
@@ -170,7 +183,8 @@ xvfb-run -a python -m scripts.eval \
 **`pant_long` (port 8082) — in parallel**
 
 ```bash
-xvfb-run -a python -m scripts.eval \
+WARP_CACHE_PATH=/data/warp_cache OMNI_KIT_ACCEPT_EULA=yes PYTHONUNBUFFERED=1 \
+xvfb-run -a python -u -m scripts.eval \
     --policy_type docker \
     --docker_url http://localhost:8082 \
     --garment_type pant_long \
@@ -194,6 +208,9 @@ After those finish, reuse the same containers for `top_short` and `pant_short` b
 | `--headless` | flag | No GUI window |
 | `--enable_cameras` | flag | Required — enables camera observations |
 | `xvfb-run -a` | wrapper | Synthetic X11 display on headless servers |
+| `WARP_CACHE_PATH=/data/warp_cache` | env var | Writable Warp kernel cache; prevents Kit "appears to be hanging" zenity popup on first run |
+| `OMNI_KIT_ACCEPT_EULA=yes` | env var | Non-interactively accepts the Omniverse Kit EULA on the host |
+| `PYTHONUNBUFFERED=1` + `python -u` | env/flag | Streams Python and Kit logs immediately so you can monitor progress in `eval_*.log` |
 
 ---
 
@@ -229,4 +246,4 @@ Running a 3rd simultaneous evaluation risks OOM on both RAM and VRAM.
 ---
 
 *LeHome Challenge 2026 — Silicon Optimists*
-*V2: Micro Docker (`FullDP-v2_Blackwell` → `FullDP-v2_Blackwell_patched`) | Checkpoints unchanged*
+*V2: Micro Docker (`FullDP-v2_Blackwell` → `FullDP-v2_Blackwell_patched-Updated`) | Checkpoints unchanged*

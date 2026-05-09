@@ -14,6 +14,7 @@ COPY policy.py /app/policy.py
 # NOTE: You must copy the 'meta' folder from your training dataset 
 # into the 'dummy_docker_policy/meta' directory on the host before building.
 COPY meta /app/meta
+COPY pretrained_model /app/pretrained_model
 
 # 5. The base image already has the entrypoint set to run policy.py
 # If not, we can re-specify it here:

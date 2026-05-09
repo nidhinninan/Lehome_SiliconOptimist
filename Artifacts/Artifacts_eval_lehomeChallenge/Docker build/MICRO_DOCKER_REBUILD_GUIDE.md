@@ -27,30 +27,40 @@ Expected files in context:
 - `Dockerfile.patch`
 - `policy.py` (patched inference wrapper)
 - `meta/` (dataset metadata/statistics used by pre/post processors)
+- `pretrained_model/` (contains `config.json`, `policy_preprocessor.json`, `policy_postprocessor.json` and matching `*.safetensors` required by the new `policy.py` to instantiate the LeRobot `PolicyProcessorPipeline`; the base image only ships `model.safetensors`)
 
 ## Build Commands
 
 ```bash
 docker login -u nninspaceexp --password-stdin <<< "<REDACTED_DOCKER_PAT>"
-docker build -t nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched -f Dockerfile.patch .
+docker build -t nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated -f Dockerfile.patch .
 ```
 
 ## Push Command
 
 ```bash
-docker push nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched
+docker push nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated
 ```
 
 ## Evaluator Runtime Tag
 
 Use this patched image when starting policy containers:
 
-`nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched`
+`nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated`
 
-The host-side evaluation command remains unchanged:
+The host-side evaluation command (matches V2 README Step 8):
 
 ```bash
-xvfb-run -a python -m scripts.eval --policy_type docker --docker_url http://localhost:8081 ...
+mkdir -p /data/warp_cache
+WARP_CACHE_PATH=/data/warp_cache OMNI_KIT_ACCEPT_EULA=yes PYTHONUNBUFFERED=1 \
+xvfb-run -a python -u -m scripts.eval --policy_type docker --docker_url http://localhost:8081 ...
+```
+
+When starting the policy container, pass `-e HF_HOME=/tmp` so the in-container LeRobot dataset metadata cache is writable for the non-root `user`:
+
+```bash
+docker run --rm --gpus all -e HF_HOME=/tmp -p 8081:8080 \
+    nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated
 ```
 
 ## Notes

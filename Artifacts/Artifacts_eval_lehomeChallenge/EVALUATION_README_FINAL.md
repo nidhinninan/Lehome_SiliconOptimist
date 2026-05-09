@@ -95,6 +95,7 @@ Instead of just pulling the original image (as described in `README_SUBMISSION.m
 - `Dockerfile.patch`
 - `policy.py` (the fixed inference wrapper)
 - `meta/` (the dataset statistics)
+- `pretrained_model/` (contains `config.json`, `policy_preprocessor.json`, `policy_postprocessor.json`, and matching `*.safetensors` required by the new `policy.py` to instantiate the LeRobot `PolicyProcessorPipeline`; the base `FullDP-v2_Blackwell` image only contains `model.safetensors`)
 
 Navigate to this folder and build the patched image:
 
@@ -103,7 +104,7 @@ Navigate to this folder and build the patched image:
 docker login -u nninspaceexp --password-stdin <<< "<REDACTED_DOCKER_PAT>"
 
 # Build the micro-rebuild image
-docker build -t nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched -f Dockerfile.patch .
+docker build -t nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated -f Dockerfile.patch .
 ```
 
 ### Step 6 — Continue with `README_SUBMISSION.md`
@@ -112,7 +113,7 @@ From this point onward, **follow `README_SUBMISSION.md` from Step 3 ("Clone and 
 
 **When starting the Docker containers (Step 8), use the patched image tag:**
 ```bash
-docker run --rm --gpus all -p 8081:8080 nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched
+docker run --rm --gpus all -e HF_HOME=/tmp -p 8081:8080 nninspaceexp/lehome_silicon-optimists:FullDP-v2_Blackwell_patched-Updated
 ```
 
 > **Important — do NOT swap the evaluation command.** When you reach Step 9 in `README_SUBMISSION.md`, run the official module entry point exactly as written:
